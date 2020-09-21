@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import 'Register.scss'
+//import 'Register.css'
 
 class Register extends Component{
     constructor(){
@@ -11,7 +11,7 @@ class Register extends Component{
     }
 
     render(){
-        super(
+        return(
             <div>
                 
             </div>

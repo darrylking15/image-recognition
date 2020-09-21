@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Credentials from './Credentials'
-import Photos from './Photos'
-import './Dashboard.scss'
+//import Credentials from './Credentials'
+//import Photos from './Photos'
+//import './Dashboard.css'
 
 class Dashboard extends Component{
     constructor(){
@@ -15,7 +15,7 @@ class Dashboard extends Component{
     render(){
         return(
             <div>
-
+                <p></p>
             </div>
         )
     }

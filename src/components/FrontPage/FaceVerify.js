@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './FaceVerify.scss'
+//import './FaceVerify.css'
  
 class FrontPage extends Component{
     constructor(){

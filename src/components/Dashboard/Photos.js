@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Photos.scss'
+//import './Photos.css'
 
 class Photos extends Component{
     constructor(){
@@ -11,7 +11,7 @@ class Photos extends Component{
     }
 
     render(){
-        super(
+        return(
             <div>
 
             </div>

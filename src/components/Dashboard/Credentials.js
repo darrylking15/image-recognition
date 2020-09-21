@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Credentials/scss'
+//import './Credentials/css'
 
 class Credentials extends Component {
     constructor(){

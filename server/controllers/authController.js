@@ -4,7 +4,7 @@ module.exports = {
     register: async (req, res) => {
         console.log("Register Called");
         const db = req.app.get('db');
-        let { email, password, two_factor, is_admin } = req.body;
+        let { email, password, firstName, lastName, faceRec, isAdmin } = req.body;
         const existingUser = await db.check_for_user([email]);
         if (existingUser[0]) {
             console.log("Register Failed Duplicate");
@@ -12,14 +12,16 @@ module.exports = {
         }
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
-        const newUser = await db.register_user( 
-            [email, hash, two_factor, is_admin] );
-        //console.log('New User: ', newUser);
+        const user = await db.register_user( 
+            [email, hash, firstName, lastName, faceRec, isAdmin] );
+        console.log('New User: ', user);
         req.session.user = {
-            user_id: newUser[0].user_id,
-            email: newUser[0].email,
-            two_factor: newUser[0].two_factor,
-            is_admin: newUser[0].is_admin
+            userId: user[0].user_id,
+            email: user[0].email,
+            firstName: user[0].first_name,
+            lastName: user[0].last_name,
+            faceRec: user[0].face_rec,
+            isAdmin: user[0].is_admin
         }
         res.status(200).send(req.session.user);
     },
@@ -35,10 +37,12 @@ module.exports = {
             const authenticated = bcrypt.compareSync( password, user[0].hash )
             if (authenticated) {
                 req.session.user = {
-                    user_id: user[0].user_id,
+                    userId: user[0].user_id,
                     email: user[0].email,
-                    two_factor: user[0].two_factor,
-                    is_admin: user[0].is_admin
+                    firstName: user[0].first_name,
+                    lastName: user[0].last_name,
+                    faceRec: user[0].face_rec,
+                    isAdmin: user[0].is_admin
                 }
                 console.log(`Login Successful User: ${email}`);
                 res.status(200).send(req.session.user)

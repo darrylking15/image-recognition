@@ -2,8 +2,10 @@ CREATE TABLE users (
     user_id         SERIAL PRIMARY KEY NOT NULL,
     email           VARCHAR(64) NOT NULL,
     hash            TEXT,
-    two_factor      BOOLEAN,
-    is_admin        BOOLEAN,  
+    first_name      VARCHAR(32),
+    last_name       VARCHAR(32),
+    face_rec        BOOLEAN,
+    is_admin        BOOLEAN  
 );
 
 CREATE TABLE credentials (
