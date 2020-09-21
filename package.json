@@ -5,19 +5,23 @@
   "main": "./server/",
   "proxy": "http://localhost:4000",
   "nodemonConfig": {
-    "ignore": ["src/*"]
+    "ignore": [
+      "src/*"
+    ]
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "aws": "0.0.3-2",
+    "aws-sdk": "^2.756.0",
     "axios": "^0.20.0",
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "massive": "^6.6.0",
+    "multer": "^1.4.2",
     "node": "^14.11.0",
     "nodemailer": "^6.4.11",
     "react": "^16.13.1",
@@ -27,7 +31,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-webcam": "^5.2.0",
-    "redux-promise-middleware": "^6.1.2"
+    "redux-promise-middleware": "^6.1.2",
+    "uuid": "^8.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
