@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { connect } from 'react-redux';
+import {loginUser} from '../../redux/reducer';
+
 import './styles/Login.css'
 
 class Login extends Component {
@@ -27,7 +30,8 @@ class Login extends Component {
             faceRec,
             isAdmin})
             .then((res) => {
-            this.props.history.push('/dashboard')
+                loginUser(res);
+                this.props.history.push('/dashboard')
         }).catch((err) => {
             console.log(err)
             alert('User already exists')
@@ -36,8 +40,10 @@ class Login extends Component {
 
     login = () => {
         const {email, password} = this.state
-        axios.post('/auth/login', {email, password}).then((res) => {
-            this.props.history.push('/dashboard')
+        axios.post('/auth/login', {email, password})
+            .then((res) => {
+                this.props.loginUser(res);
+                this.props.history.push('/dashboard')
         }).catch((err) => {
             console.log(err)
             alert('Incorrect email or password')
@@ -94,4 +100,6 @@ class Login extends Component {
     }
 }
 
-export default Login
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, {loginUser})(Login);
