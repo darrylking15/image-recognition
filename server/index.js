@@ -91,7 +91,7 @@ app.post('/upload',upload,(req, res) => {
         console.log(req.file)
     s3.upload(params, (error, data) => {
         if(error){
-            res.status(500).send(error)
+            res.status(500).send(error) 
         }
 
         res.status(200).send(data)
