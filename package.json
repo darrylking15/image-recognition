@@ -31,6 +31,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-webcam": "^5.2.0",
+    "redux": "^4.0.5",
     "redux-promise-middleware": "^6.1.2",
     "uuid": "^8.3.0"
   },
