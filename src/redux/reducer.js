@@ -1,13 +1,15 @@
 
 const initialState = {
     user: {},
-    credentials: {}
+    credentials: []
 }
 
 // Action Types
 const LOGIN_USER = 'LOGIN_USER';
 const LOGOUT_USER = 'LOGOUT_USER';
 const GET_SESSION = 'GET_SESSION';
+
+const GET_USER_CREDENTIALS = 'GET_USER_CREDENTIALS';
 
 // Redux Creators
 export function loginUser(user) {
@@ -34,9 +36,17 @@ export function getUserSession(user) {
     }
 }
 
+export function getUserCredentialsRedux(creds) {
+    return {
+        type: GET_USER_CREDENTIALS,
+        payload: creds
+    }
+}
+
 
 // Reducer Function
 export default function reducer(state = initialState, action) {
+    console.log('Reducer', action)
     switch(action.type) {
         case LOGIN_USER: 
             return { ...state, user: action.payload.data}
@@ -48,6 +58,8 @@ export default function reducer(state = initialState, action) {
                 return { ...state, user: action.payload.data}
         case GET_SESSION + "_REJECTED":
             return initialState
+        case GET_USER_CREDENTIALS:
+            return { ...state, credentials: action.payload.data }
         default: 
             return initialState
     }
