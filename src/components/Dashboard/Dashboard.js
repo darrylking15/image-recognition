@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Credentials from './Credentials'
 import Photos from './Photos'
-import './Dashboard.scss'
+import './styles/Dashboard.scss'
 import store from '../../redux/store';
 import { connect } from 'react-redux';
 import { logoutUser, getUserSession } from '../../redux/reducer'
@@ -11,16 +11,17 @@ import { logoutUser, getUserSession } from '../../redux/reducer'
 
 
 class Dashboard extends Component{
+    
     constructor(){
         super()
-
+        const reduxState = store.getState();
         this.state = {
             title: '',
             email: '',
             password: '',
             message: '',
             keyChains: [],
-            user: this.props.user
+            user: reduxState.user
         }
     }
 
@@ -70,7 +71,7 @@ class Dashboard extends Component{
 
 
         render(){
-            const reduxState = store.getState();
+           
             const newKeyChain = this.state.keyChains.map((e, i) => {
 
                 return(
