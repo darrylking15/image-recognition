@@ -18,7 +18,7 @@ class Dashboard extends Component{
     }
 
         getKeyChains = () => {
-            axios.get('/').then(items => {
+            axios.get('/').then(keyChain => {
                 this.setState({keyChain: keyChain.data})
         })
     }
@@ -30,7 +30,7 @@ class Dashboard extends Component{
 
     deleteKeyChain = (id) => {
         axios.delete(`/${id}`).then(() => {
-            this.getKeyChains
+            this.getKeyChains()
         })
     }
 
@@ -41,9 +41,6 @@ class Dashboard extends Component{
 
                 return(
                     <div key={e.keyChain_id}>
-                        <div className="dashboard--nav">
-
-                        </div>
                         <div className="keyChain">
                             <p className="keyChain__title">{e.keyChain.title}</p>
                             <p className="keyChain__email">{e.keyChain.email}</p>
@@ -55,6 +52,9 @@ class Dashboard extends Component{
         })
         return(
             <div>
+               <div className="dashboard--nav">
+                  <p>logout</p>
+                </div>
                 {newKeyChain}
             </div>
         )
