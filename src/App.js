@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import routes from './routes';
-import './reset.css';
-import './css/styles.css'
 
 // CSS Files
-// import './App.css';
+import './App.css';
 
 
 class App extends Component{
