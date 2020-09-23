@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 //import FaceVerify from './FaceVerify'
 //import Login from './Login'
-// import './styles//FrontPage.css'
+import './styles//FrontPage.css'
 
 class FrontPage extends Component{
     constructor(){
