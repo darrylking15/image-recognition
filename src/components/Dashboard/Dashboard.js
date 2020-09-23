@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Credentials from './Credentials'
 import Photos from './Photos'
-import './styles/Dashboard.scss'
 import store from '../../redux/store';
 import { connect } from 'react-redux';
 import { logoutUser, getUserSession } from '../../redux/reducer'
