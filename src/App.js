@@ -3,6 +3,7 @@ import routes from './routes';
 
 // CSS Files
 import './App.css';
+import './reset.css'
 
 
 class App extends Component{

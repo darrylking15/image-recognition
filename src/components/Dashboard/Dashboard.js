@@ -11,10 +11,9 @@ import { logoutUser, getUserSession, getUserCredentialsRedux } from '../../redux
 
 
 class Dashboard extends Component{
-    
     constructor(){
         super()
-        const reduxState = store.getState();
+
         this.state = {
             credentials: [],
             user: reduxState.user
@@ -105,14 +104,4 @@ class Dashboard extends Component{
     }
 }
 
-
-
-      
-    
-
-
-
- 
-const mapStateToProps = state => state;
-
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard
