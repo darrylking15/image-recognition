@@ -16,12 +16,17 @@ module.exports = {
             [email, hash, firstName, lastName, faceRec, isAdmin] );
         console.log('New User: ', user);
         req.session.user = {
-            userId: user[0].user_id,
-            email: user[0].email,
-            firstName: user[0].first_name,
-            lastName: user[0].last_name,
-            faceRec: user[0].face_rec,
-            isAdmin: user[0].is_admin
+            userId:      user[0].user_id,
+            email:       user[0].email,
+            firstName:   user[0].first_name,
+            lastName:    user[0].last_name,
+            faceRec:     user[0].face_rec,
+            isAdmin:     user[0].is_admin,
+            s3Url:       user[0].s3_url,
+            s3Bucket:    user[0].s3_bucket,
+            s3Key:       user[0].s3_key,
+            imgBase64:   user[0].img_base64,
+            imgMetaData: user[0].img_metadata
         }
         res.status(200).send(req.session.user);
     },
@@ -37,12 +42,17 @@ module.exports = {
             const authenticated = bcrypt.compareSync( password, user[0].hash )
             if (authenticated) {
                 req.session.user = {
-                    userId: user[0].user_id,
-                    email: user[0].email,
-                    firstName: user[0].first_name,
-                    lastName: user[0].last_name,
-                    faceRec: user[0].face_rec,
-                    isAdmin: user[0].is_admin
+                    userId:      user[0].user_id,
+                    email:       user[0].email,
+                    firstName:   user[0].first_name,
+                    lastName:    user[0].last_name,
+                    faceRec:     user[0].face_rec,
+                    isAdmin:     user[0].is_admin,
+                    s3Url:       user[0].s3_url,
+                    s3Bucket:    user[0].s3_bucket,
+                    s3Key:       user[0].s3_key,
+                    imgBase64:   user[0].img_base64,
+                    imgMetaData: user[0].img_metadata
                 }
                 console.log(`Login Successful User: ${email}`);
                 res.status(200).send(req.session.user)

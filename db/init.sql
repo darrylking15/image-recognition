@@ -15,18 +15,19 @@ CREATE TABLE credentials (
     username        VARCHAR(32),
     password        VARCHAR(32),
     crypr_pass      TEXT,
-    update_time     TIMESTAMP,
+    update_time     BIGINT,
     user_id         INT NOT NULL REFERENCES users(user_id)
 );
 
 CREATE TABLE images (
     img_id         SERIAL PRIMARY KEY NOT NULL,
-    timestamp      TIMESTAMP,
-    type           VARCHAR(32),
-    angle          VARCHAR(32),
-    notes          TEXT,
-    url            TEXT,
-    base63         TEXT,
+    timestamp      BIGINT,
+    s3_url         VARCHAR(128),
+    s3_bucket      VARCHAR(64),
+    s3_etag        VARCHAR(64),
+    s3_key         VARCHAR(64),
+    img_metadata   TEXT, 
+    img_base64     TEXT,
     user_id        INT NOT NULL REFERENCES users(user_id) 
 );
 
