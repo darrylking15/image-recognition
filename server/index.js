@@ -7,11 +7,16 @@ const multer = require('multer');
 const AWS = require('aws-sdk')
 const { v4: uuidv4 } = require('uuid');
 
+
+
+
+
 // Controllers
 const authCtrl = require('./controllers/authController');
 const credCtrl = require('./controllers/credController');
 const imageCtrl = require('./controllers/imageController');
 const { Console } = require('console');
+const { getLogger } = require('nodemailer/lib/shared');
 
 // Server Setup -------------------------------------------------------------------
 const app = express();
@@ -26,6 +31,13 @@ app.use(session( {
     cookie: { maxAge: 1000 * 60 * 60 * 48 },
     secret: SESSION_SECRET
 } ) );
+
+
+
+
+
+
+
 
 massive({
     connectionString: CONNECTION_STRING,
@@ -82,21 +94,31 @@ app.post('/upload',upload,(req, res) => {
 
     let myFile = req.file.originalname.split(".")
     const fileType = myFile[myFile.length - 1]
-
+    // let resData
     const params = {
         Bucket: process.env.AWS_BUCKET_NAME,
         Key: `${uuidv4()}.${fileType}`,
         Body: req.file.buffer
     }
-        console.log(req.file)
+        // console.log(req.file)
     s3.upload(params, (error, data) => {
         if(error){
             res.status(500).send(error) 
         }
 
         res.status(200).send(data)
+        
     })
-})
+    })
+
+
+
+
+
+
+
+
+
 
 // Server Run and 
 app.listen(SERVER_PORT, () => {
