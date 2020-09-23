@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 //import Credentials from './Credentials'
 //import Photos from './Photos'
-import './styles/Dashboard.css'
+// import './styles/Dashboard.css'
 import store from '../../redux/store';
 import { connect } from 'react-redux';
 import { logoutUser, getUserSession, getUserCredentialsRedux } from '../../redux/reducer'
@@ -13,7 +13,7 @@ import { logoutUser, getUserSession, getUserCredentialsRedux } from '../../redux
 class Dashboard extends Component{
     constructor(){
         super()
-
+        const reduxState = store.getState();
         this.state = {
             credentials: [],
             user: reduxState.user

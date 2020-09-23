@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Webcam from 'react-webcam'
-import './styles/FaceVerify.css'
+// import './styles/FaceVerify.css'
 
 const WebcamCapture = () => {
 	const webcamRef = React.useRef(null)

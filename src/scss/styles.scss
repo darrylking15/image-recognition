@@ -1,0 +1,15 @@
+@import "config";
+@import "credentials";
+@import "dashboard";
+@import "faceVerify";
+@import "frontPage";
+@import "login";
+@import "photos";
+@import "register";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+  }

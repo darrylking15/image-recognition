@@ -1,0 +1,75 @@
+.register--container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    // border: 2px solid rgb(87, 131, 228);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(32, 40, 51, 0.5);
+    width: 490px;
+    height: 570px;
+  
+    .register__title {
+      // display: flex;
+      // justify-content: flex-start;
+      font-family: $geneva-font-stack;
+      font-weight: bold;
+      font-size: 50px;
+      color: $mint-color;
+      //ah
+    }
+  
+    #register__input__section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: $geneva-font-stack;
+      height: 35%;
+      width: 60%;
+      margin-top: 70px;
+  
+      .register__input {
+        display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        height: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+        background-color: rgba(11, 12, 16, 0.5);
+      }
+    }
+    #register__buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 22%;
+      // margin-bottom: 15px;
+      // padding-top: 20px;
+      .two__factor__button {
+        margin-bottom: 15px;
+        height: 40px;
+        width: 160px;
+        background-color: transparent;
+        border-color: $mint-color;
+        color: $light-gray-color;
+        mix-blend-mode: overlay;
+      }
+  
+      .register__button {
+        // font: $geneva-font-stack;
+        margin-right: 15px;
+        height: 45px;
+        width: 120px;
+        background-color: transparent;
+        border-color: $mint-color;
+        color: $light-gray-color;
+        mix-blend-mode: overlay;
+        // margin-top: 5px;
+        // width: 25%;
+      }
+    }
+  }
