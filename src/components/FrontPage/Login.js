@@ -104,7 +104,7 @@ class Login extends Component {
                 LOGIN
               </button>
               <button className="login__button" onClick={this.toggleReg}>
-                REGISTER NEW USER
+                REGISTER
               </button>
             </div>
           </div>
