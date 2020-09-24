@@ -16,14 +16,26 @@ module.exports = {
     },
 
     addCred: async (req, res) => {
-
+      const db = req.app.get('db')
+      const {websiteName, websiteUrl, userName, password} = req.body
+      db.post_credentials([websiteName, websiteUrl, userName, password]).then(cred => {
+          res.status(200).send(cred)
+      })
     },
 
     updateCred: async (req, res) => {
-
+        const db = req.app.get('db')
+        const {websiteName, websiteUrl, userName, password, id} = req.body
+        db.edit_credentials(websiteName, websiteUrl, userName, password, id).then(cred => {
+            res.status(200).send(cred)
+        })
     },
 
     deleteCred: async (req, res) => {
-
+        const db = req.app.get('db')
+        const {id} = req.params
+        db.delete_credentials(id).then(item => {
+            res.status(200).send(item)
+        })
     }
 }

@@ -1,3 +1,4 @@
+
 import React, { Component, useRef } from 'react';
 import Webcam from 'react-webcam';
 import store from '../../redux/store';
@@ -67,6 +68,7 @@ class FaceVerify extends Component{
 			</div>
 		)
 	}
+
 }
 
 export default FaceVerify;

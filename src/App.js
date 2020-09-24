@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import store from './redux/store';
 
 
-
 // CSS Files
 // import './App.css';
 import "./reset.css";
@@ -39,6 +38,7 @@ class App extends Component {
         } )   
   }
 
+
   render() {
     return (
       <div className="app">
@@ -50,6 +50,8 @@ class App extends Component {
 }
 
 
+
 const mapStateToProps = state => state;
 
 export default withRouter(App); connect(mapStateToProps, {getUserSessionRedux});
+

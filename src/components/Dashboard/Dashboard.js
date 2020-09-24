@@ -6,9 +6,9 @@ import axios from 'axios'
 import DashProfile from './DashProfile';
 import store from '../../redux/store';
 import { connect } from 'react-redux';
-import { logoutUser, getUserSessionRedux, getUserCredentialsRedux } from '../../redux/reducer'
 
-
+import { logoutUser, getUserSession, getUserCredentialsRedux } from '../../redux/reducer'
+import './Dashboard.css'
 
 
 class Dashboard extends Component{
@@ -55,13 +55,13 @@ class Dashboard extends Component{
     
     }
 
-    editKeyChain = (title, email, password, message, id) => {
-        axios.put(`/${id}`, {title, email, password, message, id}).then(() => {
+    editKeyChain = (websiteName, websiteUrl, email, password, id) => {
+        axios.put(`/api/cred/:${id}`, {websiteName, websiteUrl, email, password, id}).then(() => {
         })
     }
 
     deleteKeyChain = (id) => {
-        axios.delete(`/${id}`).then(() => {
+        axios.delete(`/api/cred/${id}`).then(() => {
             this.getCredentials(); 
         })
     }
@@ -84,26 +84,26 @@ class Dashboard extends Component{
         const credsMap = this.state.credentials.map((e, i) => {
 
             return(
-                <div key={e.cred_id} className="dashboard__item__main">
-                    
-                        <div className="dashboard__item">
-                            <p className="keyChain__title">{e.website_name}</p>
-                            <p className="keyChain__title">{e.website_url}</p>
-                            <p className="keyChain__title">{e.username}</p>
-                            <p className="keyChain__title" type="password">{e.password}</p>
-                            <p className="keyChain__title__date">{Date(e.update_time)}</p>
-                            
-                        </div>
-                        <div className="dropdown">
-                            <button>Edit</button>
-                            <button>Delete</button>
+
+                <div key={e.cred_id}>
+                        <div className="dashboard">
+                            <div className='keyChain'>
+                                <p className="keyChain__title">{e.website_name}</p>
+                                <p className="keyChain__website">{e.website_url}</p>
+                                <p className="keyChain__username">{e.username}</p>
+                                <p className="keyChain__password">{e.password}</p>
+                                <button onClick={() => this.editKeyChain(e.cred_id)}>Edit</button>
+                                <button onClick={() => this.deleteKeyChain(e.cred_id)}>delete</button>
+                            </div>
+                            {/* <p className="keyChain__title">{Date(e.update_time)}</p> */}
+
                         </div>
                 </div>
             )})
 
       return(
-        <div className="dashboard__component">
-            <DashProfile />
+
+        <div className='dashboard'>
             {credsMap}
             <div>
                 <p>{this.state.user.email ? this.state.user.email : "No User Logged In"}</p>
