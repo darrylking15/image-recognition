@@ -1,27 +1,30 @@
-import React, {Component} from 'react';
-import routes from './routes';
+import React, { Component } from "react";
+import routes from "./routes";
+import Nav from "./components/Nav/Nav";
+import { withRouter } from "react-router-dom";
 
 // CSS Files
-import './App.css';
-import './reset.css'
+// import './App.css';
+import "./reset.css";
+import "./css/styles.css";
 
-
-class App extends Component{
-  constructor(){
-    super()
+class App extends Component {
+  constructor() {
+    super();
 
     this.state = {
-      userSession: {}
-    }
+      userSession: {},
+    };
   }
 
-  render(){
-    return(
-      <div>
-        {routes}
+  render() {
+    return (
+      <div className="app">
+        <div>{this.props.location.pathname === "/" ? null : <Nav />}</div>
+        <div>{routes}</div>
       </div>
-    )
+    );
   }
 }
 
-export default App;
+export default withRouter(App);
