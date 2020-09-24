@@ -1,43 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Webcam from 'react-webcam'
 // import './styles/FaceVerify.css'
 
-const WebcamCapture = () => {
-	const webcamRef = React.useRef(null)
-	const [imgSrc, setImgSrc] = useState(null)
+const FaceVerify = () => {
+    const webcamRef = React.useRef(null);
+    const [startVideo, setStartVideo] = useState(false)
+    const [imgSrc, setImgSrc] = useState(null);
+    const [toggleImg, setToggleImg ] = useState(false);
 
-	const capture = React.useCallback(() => {
-		const imageSrc = webcamRef.current.getScreenshot()
-		setImgSrc(imageSrc)
-	}, [webcamRef, setImgSrc])
+    const capture = useCallback(() => {
+        const imageSrc = webcamRef.current.getScreenshot()
+        setImgSrc(imageSrc)
+    }, [webcamRef, setImgSrc])
 
-	return (
-		<>
-			<div className='faceVerify--container'>
-				<h3>FACE VERIFICATION</h3>
-				<Webcam
-					height={250}
-					width={200}
-					audio={false}
-					ref={webcamRef}
-					screenshotFormat='image/jpeg'
-					className='faceVerify__img'
-				/>
-				<div id='faceVerify__button'>
-					<button onClick={capture} className='faceVerify__button'>
-						START WEBCAM
-					</button>
-					<button className='faceVerify__button'>Capture</button>
-					<button
-						onClick={() => this.props.history.push('/dashboard')}
-						className='faceVerify__button'>
-						Cancel
-					</button>
-					<button className='faceVerify__button'>Face Login</button>
-				</div>
-			</div>
-		</>
-	)
+    return (
+        <>
+            <div className='faceVerify--container'>
+                <h3>FACE VERIFICATION</h3> 
+                <img height={200} width={250}  src={imgSrc} />
+                { startVideo ? <Webcam
+                    height={1080}
+                    width={1920}
+                    audio={false}
+                    ref={webcamRef}
+                    screenshotFormat='image/jpeg'
+                    className='faceVerifyimg'
+                /> : null }
+                <div id='faceVerifybutton'>
+                    <button onClick={ () => setStartVideo(true)} className='faceVerifybutton'>
+                        START WEBCAM
+                    </button>
+                    <button className='faceVerifybutton' onClick={ () => capture()}>Capture</button>
+
+                    <button
+                        onClick={() => this.props.history.push('/dashboard')}
+                        className='faceVerifybutton'>
+                        Cancel
+                    </button>
+                    <button className='faceVerifybutton'>Face Login</button>
+                </div>
+            </div>
+        </>
+    )
 }
 
-export default WebcamCapture
+export default FaceVerify;

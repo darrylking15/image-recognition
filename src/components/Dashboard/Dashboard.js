@@ -6,7 +6,7 @@ import axios from 'axios'
 import store from '../../redux/store';
 import { connect } from 'react-redux';
 import { logoutUser, getUserSession, getUserCredentialsRedux } from '../../redux/reducer'
-
+import './Dashboard.css'
 
 
 
@@ -80,7 +80,6 @@ class Dashboard extends Component{
 
             return(
                 <div key={e.cred_id}>
-                    <div className="dashboard--nav"></div>
                         <div className="dashboard">
                             <p className="keyChain__title">{e.website_name}</p>
                             <p className="keyChain__title">{e.website_url}</p>
@@ -92,7 +91,7 @@ class Dashboard extends Component{
             )})
 
       return(
-        <div>
+        <div className='dashboard'>
             {credsMap}
             <div>
                 <p>{this.state.user.email ? this.state.user.email : "No User Logged In"}</p>
