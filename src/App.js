@@ -1,31 +1,57 @@
-import React, {Component} from 'react';
-import routes from './routes';
-import {withRouter} from 'react-router-dom'
-import Nav from './components/Nav/Nav'
+import React, { Component } from "react";
+import routes from "./routes";
+import Nav from "./components/Nav/Nav";
+import { withRouter } from "react-router-dom";
+import axios from 'axios'
+import { getUserSessionRedux } from './redux/reducer';
+import { connect } from 'react-redux';
+import store from './redux/store';
+
 
 // CSS Files
 // import './App.css';
-import './reset.css';
-import './css/styles.css';
+import "./reset.css";
+import "./css/styles.css";
 
+class App extends Component {
+  constructor() {
+    super();
 
-class App extends Component{
-  constructor(){
-    super()
+    const reduxState = store.getState();
 
     this.state = {
-      userSession: {}
-    }
+      user:reduxState.user,
+    };
   }
 
-  render(){
-    return(
-      <div>
-        {this.props.location.pathname === "/" ? null: <Nav />}
-        {routes}
+  componentDidMount = () => {
+    this.getUserSession();
+}
+
+  getUserSession = async () => {
+    console.log("---Updating User Session")
+    await axios
+        .get('/auth/getsession')
+        .then( res => {
+            console.log("App Update User", res.data);
+            getUserSessionRedux(res)
+        } )   
+  }
+
+
+  render() {
+    return (
+      <div className="app">
+        <div>{this.props.location.pathname === "/" ? null : <Nav />}</div>
+        <div>{routes}</div>
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(App);
+
+
+const mapStateToProps = state => state;
+
+export default withRouter(App); connect(mapStateToProps, {getUserSessionRedux});
+

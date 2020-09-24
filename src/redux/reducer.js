@@ -11,7 +11,7 @@ const GET_SESSION = 'GET_SESSION';
 
 const GET_USER_CREDENTIALS = 'GET_USER_CREDENTIALS';
 
-// Redux Creators
+// Redux Action Creators
 export function loginUser(user) {
     //console.log("Login User Reducer",user)
     return {
@@ -28,8 +28,8 @@ export function logoutUser() {
     }
 }
 
-export function getUserSession(user) {
-    //console.log("Reducer getUserSession");
+export function getUserSessionRedux(user) {
+    //console.log("Action getUserSessionRedux", user.data);
     return {
         type: GET_SESSION,
         payload: user
@@ -46,7 +46,7 @@ export function getUserCredentialsRedux(creds) {
 
 // Reducer Function
 export default function reducer(state = initialState, action) {
-    console.log('Reducer', action)
+    //console.log('****Reducer', action)
     switch(action.type) {
         case LOGIN_USER: 
             return { ...state, user: action.payload.data}
@@ -58,6 +58,8 @@ export default function reducer(state = initialState, action) {
                 return { ...state, user: action.payload.data}
         case GET_SESSION + "_REJECTED":
             return initialState
+        case GET_SESSION:
+            return { ...state, user: action.payload.data}
         case GET_USER_CREDENTIALS:
             return { ...state, credentials: action.payload.data }
         default: 

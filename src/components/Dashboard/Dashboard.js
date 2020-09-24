@@ -3,11 +3,12 @@ import axios from 'axios'
 //import Credentials from './Credentials'
 //import Photos from './Photos'
 // import './styles/Dashboard.css'
+import DashProfile from './DashProfile';
 import store from '../../redux/store';
 import { connect } from 'react-redux';
+
 import { logoutUser, getUserSession, getUserCredentialsRedux } from '../../redux/reducer'
 import './Dashboard.css'
-
 
 
 class Dashboard extends Component{
@@ -15,33 +16,38 @@ class Dashboard extends Component{
         super()
         const reduxState = store.getState();
         this.state = {
-            credentials: [],
-            user: reduxState.user
+            credentials: reduxState.credentials,
+            user: reduxState.user,
+            editToggle: false,
+            userId: reduxState.user.userId
         }
     }
 
     componentDidMount = () => {
-        //getUserSession();
+        this.getUserSession();
         this.getCredentials();
     }
+
+    
 
     getUserSession = async () => {
         console.log("---Updating User Session")
         await axios
             .get('/auth/getsession')
             .then( res => {
-                console.log("App Update User", res);
-                getUserCredentialsRedux(res)
+                //console.log("Dash Update User", res.data);
+                this.props.getUserSessionRedux(res)
+                this.setState( { user: store.getState().user } )
             } )   
-      }
+    }
 
     getCredentials = () => {
         axios
             .get(`/api/creds/${this.state.user.userId}`)
             .then(res => {
-                console.log(res.data);
+                //console.log("Credentials",res.data);
+                this.props.getUserCredentialsRedux(res);
                 this.setState({credentials: res.data})
-                this.props.getUserCredentials(res)
             })
             .catch( error => {
                 console.log(error)
@@ -74,11 +80,11 @@ class Dashboard extends Component{
         })
     }
 
-    render(){
-           
+    render(){ 
         const credsMap = this.state.credentials.map((e, i) => {
 
             return(
+
                 <div key={e.cred_id}>
                         <div className="dashboard">
                             <div className='keyChain'>
@@ -90,21 +96,25 @@ class Dashboard extends Component{
                                 <button onClick={() => this.deleteKeyChain(e.cred_id)}>delete</button>
                             </div>
                             {/* <p className="keyChain__title">{Date(e.update_time)}</p> */}
+
                         </div>
                 </div>
             )})
 
       return(
+
         <div className='dashboard'>
             {credsMap}
             <div>
                 <p>{this.state.user.email ? this.state.user.email : "No User Logged In"}</p>
                 <button onClick={ () => this.logout() } >Logout</button>
-                <button onClick={ () => this.getCredentials() } >Get Creds</button>
+                <button onClick={ () => this.getCredentials() } >Get Credentials</button>
             </div> 
         </div>
         )
     }
 }
 
-export default Dashboard
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, {logoutUser, getUserSessionRedux, getUserCredentialsRedux})(Dashboard);
