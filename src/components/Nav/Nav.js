@@ -7,7 +7,8 @@ class Nav extends Component {
 		super()
 
 		this.state = {
-			dropDown: false,
+            dropDown: false,
+            hamburger: false
 		}
 	}
 
@@ -15,15 +16,21 @@ class Nav extends Component {
 		this.setState({
 			dropDown: !this.state.dropDown,
 		})
-	}
+    }
+    
+    toggleHamburger = () => {
+        this.setState({
+            hamburger: !this.state.hamburger
+        })
+    }
 
 	render() {
 		return (
 			<>
 				<div className='dropdown' onClick={this.toggleDropDown}>
-					<i class='fas fa-bars burger'></i>
+					<i onClick={this.toggleHamburger} class='fas fa-bars burger'></i>
 				</div>
-				{this.state.dropDown ? (
+				{this.state.dropDown && this.state.hamburger ? (
 					<div className='nav--dropDown'>
 						<a
 							className='nav__faceVerify'
