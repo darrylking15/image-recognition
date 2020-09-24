@@ -61,7 +61,7 @@ massive({
     app.get('/auth/getsession', authCtrl.getSession); // returns session user
     
     // Cred Endpoints
-    app.get('/api/creds', credCtrl.getAllUserCreds); // get all credentials of user
+    app.get('/api/creds/:id', credCtrl.getAllUserCreds); // get all credentials of user
     app.post('/api/cred', credCtrl.addCred); // add credential
     app.post('/api/cred/:id', credCtrl.updateCred); // update credential by ID
     app.post('/api/cred/:id', credCtrl.deleteCred); // delete credential by ID
@@ -76,6 +76,7 @@ massive({
     // Rek Endpoints
      app.post('/compareFaces' , rekCtrl.compareFaces)
      app.put('/indexFaces', rekCtrl.indexFaces)
+     app.post('/upload64S3', rekCtrl.upload64S3)
 
 
 // -End- Endpoints Frontend to Backend -------------------------------------------------------------------

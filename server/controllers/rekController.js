@@ -75,5 +75,35 @@ module.exports = {
              else     console.log(data);           // successful response
            
             }) // for response.faceDetails
-        } // if
+        } , 
+        
+        upload64S3: (req, res) => {
+            const config = new AWS.Config({
+                accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+                region: process.env.AWS_REGION
+            })
+
+            // console.log(req.body)
+            var s3Bucket = new AWS.S3( { params: {Bucket: 'imagerek2020', 
+            Key: "test"         } } );
+            const buf = Buffer.from(req.body.imageBinary.replace(/^data:image\/\w+;base64,/, ""),'base64')
+            var data = {
+                Key: req.body.imgSrc, 
+                Body: buf,
+                ContentEncoding: 'base64',
+                ContentType: 'image/jpeg'
+            };
+            s3Bucket.putObject(data, function(err, data){
+                    if (err) { 
+                        console.log(err);
+                        console.log('Error uploading data: ', data); 
+                    } else {
+                        console.log('succesfully uploaded the image!');
+                    }
+                });
+                        }
+                        
+        
+    
     }

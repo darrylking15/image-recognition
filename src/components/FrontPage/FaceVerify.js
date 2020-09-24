@@ -24,7 +24,7 @@ class FaceVerify extends Component{
 	};
 	
 	capture = () => {
-		const imageSrc = this.Webcam.getScreenshot( { width: 1920, height: 1080 } );
+		const imageSrc = this.Webcam.getScreenshot( { width: 600, height: 480 } );
 		this.setState( {imgSrc: imageSrc} )
 	};
 
@@ -35,8 +35,8 @@ class FaceVerify extends Component{
 					<h3>FACE VERIFICATION</h3> 
 					<img height={200} width={250}  src={this.state.imgSrc} />
 					{ this.state.startVideo ? <Webcam
-						height={1080}
-						width={1920}
+						height={200}
+						width={250}
 						audio={false}
 						ref={this.webcamRef}
 						screenshotFormat='image/jpeg'
