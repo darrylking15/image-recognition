@@ -90,6 +90,8 @@ module.exports = {
             Key: "test.jpg"         } } );
             const buf = Buffer.from(req.body.imageBinary.replace(/^data:image\/\w+;base64,/, ""),'base64')
             const fileType = "jpg"
+            console.log("Post UserId", req.body.userId);
+            const userId = req.body.userId;
             var params = {
                 Key: `${uuidv4()}.${fileType}`, 
                 Body: buf,
@@ -97,23 +99,34 @@ module.exports = {
                 ContentType: 'image/jpeg'
             };
 
-            s3Bucket.upload(params, (error, data) => {
+            s3Bucket.upload(params, async (error, data) => {
                 if(error){
                     res.status(500).send(error) 
                 }
-        
-                res.status(200).send(data)
-                
-            })
-           
-           
+                //Save to Database
+                const db = req.app.get('db');
+                const {ETag, Location, Key, Bucket} = data;
+                const timestamp = Date.now();
+                imgKey = await db.post_image( [ userId, timestamp, Location, Bucket, Key, timestamp ] )
+                console.log("ImageKey: ", imgKey);
+
+                res.status(200).send({ 
+                    imageInfo: data,
+                    imgId: imgKey[0].img_id,
+                    timestamp: timestamp
+                 })
+            })  
         },
 
-        savePhoto: async (req, res) => {
-            console.log('Post Image Called');
+        setProfileImage: async (req, res) => {
+            console.log('Set Profile Image Called');
             const db = req.app.get('db');
-            const { s3Url, s3Bucket, s3Key, imgBase64,   } = req.body; 
-
+            const { userId, imgId } = req.body; 
+            userProfileId = await db.set_profile_img( [ userId, imgId ] )
+            console.log("New Profile ID: ", userProfileId);
+            updatedUser = await db.set_user_profile( [ userId, userProfileId[0].profile_id, userId ] )  
+            console.log("Updated User", updatedUser);
+            res.status(200).send("added profile pic")
         }
                         
         
