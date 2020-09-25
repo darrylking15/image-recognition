@@ -1,19 +1,22 @@
 .dashboard__component{
     height: 100vh;
-    width: 100vw;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     align-content: stretch;
 
+
     .dashboard__item__main{
+        
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
             justify-content: center;
             align-items: flex-start;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         .dashboard__item {
             display: flex;
             flex-direction: row;
@@ -25,25 +28,25 @@
             height: 43px;
             width: 100%;
     
-            .keyChain__title {
+            .keyChain__item {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
                 justify-content: center;
                 align-items: center;
-                width: 200px;
+                width: 225px;
                 height: 100%;
                 border: 2px solid $mint-color;
                 mix-blend-mode: overlay;
                 color: $light-gray-color;
             }
-            .keyChain__title__date {
+            .keyChain__date {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
                 align-items: center;
-                width: 270px;
+                width: 290px;
                 height: 100%;
                 border: 2px solid $mint-color;
                 mix-blend-mode: overlay;

@@ -1,0 +1,67 @@
+.Nav__component {
+    width: 120px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    mix-blend-mode: overlay;
+    .dropdown {
+        width: 100px;
+        
+        .menu__lines {
+            width: 65px;
+            margin: 15px;
+        }
+
+        
+    }
+    .nav--dropDown {
+        height: 85vh;
+        width: 120px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+        .nav__icons{
+            height: 85vh;
+            width: 125px;
+            margin-left: 10px;
+            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            .nav__top{
+                height: 170px;
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+                .nav__faceVerify {
+                    width: 65px;
+                    // height: 50px;
+                }
+        
+                .nav__credentials {
+                    width: 65px;
+                }
+            }
+            .nav__logout {
+                width: 65px;
+            }
+        }
+        .nav__border {
+            height: 85vh;
+            width: 10px;
+            border-right: 4px solid $mint-color;
+            mix-blend-mode: overlay;
+        }
+    }
+
+    
+}
