@@ -1,5 +1,6 @@
 require('dotenv').config();
 const AWS = require('aws-sdk')
+const { v4: uuidv4 } = require('uuid');
 //const creds = require('./creds.json')
 
 //const { source, target } = require('./photoData');
@@ -78,7 +79,7 @@ module.exports = {
         } , 
         
         upload64S3: (req, res) => {
-            const config = new AWS.Config({
+            const s3 = new AWS.Config({
                 accessKeyId: process.env.AWS_ACCESS_KEY_ID,
                 secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
                 region: process.env.AWS_REGION
@@ -86,24 +87,48 @@ module.exports = {
 
             // console.log(req.body)
             var s3Bucket = new AWS.S3( { params: {Bucket: 'imagerek2020', 
-            Key: "test"         } } );
+            Key: "test.jpg"         } } );
             const buf = Buffer.from(req.body.imageBinary.replace(/^data:image\/\w+;base64,/, ""),'base64')
-            var data = {
-                Key: req.body.imgSrc, 
+            const fileType = "jpg"
+            console.log("Post UserId", req.body.userId);
+            const userId = req.body.userId;
+            var params = {
+                Key: `${uuidv4()}.${fileType}`, 
                 Body: buf,
                 ContentEncoding: 'base64',
                 ContentType: 'image/jpeg'
             };
-            s3Bucket.putObject(data, function(err, data){
-                    if (err) { 
-                        console.log(err);
-                        console.log('Error uploading data: ', data); 
-                    } else {
-                        console.log('succesfully uploaded the image!');
-                    }
-                });
-                        }
+
+            s3Bucket.upload(params, async (error, data) => {
+                if(error){
+                    res.status(500).send(error) 
+                }
+                //Save to Database
+                const db = req.app.get('db');
+                const {ETag, Location, Key, Bucket} = data;
+                const timestamp = Date.now();
+                imgKey = await db.post_image( [ userId, timestamp, Location, Bucket, Key, timestamp ] )
+                console.log("ImageKey: ", imgKey);
+
+                res.status(200).send({ 
+                    imageInfo: data,
+                    imgId: imgKey[0].img_id,
+                    timestamp: timestamp
+                 })
+            })  
+        },
+
+        setProfileImage: async (req, res) => {
+            console.log('Set Profile Image Called');
+            const db = req.app.get('db');
+            const { userId, imgId } = req.body; 
+            userProfileId = await db.set_profile_img( [ userId, imgId ] )
+            console.log("New Profile ID: ", userProfileId);
+            updatedUser = await db.set_user_profile( [ userId, userProfileId[0].profile_id, userId ] )  
+            console.log("Updated User", updatedUser);
+            res.status(200).send("added profile pic")
+        }
                         
         
+}
     
-    }
