@@ -107,25 +107,14 @@ module.exports = {
             })
            
            
+        },
+
+        savePhoto: async (req, res) => {
+            console.log('Post Image Called');
+            const db = req.app.get('db');
+            const { s3Url, s3Bucket, s3Key, imgBase64,   } = req.body; 
+
         }
-           
-           
-           
-           
-           
-           
-            // s3Bucket.putObject(data, function(err, data){
-            //         console.log("put object ", res.data)
-            //         if (err) { 
-            //             console.log(err);
-            //             console.log("the data", data)
-            //             console.log('Error uploading data: ', data); 
-            //         } else {
-            //             console.log('succesfully uploaded the image!');
-                        
-            //         }
-            //     });
-            //             }
                         
         
 }
