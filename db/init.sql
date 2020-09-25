@@ -28,7 +28,8 @@ CREATE TABLE images (
     s3_key         VARCHAR(64),
     img_metadata   TEXT, 
     img_base64     TEXT,
-	user_id         INT NOT NULL REFERENCES users(user_id)
+    ref_face_id    TEXT,
+	user_id        INT NOT NULL REFERENCES users(user_id)
 );
 
 CREATE TABLE profile_faces (
