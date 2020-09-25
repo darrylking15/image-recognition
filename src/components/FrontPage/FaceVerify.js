@@ -33,7 +33,7 @@ class FaceVerify extends Component{
 		return (
 			<div className="FaceVerify">
 				<div className='faceVerify--container'>
-					<h3>FACE VERIFICATION</h3> 
+					<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
 					<img height={200} width={250}  src={this.state.imgSrc} />
 					{ this.state.startVideo ? <Webcam
 						height={200}
@@ -43,26 +43,28 @@ class FaceVerify extends Component{
 						screenshotFormat='image/jpeg'
 						className='faceVerify__img'
 					/> : null }
-					<div id='faceVerify__button'>
-						
-						<button onClick={ () => this.setState( { startVideo: true } )} className='faceVerify__button'>
-							START WEBCAM
-						</button>
+					<div className='faceVerify__buttons'>
+						<div className="faceVerify__buttons__top">
+							<button onClick={ () => this.setState( { startVideo: true } )} className='faceVerify__button__top'>
+								Start WEBCAM
+							</button>
 
-						<button className='faceVerify__button' 
-							onClick={ () => this.capture()}>
-							Capture
-						</button>
-						
-						<button
-							className='faceVerify__button'
-							onClick={() => this.props.history.push('/dashboard')}>
-							Cancel
-						</button>
+							<button className='faceVerify__button__top' 
+								onClick={ () => this.capture()}>
+								CAPTURE
+							</button>
+						</div>
+						<div className="faceVerify__buttons__bottom">
+							<button
+								className='faceVerify__button__bottom'
+								onClick={() => this.props.history.push('/dashboard')}>
+								CANCEL
+							</button>
 
-						<button className='faceVerify__button'>
-							Face Login
-						</button>
+							<button className='faceVerify__button__bottom'>
+								FACE LOGIN
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>

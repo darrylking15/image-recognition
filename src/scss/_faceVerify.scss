@@ -1,30 +1,91 @@
-/* No CSS *//*# sourceMappingURL=FaceVerify.css.map */
-
-.faceVerify--container{
+.FaceVerify {
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 35vw;
-    height: 60vh;
-    margin: 0 auto;
-    margin-top: 100px;
-    border: 1px solid rgb(0, 255, 234);
-}
-
-.faceVerify__img{
-    width: 10vw;
-    height: 15vh;
-    border: 2px solid black
-}
-
-#faceVerify__button{
-    display: flex;
-    flex-direction: column;
+    flex-wrap: nowrap;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    align-content: stretch;
+
+    .faceVerify--container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: stretch;
+        // border: 2px solid rgb(87, 131, 228);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: rgba(32, 40, 51, 0.5);
+        width: 600px;
+        height: 650px;
+
+        .faceVerify__title{
+            font-size: 30px;
+            font-weight: bold;
+            color: $mint-color;
+            margin-top: 70px;
+        }
+
+        .faceVerify__img{
+            // width: 10vw;
+            // height: 15vh;
+            // border: 2px solid black
+            // background-color: $light-gray-color;
+        }
+    
+        .faceVerify__buttons{
+            width: 500px;
+            
+
+            .faceVerify__buttons__top {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                width: 500px;
+                
+                .faceVerify__button__top {
+                    width: 180px;
+                    height: 45px;
+                    margin-top: 20px;
+                    font-size: 18px;
+                    background-color: transparent;
+                    border-color: $mint-color;
+                    color: $light-gray-color;
+                    mix-blend-mode: overlay;
+                }
+            }
+
+            .faceVerify__buttons__bottom {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 40px;
+
+                .faceVerify__button__bottom {
+                    height: 45px;
+                    width: 150px;
+                    margin: 20px;
+                    font-size: 18px;
+                    background-color: transparent;
+                    border-color: $mint-color;
+                    color: $light-gray-color;
+                    mix-blend-mode: overlay;
+                }
+            }  
+        }
+    }
 }
 
-.faceVerify__button{
-    width: 100px;
-    margin-top: 10px;
-}
+// #faceVerify__button{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     text-align: center;
+// }
+
