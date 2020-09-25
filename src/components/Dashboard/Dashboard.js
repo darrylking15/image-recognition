@@ -95,7 +95,7 @@ class Dashboard extends Component{
                                 <p className="keyChain__item">{e.website_name}</p>
                                 <p className="keyChain__item">{e.website_url}</p>
                                 <p className="keyChain__item">{e.username}</p>
-                                <p className="keyChain__item" onClick={this.state.toggleShow}>{e.password}</p>
+                                <p className="keyChain__password" onClick={this.state.toggleShow}>{e.password}</p>
                                 <p className="keyChain__date">{Date(e.update_time)}</p>
                             </div>
                             <div className="edit__dropdown">
