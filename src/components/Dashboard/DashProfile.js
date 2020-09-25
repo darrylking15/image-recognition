@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
+// import {withRouter} from 'react-router-dom';
 import axios from 'axios';
+import store from '../../redux/store';
+import { connect } from 'react-redux';
 
 class DashProfile extends Component {
     constructor(){
         super()
+        const reduxState = store.getState();
         this.state = {
-            dashProfileInfo: []
+            // dashProfileInfo: [],
+            user: reduxState.user
         }
     }
 
@@ -14,28 +18,25 @@ class DashProfile extends Component {
         // this.getUserProfileInfo()
     }
 
-    async getUserProfileInfo() {
-        const response = await axios.get(``)
-        this.setState({dashProfileInfo: response.data})
-    }
+    // async getUserProfileInfo() {
+    //     const response = await axios.get(``)
+    //     this.setState({dashProfileInfo: response.data})
+    // }
 
     render(){
-        const userMappedProfile = this.state.dashProfileInfo.map((e) => {
             return(
-                <div>
-                    <div>
-                        <div>Profile Image</div>
-                        <div>Email</div>
+                <div className="dash__profile__component">
+                    <div className="dash__profile__main">
+                        <img className="dash__profile__picture" src="https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg"/>
+                        <div className="dash__profile__email">Email</div>
                     </div>
+                    <img className="Logo" src="https://cdn.discordapp.com/attachments/718455188100350035/758977670322192384/Logo_placeholder.png"/>
                 </div>
             )
-        });
-        return(
-            <div>
-                {userMappedProfile}
-            </div>
-        )
+        
     }
 }
 
-export default withRouter(DashProfile);
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(DashProfile);
