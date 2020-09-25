@@ -7,7 +7,7 @@ import DashProfile from './DashProfile';
 import store from '../../redux/store';
 import { connect } from 'react-redux';
 
-import { logoutUser, getUserSession, getUserCredentialsRedux } from '../../redux/reducer'
+import { logoutUser, getUserSessionRedux, getUserCredentialsRedux } from '../../redux/reducer'
 import './Dashboard.css'
 
 
