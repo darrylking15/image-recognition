@@ -1,4 +1,75 @@
-/* No CSS //# sourceMappingURL=FaceVerify.css.map */
+.app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center;
+  background-image: url(https://cdn.discordapp.com/attachments/718455188100350035/758060068154507325/group_project_background.png);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.dashboard__component {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+
+.dashboard__component .dashboard__item__main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dashboard__component .dashboard__item__main .dashboard__item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(32, 40, 51, 0.5);
+  border-color: #66FCF1;
+  height: 43px;
+  width: 100%;
+}
+
+.dashboard__component .dashboard__item__main .dashboard__item .keyChain__item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+  border: 2px solid #66FCF1;
+  mix-blend-mode: overlay;
+  color: #C5C6C7;
+}
+
+.dashboard__component .dashboard__item__main .dashboard__item .keyChain__date {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 270px;
+  height: 100%;
+  border: 2px solid #66FCF1;
+  mix-blend-mode: overlay;
+  color: #C5C6C7;
+}
+
+/* No CSS */
 .faceVerify--container {
   display: flex;
   flex-direction: column;
@@ -10,13 +81,13 @@
   border: 1px solid #00ffea;
 }
 
-.faceVerifyimg {
+.faceVerify__img {
   width: 10vw;
   height: 15vh;
   border: 2px solid black;
 }
 
-#faceVerifybutton {
+#faceVerify__button {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,9 +108,6 @@
   justify-content: center;
   align-items: center;
   align-content: stretch;
-  background-image: url(https://cdn.discordapp.com/attachments/718455188100350035/758060068154507325/group_project_background.png);
-  background-size: cover;
-  background-position: center;
 }
 
 .auth__component .login--container {

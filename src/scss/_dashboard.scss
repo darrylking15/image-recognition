@@ -25,7 +25,7 @@
             height: 43px;
             width: 100%;
     
-            .keyChain__title {
+            .keyChain__item {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
@@ -37,7 +37,7 @@
                 mix-blend-mode: overlay;
                 color: $light-gray-color;
             }
-            .keyChain__title__date {
+            .keyChain__date {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
