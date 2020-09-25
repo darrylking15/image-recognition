@@ -19,7 +19,8 @@ class Dashboard extends Component{
             credentials: reduxState.credentials,
             user: reduxState.user,
             editToggle: false,
-            userId: reduxState.user.userId
+            userId: reduxState.user.userId,
+            hidden: true
         }
     }
 
@@ -66,7 +67,9 @@ class Dashboard extends Component{
         })
     }
     
-
+    toggleShow = () => {
+        this.setState({hidden: !this.state.hidden})
+    }
 
     
       
@@ -86,30 +89,33 @@ class Dashboard extends Component{
             return(
 
                 <div key={e.cred_id}>
-                        <div className="dashboard">
-                            <div className='keyChain'>
-                                <p className="keyChain__title">{e.website_name}</p>
-                                <p className="keyChain__website">{e.website_url}</p>
-                                <p className="keyChain__username">{e.username}</p>
-                                <p className="keyChain__password">{e.password}</p>
+                        <div className="dashboard__item__main">
+                            <div className='dashboard__item'>
+                                <p className="keyChain__item">{e.website_name}</p>
+                                <p className="keyChain__item">{e.website_url}</p>
+                                <p className="keyChain__item">{e.username}</p>
+                                <p className="keyChain__item" onClick={this.state.toggleShow}>{e.password}</p>
+                                <p className="keyChain__date">{Date(e.update_time)}</p>
+                            </div>
+                            <div className="edit__dropdown">
                                 <button onClick={() => this.editKeyChain(e.cred_id)}>Edit</button>
                                 <button onClick={() => this.deleteKeyChain(e.cred_id)}>delete</button>
                             </div>
-                            {/* <p className="keyChain__title">{Date(e.update_time)}</p> */}
-
                         </div>
                 </div>
             )})
 
       return(
 
-        <div className='dashboard'>
+        <div className='dashboard__component'>
+            <DashProfile />
+            <div className="dash__profile__border"></div>
             {credsMap}
-            <div>
+            {/* <div>
                 <p>{this.state.user.email ? this.state.user.email : "No User Logged In"}</p>
                 <button onClick={ () => this.logout() } >Logout</button>
                 <button onClick={ () => this.getCredentials() } >Get Credentials</button>
-            </div> 
+            </div>  */}
         </div>
         )
     }
