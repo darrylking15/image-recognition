@@ -90,23 +90,31 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 225px;
+
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+
   height: 100%;
   border: 2px solid #66FCF1;
   mix-blend-mode: overlay;
   color: #C5C6C7;
+}
+
+.dashboard__component .dashboard__item__main .dashboard__item .keyChain__password {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+  border: 2px solid #66FCF1;
+  mix-blend-mode: overlay;
+  color: #C5C6C7;
+  -webkit-text-security: disc;
 }
 
 .dashboard__component .dashboard__item__main .dashboard__item .keyChain__date {
@@ -199,48 +207,81 @@
   margin-bottom: 20px;
 }
 
-/* No CSS */
-.faceVerify--container {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.FaceVerify {
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 35vw;
-  height: 60vh;
-  margin: 0 auto;
-  margin-top: 100px;
-  border: 1px solid #00ffea;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
 }
 
-.faceVerify__img {
-  width: 10vw;
-  height: 15vh;
-  border: 2px solid black;
-}
-
-#faceVerify__button {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.FaceVerify .faceVerify--container {
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgba(32, 40, 51, 0.5);
+  width: 600px;
+  height: 650px;
 }
 
-.faceVerify__button {
-  width: 100px;
-  margin-top: 10px;
+.FaceVerify .faceVerify--container .faceVerify__title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #66FCF1;
+  margin-top: 70px;
+
+}
+
+.FaceVerify .faceVerify--container .faceVerify__buttons {
+  width: 500px;
+}
+
+.FaceVerify .faceVerify--container .faceVerify__buttons .faceVerify__buttons__top {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+
+}
+
+.FaceVerify .faceVerify--container .faceVerify__buttons .faceVerify__buttons__top .faceVerify__button__top {
+  width: 180px;
+  height: 45px;
+  margin-top: 20px;
+  font-size: 18px;
+  background-color: transparent;
+  border-color: #66FCF1;
+  color: #C5C6C7;
+  mix-blend-mode: overlay;
+}
+
+.FaceVerify .faceVerify--container .faceVerify__buttons .faceVerify__buttons__bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.FaceVerify .faceVerify--container .faceVerify__buttons .faceVerify__buttons__bottom .faceVerify__button__bottom {
+  height: 45px;
+  width: 150px;
+  margin: 20px;
+  font-size: 18px;
+  background-color: transparent;
+  border-color: #66FCF1;
+  color: #C5C6C7;
+  mix-blend-mode: overlay;
 }
 
 .auth__component {
@@ -370,6 +411,7 @@
 .Nav__component .dropdown .menu__lines {
   width: 65px;
   margin: 15px;
+  margin-top: 20px;
 }
 
 .Nav__component .nav--dropDown {

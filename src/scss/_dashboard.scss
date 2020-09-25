@@ -34,11 +34,24 @@
                 flex-wrap: nowrap;
                 justify-content: center;
                 align-items: center;
-                width: 225px;
+                width: 200px;
                 height: 100%;
                 border: 2px solid $mint-color;
                 mix-blend-mode: overlay;
                 color: $light-gray-color;
+            }
+            .keyChain__password {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                width: 200px;
+                height: 100%;
+                border: 2px solid $mint-color;
+                mix-blend-mode: overlay;
+                color: $light-gray-color;
+                -webkit-text-security:disc; 
             }
             .keyChain__date {
                 display: flex;
