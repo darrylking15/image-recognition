@@ -34,7 +34,7 @@ class EditCredentials extends Component{
             [e.target.name]: e.target.value
         })
     }
-    
+
     render(){
         const {websiteName, websiteUrl, username, password} = this.state
         return(

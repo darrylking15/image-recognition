@@ -6,6 +6,7 @@ import Photos from './components/Dashboard/Photos'
 import FaceVerify from './components/FrontPage/FaceVerify'
 import Login from './components/FrontPage/Login'
 import Register from './components/Register/Register'
+import EditCredentials from './components/Dashboard/EditCredentials'
 
 export default (
     <Switch>
@@ -13,6 +14,7 @@ export default (
         <Route path='/Register' component={Register} />
         <Route path='/FaceVerify' component={FaceVerify} />
         <Route path='/Dashboard' component={Dashboard} />
+        <Route path='/EditCredentials' component={EditCredentials} />
         <Route path='/Credentials' component={Credentials} />
         <Route path='/Photos' component={Photos} />
     </Switch>

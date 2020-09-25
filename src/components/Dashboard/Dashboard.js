@@ -57,7 +57,8 @@ class Dashboard extends Component{
     }
 
     editKeyChain = (websiteName, websiteUrl, email, password, id) => {
-        axios.put(`/api/cred/:${id}`, {websiteName, websiteUrl, email, password, id}).then(() => {
+        axios.put(`/api/cred/${id}`, {websiteName, websiteUrl, email, password, id}).then(() => {
+            this.props.history.push('./EditCredentials')
         })
     }
 

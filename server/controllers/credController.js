@@ -25,8 +25,9 @@ module.exports = {
 
     updateCred: async (req, res) => {
         const db = req.app.get('db')
-        const {websiteName, websiteUrl, userName, password, id} = req.body
-        db.edit_credentials(websiteName, websiteUrl, userName, password, id).then(cred => {
+        const {websiteName, websiteUrl, userName, password} = req.body
+        const {userId} = req.session.user
+        db.edit_credentials(websiteName, websiteUrl, userName, password, userId).then(cred => {
             res.status(200).send(cred)
         })
     },
