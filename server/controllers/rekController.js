@@ -91,7 +91,7 @@ module.exports = {
             var s3Bucket = new AWS.S3( { params: {Bucket: 'imagerek2020', 
             Key: "test.jpg"         } } );
             const buf = Buffer.from(req.body.imageBinary.replace(/^data:image\/\w+;base64,/, ""),'base64')
-            const fileType = "jpg"
+            const fileType = "jpg";
             console.log("Post UserId", req.body.userId);
             const userId = req.body.userId;
             var params = {
@@ -109,7 +109,7 @@ module.exports = {
                 const db = req.app.get('db');
                 const {ETag, Location, Key, Bucket} = data;
                 const timestamp = Date.now();
-                imgKey = await db.post_image( [ userId, timestamp, Location, Bucket, Key, timestamp ] )
+                const imgKey = await db.post_image( [ userId, timestamp, Location, Bucket, Key, timestamp ] )
                 console.log("ImageKey: ", imgKey);
 
                 res.status(200).send({ 
