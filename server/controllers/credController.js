@@ -15,6 +15,10 @@ module.exports = {
             } )
     },
 
+    getCred: async (req, res) => {
+        
+    },
+
     addCred: async (req, res) => {
       const db = req.app.get('db')
       const {websiteName, websiteUrl, userName, password, userId} = req.body
