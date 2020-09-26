@@ -75,14 +75,7 @@ class Dashboard extends Component{
     
       
 
-    logout = () => {
-        axios.delete('/auth/logout').then( res => {
-            logoutUser();
-            this.props.history.push('/')
-        } ).catch( err => {
-            console.log(err)
-        })
-    }
+    
 
     render(){ 
         const credsMap = this.state.credentials.map((e, i) => {

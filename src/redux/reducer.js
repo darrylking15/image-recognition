@@ -21,7 +21,7 @@ export function loginUser(user) {
 }
 
 export function logoutUser() {
-    //console.log("Reducer Logout");
+    console.log("Reducer Logout");
     return {
         type: LOGOUT_USER,
         payload: initialState
