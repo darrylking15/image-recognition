@@ -1,0 +1,71 @@
+
+.add__photos{
+    width: 40vw;
+    height: 70vh;
+    background-color: rgb(109, 109, 109);
+    margin-top: 50px;
+    margin-left: 330px;
+}
+
+.photo__title{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    font-size: 48px;
+}
+
+.photo__camera{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 20%;
+    height: 20%;
+    background-color: gray;
+    margin-top: 25px;
+}
+
+.photo__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+.add__photo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border: 2px dashed black;
+    text-align: center;
+}
+
+.take__photo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border: 2px solid rgb(4, 255, 201);
+    text-align: center;
+}
+
+.photo__cancel{
+    font-size: 18px;
+    width: 115px;
+    height: 50px;
+    color: white;
+    background-color: rgb(109, 109, 109);
+    border: 1px solid rgb(4, 243, 251);
+}
+
+.photo__submit{
+    font-size: 18px;
+    width: 115px;
+    height: 50px;
+    color: white;
+    background-color: rgb(109, 109, 109);
+    border: 1px solid rgb(4, 243, 251);
+
+}

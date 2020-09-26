@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <div>{this.props.location.pathname === "/" ? null : <Nav />}</div>
+        <div>{this.props.location.pathname === "/" || this.props.location.pathname === "/faceverify"? null : <Nav />}</div>
         <div>{routes}</div>
       </div>
     );
