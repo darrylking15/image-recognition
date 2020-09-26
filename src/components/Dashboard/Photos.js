@@ -20,7 +20,7 @@ class Photos extends Component{
             imageInfo: {
                 ETag: '',
                 Location: '',
-                Key: '',
+                Key: "",
                 Bucket: ''
             },
             user: reduxState.user
@@ -51,11 +51,32 @@ class Photos extends Component{
             userId: userId,
             imageBinary: base64Img
             } )
+            .then( res => {
+                this.setState( {
+                    imgId: res.data.imgId,
+                    imageInfo: res.data.imageInfo
+                } );
+                console.log("Send to S3 Return Data: ", res.data);
+            } )
             .catch( error => console.log(error) );
     }
 
+
+
     indexPhoto = () => {
         console.log("Index Photo Called");
+        const userId = this.state.user.userId;
+        const Key = this.state.imageInfo.Key; 
+        console.log("This is the Key: ", Key)
+        axios
+            .post('/indexFaces', { 
+            userId: userId,
+            Key: Key
+            } )
+            .catch( error => console.log(error) );
+            console.log(userId, Key); 
+        
+
     }
 
     savePhotoToDB = () => {
