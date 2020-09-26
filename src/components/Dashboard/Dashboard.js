@@ -36,7 +36,7 @@ class Dashboard extends Component{
         await axios
             .get('/auth/getsession')
             .then( res => {
-                //console.log("Dash Update User", res.data);
+                console.log("Dash Update User", res.data);
                 this.props.getUserSessionRedux(res)
                 this.setState( { user: store.getState().user } )
             } )   
@@ -75,14 +75,7 @@ class Dashboard extends Component{
     
       
 
-    logout = () => {
-        axios.delete('/auth/logout').then( res => {
-            logoutUser();
-            this.props.history.push('/')
-        } ).catch( err => {
-            console.log(err)
-        })
-    }
+    
 
     render(){ 
         const credsMap = this.state.credentials.map((e, i) => {
