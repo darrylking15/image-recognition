@@ -1,22 +1,27 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import store from '../../redux/store';
+import { connect } from 'react-redux';
 //import './Credentials/css'
 
 class Credentials extends Component {
     constructor(){
         super()
 
+        const reduxState = store.getState();
+
         this.state = {
             websiteName: '',
             websiteUrl: '',
             userName: '',
             password: '',
-
+            user: reduxState.user
         }
     }
 
     addCred = (websiteName, websiteUrl, userName, password) => {
-        axios.post('/api/cred', {websiteName, websiteUrl, userName, password}).then(cred => {
+        const userId = this.state.user.userId
+        axios.post('/api/cred', {websiteName, websiteUrl, userName, password, userId}).then(cred => {
             this.setState = ({websiteName: cred.data, websiteUrl: cred.data, userName: cred.data, password: cred.data})
             this.props.history.push('/dashboard')
         })
@@ -33,10 +38,10 @@ class Credentials extends Component {
         return(
             <>
                 <div>
-                    <input onChange={(e) => this.handleChange(e)} type='text' placeholder='Website Name' value={websiteName} />
-                    <input onChange={(e) => this.handleChange(e)} type='text' placeholder='Website Url' value={websiteUrl} />
-                    <input onChange={(e) => this.handleChange(e)} type='text' placeholder='username' value={userName} />
-                    <input onChange={(e) => this.handleChange(e)} type='password' placeholder='password' value={password} />
+                    <input onChange={(e) => this.handleChange(e)} name='websiteName' type='text' placeholder='Website Name' value={websiteName} />
+                    <input onChange={(e) => this.handleChange(e)} name='websiteUrl' type='text' placeholder='Website Url' value={websiteUrl} />
+                    <input onChange={(e) => this.handleChange(e)} name='userName' type='text' placeholder='username' value={userName} />
+                    <input onChange={(e) => this.handleChange(e)} name='password' type='password' placeholder='password' value={password} />
                 </div>
 
                 <div>
@@ -48,4 +53,7 @@ class Credentials extends Component {
     }
 }
 
-export default Credentials
+const mapStateToProps = state => state;
+
+
+export default connect(mapStateToProps)(Credentials);
