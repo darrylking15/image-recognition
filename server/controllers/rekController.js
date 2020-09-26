@@ -105,14 +105,12 @@ module.exports = {
                 if(error){
                     res.status(500).send(error) 
                 }
-<<<<<<< HEAD
+
         
                 res.status(200).send(data)
                 
             })
            
-           
-=======
                 //Save to Database
                 const db = req.app.get('db');
                 const {ETag, Location, Key, Bucket} = data;
@@ -136,8 +134,7 @@ module.exports = {
             console.log("New Profile ID: ", userProfileId);
             updatedUser = await db.set_user_profile( [ userId, userProfileId[0].profile_id, userId ] )  
             console.log("Updated User", updatedUser);
-            res.status(200).send("added profile pic")
->>>>>>> 0210d1685a0a75a8aca553c8178308f749e770f3
+            res.status(200).send("added profile pic");
         }
            
            
