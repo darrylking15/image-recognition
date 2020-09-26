@@ -24,6 +24,8 @@ module.exports = {
         })
       
         const client = new AWS.Rekognition();
+        
+
         const params = {
             SourceImage: {
                 S3Object: {
@@ -69,7 +71,7 @@ module.exports = {
               Bucket: process.env.AWS_BUCKET_NAME, 
               Name: "download.jpeg"
              }
-            }
+            } 
            };
            rekognition.indexFaces(params, function(err, data) {
              if (err) console.log(err, err.stack); // an error occurred
@@ -107,14 +109,25 @@ module.exports = {
             })
            
            
-        },
-
-        savePhoto: async (req, res) => {
-            console.log('Post Image Called');
-            const db = req.app.get('db');
-            const { s3Url, s3Bucket, s3Key, imgBase64,   } = req.body; 
-
         }
+           
+           
+           
+           
+           
+           
+            // s3Bucket.putObject(data, function(err, data){
+            //         console.log("put object ", res.data)
+            //         if (err) { 
+            //             console.log(err);
+            //             console.log("the data", data)
+            //             console.log('Error uploading data: ', data); 
+            //         } else {
+            //             console.log('succesfully uploaded the image!');
+                        
+            //         }
+            //     });
+            //             }
                         
         
 }
