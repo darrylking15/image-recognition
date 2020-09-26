@@ -5,6 +5,7 @@ module.exports = {
         console.log("Register Called");
         const db = req.app.get('db');
         let { email, password, firstName, lastName, faceRec, isAdmin } = req.body;
+        const timestamp = Date.now();
         const existingUser = await db.check_for_user([email]);
         if (existingUser[0]) {
             console.log("Register Failed Duplicate");
@@ -13,7 +14,7 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
         const user = await db.register_user( 
-            [email, hash, firstName, lastName, faceRec, isAdmin] );
+            [timestamp, email, hash, firstName, lastName, faceRec, isAdmin] );
         console.log('New User: ', user);
         req.session.user = {
             userId:      user[0].user_id,
@@ -22,12 +23,11 @@ module.exports = {
             lastName:    user[0].last_name,
             faceRec:     user[0].face_rec,
             isAdmin:     user[0].is_admin,
-            profileImg:  user[0].profile_face_id,
             s3Url:       user[0].s3_url,
             s3Bucket:    user[0].s3_bucket,
             s3Key:       user[0].s3_key,
-            imgBase64:   user[0].img_base64,
-            imgMetaData: user[0].img_metadata
+            imgBase64:   user[0].base64,
+            imgMetaData: user[0].metadata
         }
         res.status(200).send(req.session.user);
     },
@@ -49,12 +49,11 @@ module.exports = {
                     lastName:    user[0].last_name,
                     faceRec:     user[0].face_rec,
                     isAdmin:     user[0].is_admin,
-                    profileImg:  user[0].profile_face_id,
                     s3Url:       user[0].s3_url,
                     s3Bucket:    user[0].s3_bucket,
                     s3Key:       user[0].s3_key,
-                    imgBase64:   user[0].img_base64,
-                    imgMetaData: user[0].img_metadata
+                    imgBase64:   user[0].base64,
+                    imgMetaData: user[0].metadata
                 }
                 console.log(`Login Successful User: ${email}`);
                 res.status(200).send(req.session.user)

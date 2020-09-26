@@ -7,7 +7,7 @@ module.exports = {
         await db.get_all_creds_user(user_id)
             .then( creds => {
                 res.status(200).send(creds);
-                console.log(creds);
+                //console.log(creds);
             } )
             .catch( error => {
                 res.status(500).send( { errorMessage: "Error getting list of credentials" } );
