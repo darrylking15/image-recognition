@@ -15,12 +15,17 @@ module.exports = {
             } )
     },
 
+    getCred: async (req, res) => {
+        
+    },
+
     addCred: async (req, res) => {
       const db = req.app.get('db')
-      const {websiteName, websiteUrl, userName, password} = req.body
-      db.post_credentials([websiteName, websiteUrl, userName, password]).then(cred => {
-          res.status(200).send(cred)
-      })
+      const {websiteName, websiteUrl, userName, password, userId} = req.body
+      const timestamp = Date.now();
+      const postCred = await db.post_credentials([websiteName, websiteUrl, userName, password, userId, timestamp]) 
+      console.log(postCred)
+    res.status(200).send(postCred)
     },
 
     updateCred: async (req, res) => {
