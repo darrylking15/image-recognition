@@ -105,12 +105,6 @@ module.exports = {
                 if(error){
                     res.status(500).send(error) 
                 }
-
-        
-                res.status(200).send(data)
-                
-            })
-           
                 //Save to Database
                 const db = req.app.get('db');
                 const {ETag, Location, Key, Bucket} = data;
@@ -123,7 +117,7 @@ module.exports = {
                     imgId: imgKey[0].img_id,
                     timestamp: timestamp
                  })
-            })  
+            })     
         },
 
         setProfileImage: async (req, res) => {
