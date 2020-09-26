@@ -17,17 +17,17 @@ module.exports = {
             [timestamp, email, hash, firstName, lastName, faceRec, isAdmin] );
         console.log('New User: ', user);
         req.session.user = {
-            userId:      user[0].user_id,
-            email:       user[0].email,
-            firstName:   user[0].first_name,
-            lastName:    user[0].last_name,
-            faceRec:     user[0].face_rec,
-            isAdmin:     user[0].is_admin,
-            s3Url:       user[0].s3_url,
-            s3Bucket:    user[0].s3_bucket,
-            s3Key:       user[0].s3_key,
-            imgBase64:   user[0].base64,
-            imgMetaData: user[0].metadata
+            userId:       user[0].user_id,
+            email:        user[0].email,
+            firstName:    user[0].first_name,
+            lastName:     user[0].last_name,
+            faceRec:      user[0].face_rec,
+            isAdmin:      user[0].is_admin,
+            faceUrl:      user[0].face_url,
+            faceBucket:   user[0].face_bucket,
+            faceKey:      user[0].face_key,
+            faceBase64:   user[0].face_base64,
+            faceMetaData: user[0].face_metadata
         }
         res.status(200).send(req.session.user);
     },
@@ -41,19 +41,20 @@ module.exports = {
             return res.status(404).send('Username does not exist');
         } else {
             const authenticated = bcrypt.compareSync( password, user[0].hash )
+            console.log("Logged In User: ", user[0])
             if (authenticated) {
                 req.session.user = {
-                    userId:      user[0].user_id,
-                    email:       user[0].email,
-                    firstName:   user[0].first_name,
-                    lastName:    user[0].last_name,
-                    faceRec:     user[0].face_rec,
-                    isAdmin:     user[0].is_admin,
-                    s3Url:       user[0].s3_url,
-                    s3Bucket:    user[0].s3_bucket,
-                    s3Key:       user[0].s3_key,
-                    imgBase64:   user[0].base64,
-                    imgMetaData: user[0].metadata
+                    userId:       user[0].user_id,
+                    email:        user[0].email,
+                    firstName:    user[0].first_name,
+                    lastName:     user[0].last_name,
+                    faceRec:      user[0].face_rec,
+                    isAdmin:      user[0].is_admin,
+                    faceUrl:      user[0].face_url,
+                    faceBucket:   user[0].face_bucket,
+                    faceKey:      user[0].face_key,
+                    faceBase64:   user[0].face_base64,
+                    faceMetaData: user[0].face_metadata
                 }
                 console.log(`Login Successful User: ${email}`);
                 res.status(200).send(req.session.user)

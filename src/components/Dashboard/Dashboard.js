@@ -36,7 +36,7 @@ class Dashboard extends Component{
         await axios
             .get('/auth/getsession')
             .then( res => {
-                //console.log("Dash Update User", res.data);
+                console.log("Dash Update User", res.data);
                 this.props.getUserSessionRedux(res)
                 this.setState( { user: store.getState().user } )
             } )   

@@ -27,8 +27,11 @@ class DashProfile extends Component {
             return(
                 <div className="dash__profile__component">
                     <div className="dash__profile__main">
-                        <img className="dash__profile__picture" src="https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg"/>
-                        <div className="dash__profile__email">Email</div>
+                        <img className="dash__profile__picture" 
+                            src={ this.state.user.faceUrl ? this.state.user.faceUrl : "https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg" }
+                            alt="https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg"
+                        />
+                        <div className="dash__profile__email">{this.state.user.email}</div>
                     </div>
                     <img className="Logo" src="https://cdn.discordapp.com/attachments/718455188100350035/758977670322192384/Logo_placeholder.png"/>
                 </div>
