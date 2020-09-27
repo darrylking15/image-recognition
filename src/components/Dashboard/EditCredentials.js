@@ -18,24 +18,27 @@ class EditCredentials extends Component{
         const credId = +this.props.location.pathname.slice(17);
         
         console.log( "CredID: ", credId );
-
+        this.setState({credId: credId})
         // Add Call to backend to get credential info by its ID
-        axios.get(`/api/cred/${credId}`, { params: {id: credId} })
+        axios.get(`/api/cred/${credId}`, { params: {id: credId} }).then(res => {
+            console.log("EditDash Get Cred: ",res.data[0])
+                this.setState({
+                    websiteName: res.data[0].website_name,
+                    websiteUrl: res.data[0].website_url,
+                    username: res.data[0].username,
+                    password: res.data[0].password
+                })
+        })
+    
 
 
-        // const {websiteName, websiteUrl, username, password} = this.state
-        // this.setState({
-        //     websiteName: websiteName,
-        //     websiteUrl: websiteUrl,
-        //     username,
-        //     password
-        // })
+        
     }
 
-    editCredential = (websiteName, websiteUrl, email, password, id) => {
-        axios.put(`/api/cred/${id}`, {websiteName, websiteUrl, email, password}).then(() => {
-            this.props.history.push('./dashboard')
-        })
+    editCredential = () => {
+        const {websiteName, websiteUrl, username, password, credId} = this.state;
+        axios.put(`/api/cred`, {websiteName, websiteUrl, username, password, credId});
+        this.props.history.push('/dashboard');
     }
 
     handleChange = (e) => {
@@ -54,8 +57,8 @@ class EditCredentials extends Component{
                         <input onChange={(e) => this.handleChange(e)} placeholder='username' type='text' value={username} name='username' />
                         <input onChange={(e) => this.handleChange(e)} placeholder='password' type='password' value={password} name='password'/>
                     <div className='edit--button'>
-                        <button onClick={() => this.editCredential(websiteName, websiteUrl, username, password)}>Edit</button>
-                        <button onClick={() => this.props.history.push('./dashboard')}>Cancel</button>
+                        <button onClick={() => this.editCredential()}>Edit</button>
+                        <button onClick={() => this.props.history.push('/dashboard')}>Cancel</button>
                     </div>
                 </div>
             </div>

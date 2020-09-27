@@ -16,7 +16,13 @@ module.exports = {
     },
 
     getCred: async (req, res) => {
-        
+        const db = req.app.get('db')
+        const id= +req.params.id
+        console.log('req.params',req.params)
+        console.log('id', id)
+        db.get_credential([id]).then(cred => {
+            res.status(200).send(cred)
+        })
     },
 
     addCred: async (req, res) => {
@@ -30,11 +36,11 @@ module.exports = {
 
     updateCred: async (req, res) => {
         const db = req.app.get('db')
-        const {websiteName, websiteUrl, userName, password} = req.body
-        const {userId} = req.session.user
-        db.edit_credentials(websiteName, websiteUrl, userName, password, userId).then(cred => {
-            res.status(200).send(cred)
-        })
+        const {websiteName, websiteUrl, username, password, credId} = req.body
+        const timestamp = Date.now();
+        console.log('Website Name: ', websiteName);
+        console.log(req.body)
+        const updatedCred = await db.edit_credential([websiteName, websiteUrl, username, password, timestamp, credId])
     },
 
     deleteCred: async (req, res) => {
