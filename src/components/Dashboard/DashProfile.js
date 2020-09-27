@@ -33,7 +33,7 @@ class DashProfile extends Component {
                         />
                         <div className="dash__profile__email">{this.state.user.email}</div>
                     </div>
-                    <img className="Logo" src="https://cdn.discordapp.com/attachments/718455188100350035/758977670322192384/Logo_placeholder.png"/>
+                    <img className="Logo" src="https://cdn.discordapp.com/attachments/718455188100350035/759535676659335198/Logo_Design_HTML2.png"/>
                 </div>
             )
         

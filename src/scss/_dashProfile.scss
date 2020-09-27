@@ -23,6 +23,7 @@
         .dash__profile__picture {
             height: 120px;
             margin-left: 20px;
+            border-radius: 50%;
         }
 
         .dash__profile__email {
@@ -35,6 +36,7 @@
 
     .Logo {
         height: 120px;
+        mix-blend-mode: overlay;
     }
 }
 
