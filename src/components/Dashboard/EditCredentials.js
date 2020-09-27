@@ -20,7 +20,7 @@ class EditCredentials extends Component{
         this.setState({credId: credId})
         // Add Call to backend to get credential info by its ID
         axios.get(`/api/cred/${credId}`, { params: {id: credId} }).then(res => {
-            console.log(res)
+            console.log("EditDash Get Cred: ",res.data[0])
                 this.setState({
                     websiteName: res.data[0].website_name,
                     websiteUrl: res.data[0].website_url,
@@ -35,10 +35,9 @@ class EditCredentials extends Component{
     }
 
     editCredential = () => {
-        const {websiteName, websiteUrl, username, password, credId} = this.state
-        axios.put(`/api/cred`, {websiteName, websiteUrl, username, password, credId}).then(() => {
-            this.props.history.push('./dashboard')
-        })
+        const {websiteName, websiteUrl, username, password, credId} = this.state;
+        axios.put(`/api/cred`, {websiteName, websiteUrl, username, password, credId});
+        this.props.history.push('/dashboard');
     }
 
     handleChange = (e) => {
@@ -57,8 +56,8 @@ class EditCredentials extends Component{
                         <input onChange={(e) => this.handleChange(e)} placeholder='username' type='text' value={username} name='username' />
                         <input onChange={(e) => this.handleChange(e)} placeholder='password' type='password' value={password} name='password'/>
                     <div className='edit--button'>
-                        <button onClick={() => this.editCredential(websiteName, websiteUrl, username, password)}>Edit</button>
-                        <button onClick={() => this.props.history.push('./dashboard')}>Cancel</button>
+                        <button onClick={() => this.editCredential()}>Edit</button>
+                        <button onClick={() => this.props.history.push('/dashboard')}>Cancel</button>
                     </div>
                 </div>
             </div>
