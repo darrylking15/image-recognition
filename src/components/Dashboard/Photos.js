@@ -66,15 +66,17 @@ class Photos extends Component{
     indexPhoto = () => {
         console.log("Index Photo Called");
         const userId = this.state.user.userId;
-        const Key = this.state.imageInfo.Key; 
-        console.log("This is the Key: ", Key)
+        const imageInfo = this.state.imageInfo; 
+        const webcamCapture = this.state.webcamCapture; 
+        console.log("Image Info: ", imageInfo)
         axios
-            .post('/indexFaces', { 
+            .put('/indexFaces', { 
             userId: userId,
-            Key: Key
+            imageInfo: imageInfo,
+            base64: webcamCapture
             } )
             .catch( error => console.log(error) );
-            console.log(userId, Key); 
+           console.log("Indexing Photo for User: ", userId); 
         
 
     }
