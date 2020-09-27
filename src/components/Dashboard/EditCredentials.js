@@ -16,6 +16,7 @@ class EditCredentials extends Component{
 
     componentDidMount() {
         const credId = +this.props.location.pathname.slice(17);
+        
         console.log( "CredID: ", credId );
         this.setState({credId: credId})
         // Add Call to backend to get credential info by its ID
