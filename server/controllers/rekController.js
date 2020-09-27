@@ -53,8 +53,10 @@ module.exports = {
 
     indexFaces:  (req, res) => {
         const rekognition = new AWS.Rekognition();
-        
-        const {Key, userId} = req.body; 
+        var rekReturn = {};
+        const {userId, imageInfo, base64} = req.body; 
+        const {ETag, Location, Bucket, Key} = imageInfo;
+        const timestamp = Date.now()
         var params = {
             CollectionId: "imagerekfaces",  
             Image: {
@@ -65,13 +67,28 @@ module.exports = {
             }
            };
            
+
            rekognition.indexFaces(params, function(err, data) {
-            if (err) console.log(err, err.stack); // an error occurred
-            else     console.log(data);           // successful response
-          
+            if (err) {
+                console.log(err, err.stack);
+            } // an error occurred
+            else {
+                //console.log("Rek Response: ", data); 
+                //console.log("Rek Response FaceRecords: ", data.FaceRecords); 
+                //console.log("Rek Response FaceRecords.Face: ", data.FaceRecords[0].Face); 
+                console.log("Rek Response FaceRecords.Face: ", data.FaceRecords[0].Face); 
+                console.log("Rek Response FaceRecords.Face.FaceId: ", data.FaceRecords[0].Face.FaceId)
+                const faceId = data.FaceRecords[0].Face.FaceId;
+                //const idOfUser = userId; 
+                const db = req.app.get('db');
+                db.set_user_face( [ Bucket, faceId, Location, Key, ETag, base64, data, userId ] );
+
+            }              // successful response
+            rekReturn = {...data};
            })
-           const db = req.app.get('db');
-           
+           //const db = req.app.get('db');
+           console.log( "Index Faces Res:", res.data );
+           console.log( "Rek Return :", rekReturn );
     //        const imgKey = await db.post_image( [ userId, timestamp, Location, Bucket, Key, timestamp ] )
     //        console.log("ImageKey: ", imgKey);
 
