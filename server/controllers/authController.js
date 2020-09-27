@@ -15,7 +15,7 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt);
         const user = await db.register_user( 
             [timestamp, email, hash, firstName, lastName, faceRec, isAdmin] );
-        console.log('New User: ', user);
+        //console.log('New User: ', user);
         req.session.user = {
             userId:       user[0].user_id,
             email:        user[0].email,
@@ -23,6 +23,7 @@ module.exports = {
             lastName:     user[0].last_name,
             faceRec:      user[0].face_rec,
             isAdmin:      user[0].is_admin,
+            faceId:       user[0].face_id,
             faceUrl:      user[0].face_url,
             faceBucket:   user[0].face_bucket,
             faceKey:      user[0].face_key,
@@ -41,7 +42,7 @@ module.exports = {
             return res.status(404).send('Username does not exist');
         } else {
             const authenticated = bcrypt.compareSync( password, user[0].hash )
-            console.log("Logged In User: ", user[0])
+            //console.log("Logged In User: ", user[0])
             if (authenticated) {
                 req.session.user = {
                     userId:       user[0].user_id,
@@ -50,6 +51,7 @@ module.exports = {
                     lastName:     user[0].last_name,
                     faceRec:      user[0].face_rec,
                     isAdmin:      user[0].is_admin,
+                    faceId:       user[0].face_id,
                     faceUrl:      user[0].face_url,
                     faceBucket:   user[0].face_bucket,
                     faceKey:      user[0].face_key,

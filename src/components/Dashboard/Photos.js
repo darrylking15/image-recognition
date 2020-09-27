@@ -38,8 +38,13 @@ class Photos extends Component{
 
     capture = () => {
         console.log("Capture Called");
-		const imageSrc = this.Webcam.getScreenshot( { width: 600, height: 480 } );
-		this.setState( {webcamCapture: imageSrc, toggleCamToImage: true} )
+		try {
+            const imageSrc = this.Webcam.getScreenshot( { width: 600, height: 480 } );
+		    this.setState( {webcamCapture: imageSrc, toggleCamToImage: true} )
+        }
+        catch {
+            alert("Turn on Webcam to capture photo")
+        }
     };
     
     sendToS3 = () => {
@@ -77,13 +82,12 @@ class Photos extends Component{
             } )
             .catch( error => console.log(error) );
            console.log("Indexing Photo for User: ", userId); 
+        this.props.history.push('/dashboard');
         
 
     }
 
-    savePhotoToDB = () => {
-        console.log("Save to DB Called");
-    }
+
     
 
     render(){
@@ -110,13 +114,11 @@ class Photos extends Component{
                     <div className='photo__buttons'>
                         <button onClick={() => this.toggleCam()} className='take__photo'>Live Cam</button>
                         <button onClick={() => this.capture()} className='take__photo'>Capture</button>
-                        <button onClick={() => this.sendToS3()} className='take__photo'>Send to S3</button>
-                        <button onClick={() => this.indexPhoto()} className='take__photo'>Index Photo</button>
-                        <button onClick={() => this.savePhotoToDB()} className='take__photo'>Save to DB</button>
+                        <button onClick={() => this.sendToS3()} className='take__photo'>Save Photo</button>
                     </div>
                     <div className='photo__buttons'>
                         <button className='photo__cancel'>Cancel</button>
-                        <button className='photo__submit'>Submit</button>
+                        <button className='photo__submit' onClick={() => this.indexPhoto()} >Submit</button>
                     </div>
                 </div>
             </div>
