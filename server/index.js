@@ -64,7 +64,7 @@ massive({
     app.get('/api/creds/:id', credCtrl.getAllUserCreds); // get all credentials of user
     app.get('/api/cred/:id', credCtrl.getCred); // get specific credentials by ID
     app.post('/api/cred', credCtrl.addCred); // add credential
-    app.put('/api/cred/:id', credCtrl.updateCred); // update credential by ID
+    app.put('/api/cred', credCtrl.updateCred); // update credential by ID
     app.delete('/api/cred/:id', credCtrl.deleteCred); // delete credential by ID
     
     // Image Endpoints
