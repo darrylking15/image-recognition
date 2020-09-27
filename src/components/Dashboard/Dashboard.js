@@ -53,13 +53,11 @@ class Dashboard extends Component{
             .catch( error => {
                 console.log(error)
             } )
-    
+
     }
 
-    editKeyChain = (websiteName, websiteUrl, email, password, id) => {
-        axios.put(`/api/cred/${id}`, {websiteName, websiteUrl, email, password, id}).then(() => {
-            this.props.history.push('./EditCredentials')
-        })
+    editKeyChain = (id) => {
+        this.props.history.push(`./EditCredentials/${id}`)
     }
 
     deleteKeyChain = (id) => {
