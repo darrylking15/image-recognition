@@ -1,8 +1,8 @@
 
-import React, { Component, useRef } from 'react';
+import React, { Component } from 'react';
 import Webcam from 'react-webcam';
 import store from '../../redux/store';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import './styles/FaceVerify.css'
 
 class FaceVerify extends Component{
@@ -34,7 +34,7 @@ class FaceVerify extends Component{
 			<div className="FaceVerify">
 				<div className='faceVerify--container'>
 					<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
-					<img height={200} width={250}  src={this.state.imgSrc} />
+					<img alt='faceVerify' height={200} width={250}  src={this.state.imgSrc} />
 					{ this.state.startVideo ? <Webcam
 						height={200}
 						width={250}

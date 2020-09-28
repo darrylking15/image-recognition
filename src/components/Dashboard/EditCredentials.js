@@ -55,7 +55,7 @@ class EditCredentials extends Component{
                     <div className="credential__title">Edit Credentials</div>
                     <div className="credential__main__inputs">
                             <input onChange={(e) => this.handleChange(e)} placeholder='Website Name' type='text' value={websiteName} name='websiteName' className="credential__input"/>
-                            <input onChange={(e) => this.handleChange(e)} placeholder='Website Url' type='text' value={websiteUrl} name='websiteURL' className="credential__input"/>
+                            <input onChange={(e) => this.handleChange(e)} placeholder='Website Url' type='text' value={websiteUrl} name='websiteUrl' className="credential__input"/>
                             <input onChange={(e) => this.handleChange(e)} placeholder='USERNAME' type='text' value={username} name='username' className="credential__input"/>
                             <input onChange={(e) => this.handleChange(e)} placeholder='PASSWORD' type='password' value={password} name='password' className="credential__input"/>
                         <div className='credential__buttons'>

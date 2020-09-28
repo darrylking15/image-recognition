@@ -93,7 +93,7 @@ class Dashboard extends Component{
                                 <p className="keyChain__date">{Date(e.update_time)}</p>
                             </div>
                             <div className="edit__dropdown">
-                                <img className="edit__dropdown__button" src="https://cdn.discordapp.com/attachments/718455188100350035/760075731136020530/Edit_dots.png" onClick={this.toggleEdit}/>
+                                <img alt='edit__dropdown' className="edit__dropdown__button" src="https://cdn.discordapp.com/attachments/718455188100350035/760075731136020530/Edit_dots.png" onClick={this.toggleEdit}/>
                                 {this.state.editToggle ? (
                                     <div className="edit__dropdown__menu">
                                         <button className="dashboard__edit" onClick={() => this.editKeyChain(e.cred_id)}>EDIT</button>
