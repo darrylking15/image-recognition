@@ -84,8 +84,22 @@ class FaceVerify extends Component{
 				faceKey: faceKey, 
 				Key: Key
 			})
+			.then( res => {
+				console.log(res.data)
+				console.log("Similarity: ", res.data.FaceMatches[0].Similarity)
+				if (res.data.FaceMatches[0].Similarity > 95) {
+					this.props.history.push('/dashboard')
+				} else if (res.data.FaceMatches[0].Similarity < 95) {
+					alert("Face Detected, but not enough to login. Try Again.")
+				} else if (res.data.UnmatchedFaces[0]) {
+					alert("No similar face detected.")
+				} else {
+					alert("Something Weird Happend")
+				}
+			})
 			.catch(err => console.log(err))
-	}
+
+		}
 
 	render(){
 		return (
