@@ -26,8 +26,9 @@
       // justify-content: flex-start;
       // font-family: $geneva-font-stack;
       font-weight: bold;
-      font-size: 45px;
+      font-size: 48px;
       color: $mint-color;
+      margin-top: 20px;
     }
     
     #login__input__section{
@@ -37,7 +38,7 @@
       // font-family: $geneva-font-stack;
       height: 23%;
       width: 60%;
-      margin-top: 70px;
+      margin-top: 60px;
       
       .login__input{
         display: flex;
@@ -54,6 +55,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-top: 10px;
   
       // padding-top: 20px;
   
