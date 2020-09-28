@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import {withRouter} from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import store from '../../redux/store';
 import { connect } from 'react-redux';
 
@@ -33,7 +33,7 @@ class DashProfile extends Component {
                         />
                         <div className="dash__profile__email">{this.state.user.email}</div>
                     </div>
-                    <img className="Logo" src="https://cdn.discordapp.com/attachments/718455188100350035/759535676659335198/Logo_Design_HTML2.png"/>
+                    <img alt='logo' className="Logo" src="https://cdn.discordapp.com/attachments/718455188100350035/759535676659335198/Logo_Design_HTML2.png"/>
                 </div>
             )
         

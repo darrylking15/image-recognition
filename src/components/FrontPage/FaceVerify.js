@@ -1,8 +1,8 @@
 
-import React, { Component, useRef } from 'react';
+import React, { Component } from 'react';
 import Webcam from 'react-webcam';
 import store from '../../redux/store';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import './styles/FaceVerify.css'
 import axios from 'axios';
 
@@ -110,8 +110,8 @@ class FaceVerify extends Component{
                         <img height={300} width={400}  src={this.state.webcamCapture} /> 
                         : 
                             <Webcam
-                            // height={250}
-                            // width={200}
+                             height={250}
+                             width={200}
                             audio={false}
                             ref={this.webcamRef}
                             screenshotFormat='image/jpeg'
