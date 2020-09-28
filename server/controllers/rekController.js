@@ -10,6 +10,7 @@ module.exports = {
     compareFaces: (req,res) => {
         const db = req.app.get('db');
         console.log(" Start Logging Face"); 
+        let rekResponse = {fake: 'fake'};
         
         const config = new AWS.Config({
             accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -46,7 +47,10 @@ module.exports = {
                 console.log(`The face at: ${position.Left}, ${position.Top} matches with ${similarity} % confidence`)
             }) 
             } 
+            console.log(response);
+            res.status(200).send(response);
         });
+        //console.log("RekResponse", rekResponse);
     } , 
 
     indexFaces:  (req, res) => {
@@ -152,4 +156,3 @@ module.exports = {
 
 
     }
-       
