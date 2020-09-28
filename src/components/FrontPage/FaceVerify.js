@@ -4,6 +4,7 @@ import Webcam from 'react-webcam';
 import store from '../../redux/store';
 // import { connect } from 'react-redux';
 // import './styles/FaceVerify.css'
+import axios from 'axios';
 
 class FaceVerify extends Component{
 	constructor() {
@@ -12,47 +13,115 @@ class FaceVerify extends Component{
 		const reduxState = store.getState();
 
 		this.state = {
-			startVideo: false,
-			imgSrc: null,
-			toggleImg: false,
-			user: reduxState.user
-		}
+            startCam: false,
+            toggleCamToImage: false,
+			webcamCapture: '',
+			imgSrc: "", 
+            imgId: 0,
+            imageInfo: {
+                ETag: '',
+                Location: '',
+                Key: "",
+                Bucket: ''
+            },
+            user: reduxState.user
+        }
 
 	}
 
 	webcamRef = Webcam => {
 		this.Webcam = Webcam;
 	};
+
+	toggleCam = () => {
+        console.log("Start Webcam");
+        this.setState({startCam: true, toggleCamToImage: false})
+    }
+
 	
 	capture = () => {
-		const imageSrc = this.Webcam.getScreenshot( { width: 600, height: 480 } );
-		this.setState( {imgSrc: imageSrc} )
-	};
+        console.log("Capture Called");
+		try {
+            const imageSrc = this.Webcam.getScreenshot( { width: 600, height: 480 } );
+		    this.setState( {webcamCapture: imageSrc, toggleCamToImage: true} )
+        }
+        catch {
+            alert("Turn on Webcam to capture photo")
+        }
+    };
+
+	sendToS3 = () => {
+        console.log("Send to S3 Called");
+        const userId = this.state.user.userId;
+        const base64Img = this.state.webcamCapture;
+        axios
+            .post('/upload64S3', { 
+            userId: userId,
+            imageBinary: base64Img
+            } )
+            .then( res => {
+                this.setState( {
+                    imgId: res.data.imgId,
+                    imageInfo: res.data.imageInfo
+                } );
+                console.log("Send to S3 Return Data: ", res.data);
+            } )
+            .catch( error => console.log(error) );
+	}
+	
+
+
+
+
+	compareFaces = () => {
+		console.log("Comparing Faces"); 
+		const Key = this.state.imageInfo.Key; 
+		const faceKey = this.state.user.faceKey; 
+		console.log("Key: ", Key); 
+		console.log("FaceKey: ", faceKey); 
+		axios
+			.post('/compareFaces', {
+				faceKey: faceKey, 
+				Key: Key
+			})
+			.then( res => {
+				console.log(res.data)
+				console.log("Similarity: ", res.data.FaceMatches[0].Similarity)
+				if (res.data.FaceMatches[0].Similarity > 95) {
+					this.props.history.push('/dashboard')
+				} else if (res.data.FaceMatches[0].Similarity < 95) {
+					alert("Face Detected, but not enough to login. Try Again.")
+				} else if (res.data.UnmatchedFaces[0]) {
+					alert("No similar face detected.")
+				} else {
+					alert("Something Weird Happend")
+				}
+			})
+			.catch(err => console.log(err))
+
+		}
 
 	render(){
 		return (
 			<div className="FaceVerify">
 				<div className='faceVerify--container'>
 					<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
-					<img alt='faceVerify' height={200} width={250}  src={this.state.imgSrc} />
-					{ this.state.startVideo ? <Webcam
-						height={200}
-						width={250}
-						audio={false}
-						ref={this.webcamRef}
-						screenshotFormat='image/jpeg'
-						className='faceVerify__img'
-					/> : null }
+					{ this.state.startCam ? this.state.toggleCamToImage ? 
+                        <img height={300} width={400}  src={this.state.webcamCapture} /> 
+                        : 
+                            <Webcam
+                             height={250}
+                             width={200}
+                            audio={false}
+                            ref={this.webcamRef}
+                            screenshotFormat='image/jpeg'
+                            className='photo__img'
+                            /> 
+                        : null }
 					<div className='faceVerify__buttons'>
 						<div className="faceVerify__buttons__top">
-							<button onClick={ () => this.setState( { startVideo: true } )} className='faceVerify__button__top'>
-								Start WEBCAM
-							</button>
-
-							<button className='faceVerify__button__top' 
-								onClick={ () => this.capture()}>
-								CAPTURE
-							</button>
+						<button onClick={() => this.toggleCam()} className='faceVerify__button__top'>Live Cam</button>
+                        <button onClick={() => this.capture()} className='faceVerify__button__top'>Capture</button>
 						</div>
 						<div className="faceVerify__buttons__bottom">
 							<button
@@ -63,6 +132,11 @@ class FaceVerify extends Component{
 
 							<button className='faceVerify__button__bottom'>
 								FACE LOGIN
+							</button>
+				
+							<button onClick={() => this.sendToS3()} className='take__photo'>Save Photo</button>
+							<button onClick={() => this.compareFaces()}>
+								Compare Faces
 							</button>
 						</div>
 					</div>

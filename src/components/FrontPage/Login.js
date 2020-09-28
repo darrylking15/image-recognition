@@ -40,7 +40,7 @@ class Login extends Component {
       })
       .then((res) => {
         loginUser(res);
-        this.props.history.push("/dashboard");
+        this.props.history.push("/photos");
       })
       .catch((err) => {
         console.log(err);
