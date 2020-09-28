@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'; 
 import { logoutUser, getUserSessionRedux, getUserCredentialsRedux } from '../../redux/reducer'
-import './Nav.css'
+// import './Nav.css'
 import store from '../../redux/store';
 
 
