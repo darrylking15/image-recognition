@@ -98,11 +98,11 @@ class Photos extends Component{
                     <div className='photo__camera'>
                     
                     { this.state.startCam ? this.state.toggleCamToImage ? 
-                        <img height={200} width={250}  src={this.state.webcamCapture} /> 
+                        <img height={300} width={400}  src={this.state.webcamCapture} /> 
                         : 
                             <Webcam
-                            height={250}
-                            width={200}
+                            // height={250}
+                            // width={200}
                             audio={false}
                             ref={this.webcamRef}
                             screenshotFormat='image/jpeg'
@@ -111,12 +111,12 @@ class Photos extends Component{
                         : null }
                         
                     </div>
-                    <div className='photo__buttons'>
+                    <div className='photo__main__buttons'>
                         <button onClick={() => this.toggleCam()} className='take__photo'>Live Cam</button>
                         <button onClick={() => this.capture()} className='take__photo'>Capture</button>
                         <button onClick={() => this.sendToS3()} className='take__photo'>Save Photo</button>
                     </div>
-                    <div className='photo__buttons'>
+                    <div className='photo__finish__buttons'>
                         <button className='photo__cancel'>Cancel</button>
                         <button className='photo__submit' onClick={() => this.indexPhoto()} >Submit</button>
                     </div>

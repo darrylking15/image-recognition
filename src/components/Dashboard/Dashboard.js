@@ -69,7 +69,10 @@ class Dashboard extends Component{
     toggleShow = () => {
         this.setState({hidden: !this.state.hidden})
     }
-
+    
+    toggleEdit = () => {
+        this.setState({editToggle: !this.state.editToggle})
+    }
     
       
 
@@ -90,8 +93,14 @@ class Dashboard extends Component{
                                 <p className="keyChain__date">{Date(e.update_time)}</p>
                             </div>
                             <div className="edit__dropdown">
-                                <button onClick={() => this.editKeyChain(e.cred_id)}>Edit</button>
-                                <button onClick={() => this.deleteKeyChain(e.cred_id)}>delete</button>
+                                <img className="edit__dropdown__button" src="https://cdn.discordapp.com/attachments/718455188100350035/760075731136020530/Edit_dots.png" onClick={this.toggleEdit}/>
+                                {this.state.editToggle ? (
+                                    <div className="edit__dropdown__menu">
+                                        <button className="dashboard__edit" onClick={() => this.editKeyChain(e.cred_id)}>EDIT</button>
+                                        <div className="edit__delete__border"></div>
+                                        <button className="dashboard__delete" onClick={() => this.deleteKeyChain(e.cred_id)}>DELETE</button>
+                                    </div>
+                                ) : null}
                             </div>
                         </div>
                 </div>

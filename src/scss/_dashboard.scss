@@ -66,5 +66,54 @@
                 color: $light-gray-color;
             }
         }
+
+        .edit__dropdown {
+            width: 80px;
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            
+
+
+            .edit__dropdown__button {
+                
+                width: 50px;
+                
+            }
+            
+            .edit__dropdown__menu {
+                
+
+                .dashboard__edit {
+                    height: 19px;
+                    width: 65px;
+                    font-size: 14px;
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    color: $dark-mint-color;
+                    background-color: rgba(32, 40, 51, 0.5);
+                    border: transparent;
+                }
+    
+                .dashboard__delete {
+                    height: 19px;
+                    width: 65px;
+                    font-size: 14px;
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    color: $dark-mint-color;
+                    background-color: rgba(32, 40, 51, 0.5);
+                    border: transparent;
+                }
+    
+                .edit__delete__border {
+                    height: 3px;
+                    width: 65px;
+                    border-bottom: 3px solid $mint-color;
+                    mix-blend-mode: overlay;
+                }
+            }
+        }
     }
 }

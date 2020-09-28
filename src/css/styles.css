@@ -1,21 +1,10 @@
 .app {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center;
   background-image: url(https://cdn.discordapp.com/attachments/718455188100350035/758060068154507325/group_project_background.png);
   background-size: cover;
   background-position: center;
@@ -23,63 +12,105 @@
   width: 100vw;
 }
 
+.credential__component {
+  height: 100vh;
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.credential__component .credential__main {
+  height: 570px;
+  width: 500px;
+  background-color: rgba(32, 40, 51, 0.5);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.credential__component .credential__main .credential__title {
+  color: #66FCF1;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.credential__component .credential__main .credential__main__inputs {
+  width: 100%;
+  height: 250px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.credential__component .credential__main .credential__main__inputs .credential__input {
+  height: 30px;
+  width: 350px;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: rgba(11, 12, 16, 0.5);
+}
+
+.credential__component .credential__main .credential__buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  height: 60px;
+  width: 100%;
+}
+
+.credential__component .credential__main .credential__buttons .credential__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 60px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+  border: 4px solid #66FCF1;
+  background-color: transparent;
+  color: #C5C6C7;
+  text-align: center;
+  mix-blend-mode: overlay;
+}
+
 .dashboard__component {
   height: 100vh;
   width: 90vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
 }
 
 .dashboard__component .dashboard__item__main {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .dashboard__component .dashboard__item__main .dashboard__item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
   background-color: rgba(32, 40, 51, 0.5);
   border-color: #66FCF1;
   height: 43px;
@@ -87,16 +118,12 @@
 }
 
 .dashboard__component .dashboard__item__main .dashboard__item .keyChain__item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   width: 200px;
-
   height: 100%;
   border: 2px solid #66FCF1;
   mix-blend-mode: overlay;
@@ -118,21 +145,11 @@
 }
 
 .dashboard__component .dashboard__item__main .dashboard__item .keyChain__date {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   width: 290px;
   height: 100%;
   border: 2px solid #66FCF1;
@@ -140,47 +157,66 @@
   color: #C5C6C7;
 }
 
+.dashboard__component .dashboard__item__main .edit__dropdown {
+  width: 80px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard__component .dashboard__item__main .edit__dropdown .edit__dropdown__button {
+  width: 50px;
+}
+
+.dashboard__component .dashboard__item__main .edit__dropdown .edit__dropdown__menu .dashboard__edit {
+  height: 19px;
+  width: 65px;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #45A29E;
+  background-color: rgba(32, 40, 51, 0.5);
+  border: transparent;
+}
+
+.dashboard__component .dashboard__item__main .edit__dropdown .edit__dropdown__menu .dashboard__delete {
+  height: 19px;
+  width: 65px;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #45A29E;
+  background-color: rgba(32, 40, 51, 0.5);
+  border: transparent;
+}
+
+.dashboard__component .dashboard__item__main .edit__dropdown .edit__dropdown__menu .edit__delete__border {
+  height: 3px;
+  width: 65px;
+  border-bottom: 3px solid #66FCF1;
+  mix-blend-mode: overlay;
+}
+
 .dash__profile__component {
   height: 150px;
   width: 90vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
   margin-bottom: 10px;
 }
 
 .dash__profile__component .dash__profile__main {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+  align-content: stretch;
 }
 
 .dash__profile__component .dash__profile__main .dash__profile__picture {
@@ -236,7 +272,6 @@
   font-weight: bold;
   color: #66FCF1;
   margin-top: 70px;
-
 }
 
 .FaceVerify .faceVerify--container .faceVerify__buttons {
@@ -250,7 +285,6 @@
   justify-content: center;
   align-items: center;
   width: 500px;
-
 }
 
 .FaceVerify .faceVerify--container .faceVerify__buttons .faceVerify__buttons__top .faceVerify__button__top {
@@ -287,43 +321,21 @@
 .auth__component {
   height: 100vh;
   width: 100vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
 }
 
 .auth__component .login--container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: rgba(32, 40, 51, 0.5);
   width: 400px;
@@ -332,29 +344,21 @@
 
 .auth__component .login--container .login__title {
   font-weight: bold;
-  font-size: 45px;
+  font-size: 48px;
   color: #66FCF1;
+  margin-top: 20px;
 }
 
 .auth__component .login--container #login__input__section {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
   height: 23%;
   width: 60%;
-  margin-top: 70px;
+  margin-top: 60px;
 }
 
 .auth__component .login--container #login__input__section .login__input {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 30px;
   margin-bottom: 20px;
@@ -363,19 +367,11 @@
 }
 
 .auth__component .login--container #login__buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .auth__component .login--container #login__buttons .login__button {
@@ -391,16 +387,9 @@
 .Nav__component {
   width: 120px;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   mix-blend-mode: overlay;
 }
 
@@ -417,21 +406,11 @@
 .Nav__component .nav--dropDown {
   height: 85vh;
   width: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .Nav__component .nav--dropDown .nav__icons {
@@ -439,41 +418,21 @@
   width: 125px;
   margin-left: 10px;
   margin-right: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .Nav__component .nav--dropDown .nav__icons .nav__top {
   height: 170px;
   margin-top: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .Nav__component .nav--dropDown .nav__icons .nav__top .nav__faceVerify {
@@ -495,24 +454,116 @@
   mix-blend-mode: overlay;
 }
 
-.register--container {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.photos {
+  height: 100vh;
+  width: 90vw;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.photos .add__photos {
+  width: 600px;
+  height: 750px;
+  background-color: rgba(32, 40, 51, 0.5);
+}
+
+.photos .add__photos .photo__title {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  font-size: 42px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #66FCF1;
+}
+
+.photos .add__photos .photo__camera {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 400px;
+  height: 300px;
+  background-color: gray;
+  margin-top: 25px;
+}
+
+.photos .add__photos .photo__camera .photo__img {
+  height: 300px;
+  width: 400px;
+}
+
+.photos .add__photos .photo__main__buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 60px;
+  width: 100%;
+}
+
+.photos .add__photos .photo__main__buttons .take__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 18px;
+  border: 4px solid #66FCF1;
+  background-color: transparent;
+  color: #C5C6C7;
+  text-align: center;
+  mix-blend-mode: overlay;
+}
+
+.photos .add__photos .photo__finish__buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.photos .add__photos .photo__finish__buttons .photo__cancel {
+  font-size: 18px;
+  width: 135px;
+  height: 50px;
+  color: #C5C6C7;
+  background-color: transparent;
+  border: 4px solid #66FCF1;
+  mix-blend-mode: overlay;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.photos .add__photos .photo__finish__buttons .photo__submit {
+  font-size: 18px;
+  width: 135px;
+  height: 50px;
+  color: #C5C6C7;
+  background-color: transparent;
+  border: 4px solid #66FCF1;
+  mix-blend-mode: overlay;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.register--container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: rgba(32, 40, 51, 0.5);
   width: 490px;
@@ -527,16 +578,9 @@
 }
 
 .register--container #register__input__section {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
   font-family: Geneva, Tahoma, Verdana, sans-serif;
   height: 35%;
   width: 60%;
@@ -544,8 +588,6 @@
 }
 
 .register--container #register__input__section .register__input {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 30px;
   margin-bottom: 20px;
@@ -554,19 +596,10 @@
 }
 
 .register--container #register__buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 22%;
 }
@@ -592,9 +625,7 @@
 }
 
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-/*# sourceMappingURL=styles.css.map */

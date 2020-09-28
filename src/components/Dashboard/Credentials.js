@@ -36,19 +36,22 @@ class Credentials extends Component {
     render(){
         const {websiteName, websiteUrl, userName, password} = this.state
         return(
-            <>
-                <div>
-                    <input onChange={(e) => this.handleChange(e)} name='websiteName' type='text' placeholder='Website Name' value={websiteName} />
-                    <input onChange={(e) => this.handleChange(e)} name='websiteUrl' type='text' placeholder='Website Url' value={websiteUrl} />
-                    <input onChange={(e) => this.handleChange(e)} name='userName' type='text' placeholder='username' value={userName} />
-                    <input onChange={(e) => this.handleChange(e)} name='password' type='password' placeholder='password' value={password} />
-                </div>
+            <div className="credential__component">
+                <div className="credential__main">
+                    <div className="credential__title">Add Credentials</div>
+                    <div className="credential__main__inputs">
+                        <input onChange={(e) => this.handleChange(e)} name='websiteName' type='text' placeholder='Website Name' className="credential__input" value={websiteName} />
+                        <input onChange={(e) => this.handleChange(e)} name='websiteUrl' type='text' placeholder='Website URL' className="credential__input" value={websiteUrl} />
+                        <input onChange={(e) => this.handleChange(e)} name='userName' type='text' placeholder='USERNAME' className="credential__input" value={userName} />
+                        <input onChange={(e) => this.handleChange(e)} name='password' type='password' placeholder='PASSWORD' className="credential__input" value={password} />
+                    </div>
 
-                <div>
-                    <button onClick={() => {this.addCred(websiteName, websiteUrl, userName, password)}}>Add Credentials</button>
-                    <button onClick={() => {this.props.history.push('/dashboard')}}>Cancel</button>
+                    <div className="credential__buttons">
+                        <button onClick={() => {this.props.history.push('/dashboard')}}className="credential__button">CANCEL</button>
+                        <button onClick={() => {this.addCred(websiteName, websiteUrl, userName, password)}} className="credential__button">ADD CREDENTIALS</button>
+                    </div>
                 </div>
-            </>
+            </div>
         )
     }
 }
