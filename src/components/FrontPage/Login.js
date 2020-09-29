@@ -40,7 +40,7 @@ class Login extends Component {
       })
       .then((res) => {
         loginUser(res);
-        this.props.history.push("/dashboard");
+        this.props.history.push("/photos");
       })
       .catch((err) => {
         console.log(err);
@@ -55,8 +55,7 @@ class Login extends Component {
       .then((res) => {
         this.props.loginUser(res);
         console.log(res.data);
-        { res.data.faceRec ? this.props.history.push("/faceverify") : this.props.history.push("/dashboard"); }
-        // this.props.history.push("/dashboard");
+        { res.data.faceRec ? this.props.history.push("/faceVerify") : this.props.history.push("/dashboard"); }
       })
       .catch((err) => {
         console.log(err);

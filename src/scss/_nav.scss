@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     mix-blend-mode: overlay;
+    
     .dropdown {
         width: 100px;
         
@@ -17,13 +18,14 @@
         
     }
     .nav--dropDown {
-        height: 85vh;
+        height: 90vh;
         width: 120px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
+        background-color: rgba(32, 40, 51, 0.5);
 
         .nav__icons{
             height: 85vh;
@@ -54,6 +56,7 @@
             }
             .nav__logout {
                 width: 65px;
+                margin-bottom: 20px;
             }
         }
         .nav__border {

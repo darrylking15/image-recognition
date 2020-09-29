@@ -10,10 +10,8 @@ module.exports = {
     compareFaces: (req,res) => {
         const db = req.app.get('db');
         console.log(" Start Logging Face"); 
-        const AWS = require('aws-sdk')
-        const bucket        = 'bucket' // the bucketname without s3://
-        const photo_source  = 'source.jpg'
-        const photo_target  = 'target.jpg'
+        let rekResponse = {fake: 'fake'};
+        
         const config = new AWS.Config({
             accessKeyId: process.env.AWS_ACCESS_KEY_ID,
             secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -22,18 +20,19 @@ module.exports = {
       
         const rekognition = new AWS.Rekognition();
         
+        const {faceKey, Key} = req.body; 
 
         const params = {
             SourceImage: {
                 S3Object: {
                     Bucket: process.env.AWS_BUCKET_NAME,
-                    Name: "new.jpg"
+                    Name: faceKey
                 },
             },
             TargetImage: {
                 S3Object: {
                     Bucket: process.env.AWS_BUCKET_NAME,
-                    Name: "pictest.jpg"
+                    Name: Key
                 },
             },
             SimilarityThreshold: 70
@@ -46,9 +45,12 @@ module.exports = {
                 let position   = data.Face.BoundingBox
                 let similarity = data.Similarity
                 console.log(`The face at: ${position.Left}, ${position.Top} matches with ${similarity} % confidence`)
-            }) // for response.faceDetails
-            } // if
+            }) 
+            } 
+            console.log(response);
+            res.status(200).send(response);
         });
+        //console.log("RekResponse", rekResponse);
     } , 
 
     indexFaces:  (req, res) => {

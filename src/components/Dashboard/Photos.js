@@ -98,7 +98,7 @@ class Photos extends Component{
                     <div className='photo__camera'>
                     
                     { this.state.startCam ? this.state.toggleCamToImage ? 
-                        <img height={300} width={400}  src={this.state.webcamCapture} /> 
+                        <img alt='photos' height={300} width={400}  src={this.state.webcamCapture} /> 
                         : 
                             <Webcam
                             // height={250}
