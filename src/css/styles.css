@@ -57,6 +57,8 @@
   margin-bottom: 20px;
   text-align: center;
   background-color: rgba(11, 12, 16, 0.5);
+  color: white;
+  border-color: transparent;
 }
 
 .credential__component .credential__main .credential__buttons {
@@ -80,7 +82,7 @@
   font-size: 16px;
   border: 4px solid #66FCF1;
   background-color: transparent;
-  color: #C5C6C7;
+  color: white;
   text-align: center;
   mix-blend-mode: overlay;
 }
@@ -161,7 +163,6 @@
   width: 80px;
   height: 40px;
   display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
@@ -233,6 +234,7 @@
 
 .dash__profile__component .Logo {
   height: 120px;
+  border-radius: 50%;
 }
 
 .dash__profile__border {
@@ -364,6 +366,7 @@
   margin-bottom: 20px;
   text-align: center;
   background-color: rgba(11, 12, 16, 0.5);
+  color: white;
 }
 
 .auth__component .login--container #login__buttons {
@@ -380,7 +383,7 @@
   width: 120px;
   background-color: transparent;
   border-color: #66FCF1;
-  color: #C5C6C7;
+  color: white;
   mix-blend-mode: overlay;
 }
 
@@ -404,13 +407,14 @@
 }
 
 .Nav__component .nav--dropDown {
-  height: 85vh;
+  height: 90vh;
   width: 120px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  background-color: rgba(32, 40, 51, 0.5);
 }
 
 .Nav__component .nav--dropDown .nav__icons {
@@ -445,6 +449,7 @@
 
 .Nav__component .nav--dropDown .nav__icons .nav__logout {
   width: 65px;
+  margin-bottom: 20px;
 }
 
 .Nav__component .nav--dropDown .nav__border {
@@ -518,7 +523,7 @@
   font-size: 18px;
   border: 4px solid #66FCF1;
   background-color: transparent;
-  color: #C5C6C7;
+  color: white;
   text-align: center;
   mix-blend-mode: overlay;
 }
@@ -537,7 +542,7 @@
   font-size: 18px;
   width: 135px;
   height: 50px;
-  color: #C5C6C7;
+  color: white;
   background-color: transparent;
   border: 4px solid #66FCF1;
   mix-blend-mode: overlay;
@@ -549,7 +554,7 @@
   font-size: 18px;
   width: 135px;
   height: 50px;
-  color: #C5C6C7;
+  color: white;
   background-color: transparent;
   border: 4px solid #66FCF1;
   mix-blend-mode: overlay;
