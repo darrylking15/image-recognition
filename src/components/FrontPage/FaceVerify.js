@@ -7,20 +7,21 @@ import store from '../../redux/store';
 import axios from 'axios';
 
 class FaceVerify extends Component{
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		const reduxState = store.getState();
 
 		this.state = {
 			stepCounter: 0,
 			webcamCapture: '',
-			imgSrc: "", 
+			matchSim: '',
+			imgSrc: '', 
             imgId: 0,
             imageInfo: {
                 ETag: '',
                 Location: '',
-                Key: "",
+                Key: '',
                 Bucket: ''
             },
             user: reduxState.user
@@ -75,9 +76,11 @@ class FaceVerify extends Component{
 			})
 			.then( res => {
 				console.log(res.data)
-				console.log("Similarity: ", res.data.FaceMatches[0].Similarity)
+				console.log("Similarity: ", res.data.FaceMatches[0].Similarity);
+				const similarity = `Face Match: ${res.data.FaceMatches[0].Similarity.toString().slice(0,4)}%`;
+				this.setState({ matchSim: similarity })
 				if (res.data.FaceMatches[0].Similarity > 95) {
-					this.props.history.push('/dashboard')
+					setTimeout(() => { this.props.history.push('/dashboard') }, 2000);
 				} else if (res.data.FaceMatches[0].Similarity < 95) {
 					alert("Face Detected, but not enough to login. Try Again.")
 				} else if (res.data.UnmatchedFaces[0]) {
@@ -150,6 +153,7 @@ class FaceVerify extends Component{
 								<button className='faceVerify__button__bottom' onClick={() => this.props.history.push('/')} >CANCEL</button>
 								<button className='faceVerify__button__bottom' onClick={() => this.compareFaces()} >FACE LOGIN</button>
 							</div>
+							<h3 className="faceVerify__title">{this.state.matchSim}</h3> 
 						</div>
 					</div>
 				)
