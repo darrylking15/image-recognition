@@ -15,6 +15,7 @@ class Credentials extends Component {
             websiteUrl: '',
             userName: '',
             password: '',
+            showPassword: false,
             user: reduxState.user
         }
     }
@@ -33,8 +34,12 @@ class Credentials extends Component {
         })
     }
 
+    togglePassword = () => {
+        this.setState({showPassword: !this.state.showPassword})
+    }
+
     render(){
-        const {websiteName, websiteUrl, userName, password} = this.state
+        const {websiteName, websiteUrl, userName, password, showPassword} = this.state
         return(
             <div className="credential__component">
                 <div className="credential__main">
@@ -43,7 +48,9 @@ class Credentials extends Component {
                         <input onChange={(e) => this.handleChange(e)} name='websiteName' type='text' placeholder='Website Name' className="credential__input" value={websiteName} />
                         <input onChange={(e) => this.handleChange(e)} name='websiteUrl' type='text' placeholder='Website URL' className="credential__input" value={websiteUrl} />
                         <input onChange={(e) => this.handleChange(e)} name='userName' type='text' placeholder='USERNAME' className="credential__input" value={userName} />
-                        <input onChange={(e) => this.handleChange(e)} name='password' type='password' placeholder='PASSWORD' className="credential__input" value={password} />
+                        <input onChange={(e) => this.handleChange(e)} name='password' type={(showPassword) ? 'text' : 'password'} placeholder='PASSWORD' className="credential__input" value={password} />
+                        <i className={`far ${showPassword} ? 'fa-eye-slash' : 'fa-eye' credential__main__inputs`}
+                        onClick={this.togglePassword} />
                     </div>
 
                     <div className="credential__buttons">

@@ -107,7 +107,7 @@ class FaceVerify extends Component{
 				<div className='faceVerify--container'>
 					<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
 					{ this.state.startCam ? this.state.toggleCamToImage ? 
-                        <img height={300} width={400}  src={this.state.webcamCapture} /> 
+                        <img alt='faceVerify' height={300} width={400}  src={this.state.webcamCapture} /> 
                         : 
                             <Webcam
                              height={250}
