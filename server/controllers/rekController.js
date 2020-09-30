@@ -21,7 +21,7 @@ module.exports = {
         const rekognition = new AWS.Rekognition();
         
         const {faceKey, Key} = req.body; 
-
+        console.log("Req.Body: ", req.body);
         const params = {
             SourceImage: {
                 S3Object: {
@@ -37,17 +37,18 @@ module.exports = {
             },
             SimilarityThreshold: 70
         }
+        console.log("Rek Params: ", params);
         rekognition.compareFaces(params, function(err, response) {
             if (err) {
-            console.log(err, err.stack); // an error occurred
+            console.log("Compare Faces Error: ", err, err.stack); // an error occurred
             } else {
             response.FaceMatches.forEach(data => {
                 let position   = data.Face.BoundingBox
                 let similarity = data.Similarity
-                console.log(`The face at: ${position.Left}, ${position.Top} matches with ${similarity} % confidence`)
+                //console.log(`The face at: ${position.Left}, ${position.Top} matches with ${similarity} % confidence`)
             }) 
             } 
-            console.log(response);
+            //console.log("Response from Rek ",response);
             res.status(200).send(response);
         });
         //console.log("RekResponse", rekResponse);
