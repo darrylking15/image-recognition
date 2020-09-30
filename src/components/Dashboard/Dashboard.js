@@ -26,7 +26,7 @@ class Dashboard extends Component{
 
     componentDidMount = () => {
         this.getUserSession();
-        this.getCredentials();
+       
     }
 
     
@@ -39,10 +39,12 @@ class Dashboard extends Component{
                 console.log("Dash Update User", res.data);
                 this.props.getUserSessionRedux(res)
                 this.setState( { user: store.getState().user } )
+                this.getCredentials();
             } )   
     }
 
     getCredentials = () => {
+        console.log(this.state)
         axios
             .get(`/api/creds/${this.state.user.userId}`)
             .then(res => {
