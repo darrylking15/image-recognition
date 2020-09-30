@@ -19,18 +19,26 @@ class Dashboard extends Component{
             credentials: reduxState.credentials,
             user: reduxState.user,
             editToggle: false,
-            userId: reduxState.user.userId,
             hidden: true
         }
     }
 
     componentDidMount = () => {
         this.getUserSession();
-        this.getCredentials();
     }
 
-    
-
+    componentDidUpdate() {
+		if (!this.state.user.userId) {
+			try {
+                this.getUserSession();
+            } catch {
+                console.log("No User on Session, Pushing to Dashboard")
+			    this.props.history.push('/');
+            }
+        }
+    }
+//hjgj
+  
     getUserSession = async () => {
         console.log("---Updating User Session")
         await axios
@@ -39,6 +47,7 @@ class Dashboard extends Component{
                 console.log("Dash Update User", res.data);
                 this.props.getUserSessionRedux(res)
                 this.setState( { user: store.getState().user } )
+                this.getCredentials();
             } )   
     }
 
@@ -112,11 +121,6 @@ class Dashboard extends Component{
             <DashProfile />
             <div className="dash__profile__border"></div>
             {credsMap}
-            {/* <div>
-                <p>{this.state.user.email ? this.state.user.email : "No User Logged In"}</p>
-                <button onClick={ () => this.logout() } >Logout</button>
-                <button onClick={ () => this.getCredentials() } >Get Credentials</button>
-            </div>  */}
         </div>
         )
     }
