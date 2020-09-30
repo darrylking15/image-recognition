@@ -7,43 +7,36 @@ import store from '../../redux/store';
 import axios from 'axios';
 
 class FaceVerify extends Component{
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		const reduxState = store.getState();
 
 		this.state = {
-            startCam: false,
-            toggleCamToImage: false,
+			stepCounter: 0,
 			webcamCapture: '',
-			imgSrc: "", 
+			matchSim: '',
+			imgSrc: '', 
             imgId: 0,
             imageInfo: {
                 ETag: '',
                 Location: '',
-                Key: "",
+                Key: '',
                 Bucket: ''
             },
             user: reduxState.user
         }
-
 	}
 
 	webcamRef = Webcam => {
 		this.Webcam = Webcam;
 	};
 
-	toggleCam = () => {
-        console.log("Start Webcam");
-        this.setState({startCam: true, toggleCamToImage: false})
-    }
-
-	
 	capture = () => {
         console.log("Capture Called");
 		try {
             const imageSrc = this.Webcam.getScreenshot( { width: 600, height: 480 } );
-		    this.setState( {webcamCapture: imageSrc, toggleCamToImage: true} )
+		    this.setState( {webcamCapture: imageSrc, stepCounter: 2} )
         }
         catch {
             alert("Turn on Webcam to capture photo")
@@ -62,17 +55,14 @@ class FaceVerify extends Component{
             .then( res => {
                 this.setState( {
                     imgId: res.data.imgId,
-                    imageInfo: res.data.imageInfo
+					imageInfo: res.data.imageInfo,
+					stepCounter: 3
                 } );
                 console.log("Send to S3 Return Data: ", res.data);
             } )
             .catch( error => console.log(error) );
 	}
 	
-
-
-
-
 	compareFaces = () => {
 		console.log("Comparing Faces"); 
 		const Key = this.state.imageInfo.Key; 
@@ -86,9 +76,11 @@ class FaceVerify extends Component{
 			})
 			.then( res => {
 				console.log(res.data)
-				console.log("Similarity: ", res.data.FaceMatches[0].Similarity)
+				console.log("Similarity: ", res.data.FaceMatches[0].Similarity);
+				const similarity = `Face Match: ${res.data.FaceMatches[0].Similarity.toString().slice(0,4)}%`;
+				this.setState({ matchSim: similarity })
 				if (res.data.FaceMatches[0].Similarity > 95) {
-					this.props.history.push('/dashboard')
+					setTimeout(() => { this.props.history.push('/dashboard') }, 2000);
 				} else if (res.data.FaceMatches[0].Similarity < 95) {
 					alert("Face Detected, but not enough to login. Try Again.")
 				} else if (res.data.UnmatchedFaces[0]) {
@@ -102,45 +94,76 @@ class FaceVerify extends Component{
 		}
 
 	render(){
-		return (
-			<div className="FaceVerify">
-				<div className='faceVerify--container'>
-					<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
-					{ this.state.startCam ? this.state.toggleCamToImage ? 
-                        <img alt='faceVerify' height={300} width={400}  src={this.state.webcamCapture} /> 
-                        : 
-                            <Webcam
-                             height={250}
-                             width={200}
-                            audio={false}
-                            ref={this.webcamRef}
-                            screenshotFormat='image/jpeg'
-                            className='photo__img'
-                            /> 
-                        : null }
-					<div className='faceVerify__buttons'>
-						<div className="faceVerify__buttons__top">
-						<button onClick={() => this.toggleCam()} className='faceVerify__button__top'>Live Cam</button>
-                        <button onClick={() => this.capture()} className='faceVerify__button__top'>Capture</button>
-						</div>
-						<div className="faceVerify__buttons__bottom">
-							<button
-								className='faceVerify__button__bottom'
-								onClick={() => this.props.history.push('/dashboard')}>
-								CANCEL
-							</button>
 
-							<button className='faceVerify__button__bottom'>
-								FACE LOGIN
-							</button>
-				
-							<button onClick={() => this.sendToS3()} className='take__photo'>Save Photo</button>
-							<button onClick={() => this.compareFaces()}>
-								Compare Faces
-							</button>
+		let stepView = () => { switch(this.state.stepCounter) {
+			case 0:
+				return(
+					<div className='faceVerify--container'>
+						<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
+						<div className='faceVerify__buttons'>
+							<div className="faceVerify__buttons__top">
+								<button onClick={() => this.setState( { stepCounter: 1 } ) } className='faceVerify__button__top'>Live Cam</button>
+							</div>
+							<div className="faceVerify__buttons__bottom">
+								<button className='faceVerify__button__bottom' onClick={() => this.props.history.push('/')} >CANCEL</button>
+							</div>
 						</div>
 					</div>
-				</div>
+				)
+			case 1:
+				return(
+					<div className='faceVerify--container'>
+						<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
+						<Webcam height={300} width={400} audio={false} ref={this.webcamRef} screenshotFormat='image/jpeg' className='photo__img' /> 
+						<div className='faceVerify__buttons'>
+							<div className="faceVerify__buttons__top">
+								<button onClick={() => this.capture()} className='faceVerify__button__top'>Capture</button>
+							</div>
+							<div className="faceVerify__buttons__bottom">
+								<button className='faceVerify__button__bottom' onClick={() => this.props.history.push('/')} >CANCEL</button>
+							</div>
+						</div>
+					</div>
+				)
+			case 2:
+				return(
+					<div className='faceVerify--container'>
+						<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
+						<img height={300} width={400}  src={this.state.webcamCapture} alt="capture"/>
+						<div className='faceVerify__buttons'>
+							<div className="faceVerify__buttons__top">
+								<button onClick={() => this.setState( { stepCounter: 1 } ) } className='faceVerify__button__top'>Try Again</button>
+								<button onClick={() => this.sendToS3()}  className='faceVerify__button__top'>Accept Photo</button>
+							</div>
+							<div className="faceVerify__buttons__bottom">
+								<button className='faceVerify__button__bottom' onClick={() => this.props.history.push('/')} >CANCEL</button>
+							</div>
+						</div>
+					</div>
+				)
+			case 3:
+				return(
+					<div className='faceVerify--container'>
+						<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
+						<img height={300} width={400}  src={this.state.webcamCapture} alt="capture"/>
+						<div className='faceVerify__buttons'>
+							<div className="faceVerify__buttons__top">
+							</div>
+							<div className="faceVerify__buttons__bottom">
+								<button className='faceVerify__button__bottom' onClick={() => this.props.history.push('/')} >CANCEL</button>
+								<button className='faceVerify__button__bottom' onClick={() => this.compareFaces()} >FACE LOGIN</button>
+							</div>
+							<h3 className="faceVerify__title">{this.state.matchSim}</h3> 
+						</div>
+					</div>
+				)
+			default:
+				return(null)	
+		} }
+
+		return (
+			<div className="FaceVerify">
+				{stepView()}
 			</div>
 		)
 	}
