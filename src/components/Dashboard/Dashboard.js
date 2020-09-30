@@ -6,6 +6,7 @@ import axios from 'axios'
 import DashProfile from './DashProfile';
 import store from '../../redux/store';
 import { connect } from 'react-redux';
+import CredDisplay from './CredDisplay'
 
 import { logoutUser, getUserSessionRedux, getUserCredentialsRedux } from '../../redux/reducer'
 import './Dashboard.css'
@@ -19,7 +20,12 @@ class Dashboard extends Component{
             credentials: reduxState.credentials,
             user: reduxState.user,
             editToggle: false,
+
+            userId: reduxState.user.userId,
+            showPassword: false,
+
             hidden: true
+
         }
     }
 
@@ -37,8 +43,7 @@ class Dashboard extends Component{
             }
         }
     }
-//hjgj
-  
+ 
     getUserSession = async () => {
         console.log("---Updating User Session")
         await axios
@@ -65,9 +70,7 @@ class Dashboard extends Component{
 
     }
 
-    editKeyChain = (id) => {
-        this.props.history.push(`./EditCredentials/${id}`)
-    }
+
 
     deleteKeyChain = (id) => {
         axios.delete(`/api/cred/${id}`).then(() => {
@@ -75,13 +78,13 @@ class Dashboard extends Component{
         })
     }
     
-    toggleShow = () => {
-        this.setState({hidden: !this.state.hidden})
-    }
+    // toggleShow = () => {
+    //     this.setState({showPassword: !this.state.showPassword})
+    // }
     
-    toggleEdit = () => {
-        this.setState({editToggle: !this.state.editToggle})
-    }
+    // toggleEdit = () => {
+    //     this.setState({editToggle: !this.state.editToggle})
+    // }
     
       
 
@@ -91,28 +94,36 @@ class Dashboard extends Component{
         const credsMap = this.state.credentials.map((e, i) => {
 
             return(
+                    <CredDisplay
+                    key={i}
+                    e = {e}
+                   getCredentials = {this.getCredentials}
+                />
 
-                <div key={e.cred_id}>
-                        <div className="dashboard__item__main">
-                            <div className='dashboard__item'>
-                                <p className="keyChain__item">{e.website_name}</p>
-                                <p className="keyChain__item">{e.website_url}</p>
-                                <p className="keyChain__item">{e.username}</p>
-                                <p className="keyChain__password" onClick={this.state.toggleShow}>{e.password}</p>
-                                <p className="keyChain__date">{Date(e.update_time)}</p>
-                            </div>
-                            <div className="edit__dropdown">
-                                <img alt='edit__dropdown' className="edit__dropdown__button" src="https://cdn.discordapp.com/attachments/718455188100350035/760075731136020530/Edit_dots.png" onClick={this.toggleEdit}/>
-                                {this.state.editToggle ? (
-                                    <div className="edit__dropdown__menu">
-                                        <button className="dashboard__edit" onClick={() => this.editKeyChain(e.cred_id)}>EDIT</button>
-                                        <div className="edit__delete__border"></div>
-                                        <button className="dashboard__delete" onClick={() => this.deleteKeyChain(e.cred_id)}>DELETE</button>
-                                    </div>
-                                ) : null}
-                            </div>
-                        </div>
-                </div>
+             
+                // <div key={e.cred_id}>
+                //         <div className="dashboard__item__main">
+                //             <div className='dashboard__item'>
+                //                 <p className="keyChain__item">{e.website_name}</p>
+                //                 <p className="keyChain__item">{e.website_url}</p>
+                //                 <p className="keyChain__item">{e.username}</p>
+                //                 <p  name='password' type={(this.state.showPassword) ? 'text' : 'password'} placeholder='PASSWORD' className="credential__input" />
+                //                 <i className={this.state.showPassword ?  'far fa-eye' : 'fas fa-eye-slash keyChain__password'}
+                //                     onClick={this.toggleShow}>{e.password}</i>
+                //                 <p className="keyChain__date">{Date(e.update_time)}</p>
+                //             </div>
+                //             <div className="edit__dropdown">
+                //                 <img alt='edit__dropdown' className="edit__dropdown__button" src="https://cdn.discordapp.com/attachments/718455188100350035/760075731136020530/Edit_dots.png" onClick={this.toggleEdit}/>
+                //                 {this.state.editToggle ? (
+                //                     <div className="edit__dropdown__menu">
+                //                         <button className="dashboard__edit" onClick={() => this.editKeyChain(e.cred_id)}>EDIT</button>
+                //                         <div className="edit__delete__border"></div>
+                //                         <button className="dashboard__delete" onClick={() => this.deleteKeyChain(e.cred_id)}>DELETE</button>
+                //                     </div>
+                //                 ) : null}
+                //             </div>
+                //         </div>
+                // </div>
             )})
 
       return(
