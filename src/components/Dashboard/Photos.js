@@ -52,7 +52,7 @@ class Photos extends Component{
             .then( res => {
                 console.log("Photos Update User from Session", res.data);
                 this.props.getUserSessionRedux(res)
-                this.setState( { user: store.getState().user } )
+                //this.setState( { user: store.getState().user } )
             } )     
     }
 

@@ -32,9 +32,9 @@ class ImageInfo extends Component{
     
     }
 
-    componentDidMount = () => {
-        this.getUserSession();
-    }
+    // componentDidMount = () => {
+    //     this.getUserSession();
+    // }
 
     webcamRef = Webcam => {
 		this.Webcam = Webcam;
