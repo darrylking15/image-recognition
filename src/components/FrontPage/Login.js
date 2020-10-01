@@ -55,7 +55,7 @@ class Login extends Component {
       .then((res) => {
         this.props.loginUser(res);
         console.log(res.data);
-        if (res.data.faceRec) {this.props.history.push("/faceVerify");} else {this.props.history.push("/dashboard");}
+        if (res.data.faceRec) {this.props.history.push("/faceverify");} else {this.props.history.push("/dashboard");}
       })
       .catch((err) => {
         console.log(err);

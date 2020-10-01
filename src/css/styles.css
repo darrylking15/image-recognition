@@ -970,6 +970,34 @@
   mix-blend-mode: overlay;
 }
 
+.imageList__component {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.imageCard__component {
+  border: 1px solid white;
+  max-width: 400px;
+  max-height: 400px;
+  margin: 10px;
+}
+
+.imageCard__title--container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.imageCard__image {
+  max-width: 400px;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

@@ -3,9 +3,13 @@ import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 
 function CredDisplay(props) {
-    const [toggleMenu, setToggleMenu] = useState(false)
-    const [togglePassword, setTogglePassword] = useState(false)
+    const [toggleMenu, setToggleMenu] = useState(false);
+	const [togglePassword, setTogglePassword] = useState(false);
+	
     let e = props.e
+
+	var dateTime = new Date(0); 
+	dateTime.setUTCSeconds(props.e.timestamp / 1000);
 
     const editKeyChain = (id) => {
         props.history.push(`./EditCredentials/${id}`)
@@ -40,7 +44,7 @@ function CredDisplay(props) {
 						onClick={ () => setTogglePassword(!togglePassword)}>
 						{e.password}
 					</i>
-					<p className='keyChain__date'>{Date(e.update_time)}</p>
+					<p className='keyChain__date'>{dateTime.toLocaleString()}</p>
 				</div>
 				<div className='edit__dropdown'>
 					<img

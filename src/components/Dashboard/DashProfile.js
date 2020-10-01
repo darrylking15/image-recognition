@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import {withRouter} from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import store from '../../redux/store';
 import { connect } from 'react-redux';
 
@@ -14,14 +13,28 @@ class DashProfile extends Component {
         }
     }
 
-    componentDidMount() {
-        // this.getUserProfileInfo()
+    componentDidMount = () => {
+        this.getUserSession();
     }
 
-    // async getUserProfileInfo() {
-    //     const response = await axios.get(``)
-    //     this.setState({dashProfileInfo: response.data})
-    // }
+    componentDidUpdate() {
+		if (!this.state.user.userId) {
+			try {
+                this.getUserSession();
+            } catch {
+                console.log("No User on Session, Pushing to Dashboard")
+            }
+        }
+    }
+    
+ 
+    getUserSession = async () => {
+        await axios
+            .get('/auth/getsession')
+            .then( () => {
+                this.setState( { user: store.getState().user } )
+            } )   
+    }
 
     render(){
             return(
