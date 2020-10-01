@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 
 function CredDisplay(props) {
     const [toggleMenu, setToggleMenu] = useState(false)
-    const [togglePassword, setTogglePassword] = useState(false)
+    const [togglePassword, setTogglePassword] = useState(true)
     let e = props.e
 
     const editKeyChain = (id) => {
@@ -25,17 +25,18 @@ function CredDisplay(props) {
 					<p className='keyChain__item'>{e.website_name}</p>
 					<p className='keyChain__item'>{e.website_url}</p>
 					<p className='keyChain__item'>{e.username}</p>
-					<p
+					{/* <p
 						name='password'
 						type={togglePassword ? 'text' : 'password'}
 						placeholder='PASSWORD'
 						className='credential__input'
-					/>
+					/> */}
+
 					<i
 						className={
 							togglePassword
-								? 'far fa-eye'
-								: 'fas fa-eye-slash keyChain__password'
+								? 'keyChain__password__off' 
+								: 'keyChain__password' 
 						}
 						onClick={ () => setTogglePassword(!togglePassword)}>
 						{e.password}
