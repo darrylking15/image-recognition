@@ -156,28 +156,27 @@ module.exports = {
         
         detectFaces: (req, res) => {
             const AWS = require('aws-sdk')
-            const bucket = 'bucket' // the bucketname without s3://
-            const photo  = 'input.jpg' // the name of file
             const config = new AWS.Config({
               accessKeyId: process.env.AWS_ACCESS_KEY_ID,
               secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
               region: process.env.AWS_REGION
             })
-            const client = new AWS.Rekognition();
+            const {Key} = req.body;
+            const rekognition = new AWS.Rekognition();
             const params = {
               Image: {
                 S3Object: {
-                  Bucket: bucket,
-                  Name: photo
+                  Bucket: "imagerek2020",
+                  Name: Key
                 },
               },
               Attributes: ['ALL']
             }
-            client.detectFaces(params, function(err, response) {
+            rekognition.detectFaces(params, function(err, response) {
               if (err) {
                 console.log(err, err.stack); // an error occurred
               } else {
-                console.log(`Detected faces for: ${photo}`)
+                console.log(`Detected faces for: ${Key}`)
                 response.FaceDetails.forEach(data => {
                   let low  = data.AgeRange.Low
                   let high = data.AgeRange.High
