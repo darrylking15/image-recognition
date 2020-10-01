@@ -69,9 +69,9 @@ massive({
     app.delete('/api/cred/:id', credCtrl.deleteCred); // delete credential by ID
     
     // Image Endpoints
-    app.get('/api/images', imageCtrl.getAllUserImages); // get all images by user
+    app.get('/api/images/:id', imageCtrl.getAllUserImages); // get all images by user
     app.post('/api/image', imageCtrl.addImage); // add image
-    app.get('/api/image', imageCtrl.getImage); // get specific image
+    app.get('/api/image/:id', imageCtrl.getImage); // get specific image
     app.put('/api/image/:id', imageCtrl.replaceImage); // replaces image by ID
     app.delete('/api/image/:id', imageCtrl.deleteImage); // deletes images by ID
 

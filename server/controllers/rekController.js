@@ -45,7 +45,7 @@ module.exports = {
             response.FaceMatches.forEach(data => {
                 let position   = data.Face.BoundingBox
                 let similarity = data.Similarity
-                //console.log(`The face at: ${position.Left}, ${position.Top} matches with ${similarity} % confidence`)
+                console.log(`The face at: ${position.Left}, ${position.Top} matches with ${similarity} % confidence`)
             }) 
             } 
             //console.log("Response from Rek ",response);
@@ -85,6 +85,9 @@ module.exports = {
                 //const idOfUser = userId; 
                 const db = req.app.get('db');
                 db.set_user_face( [ Bucket, faceId, Location, Key, ETag, base64, data, userId ] );
+                console.log("Index Faces Data: ", data);
+                console.log("Rek Response FaceRecords.Detail: ", data.FaceRecords[0].FaceDetail); 
+                res.status(200).send(data);
 
             }              // successful response
             rekReturn = {...data};

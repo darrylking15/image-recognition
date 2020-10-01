@@ -47,6 +47,11 @@ class Nav extends Component {
 		this.props.history.push('/Credentials')
 	}
 
+	handleImageListClick = () => {
+		console.log("Image List Clicked");
+		this.props.history.push('/ImageList')
+	}
+
 
 	render() {
 		return (
@@ -71,6 +76,13 @@ class Nav extends Component {
 									href='http://localhost:3000/#/'
 									src="https://cdn.discordapp.com/attachments/718455188100350035/758979653016485901/add_pass_icon.png"
 									onClick={ () => this.handleNewCredClick()}
+								/>
+								<img 
+									className='nav__credentials' 
+									alt='nav__credentials'
+									href='http://localhost:3000/#/'
+									src="https://cdn.iconscout.com/icon/free/png-256/grid-285-866290.png"
+									onClick={ () => this.handleImageListClick()}
 								/>
 							</div>
 							<img 
