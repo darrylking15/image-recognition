@@ -20,14 +20,15 @@ class DashProfile extends Component {
     }
 
     componentDidUpdate() {
-		if (!this.state.user.userId) {
-			try {
-                console.log("Session User Not Found, trying to get user on session")
-                this.getUserSession();
-            } catch {
-                console.log("No User on Session, Pushing to Dashboard")
-            }
-        }
+        //this.getUserSession();
+		// if (!this.state.user.userId) {
+		// 	try {
+        //         console.log("Session User Not Found, trying to get user on session")
+        //         this.getUserSession();
+        //     } catch {
+        //         console.log("No User on Session, Pushing to Dashboard")
+        //     }
+        // }
     }
     
  

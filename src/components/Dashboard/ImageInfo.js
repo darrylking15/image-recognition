@@ -104,13 +104,13 @@ class ImageInfo extends Component{
     
     render(){
 
+
         let stepView = () => { switch(this.state.stepCounter){
             case 0:
                 return(
                 <div className='add__photos'>
                     <h1 className='photo__title'>Image Info</h1>
                     <div className='photo__camera'>
-
                     </div>
                     <div className='photo__main__buttons'>
                         <button onClick={() => this.toggleCam()} className='take__photo'>Live Cam</button>
@@ -167,6 +167,7 @@ class ImageInfo extends Component{
                 return null
         } }
 
+
         return(
             <div className='photos'>
                 {stepView()}
@@ -177,3 +178,4 @@ class ImageInfo extends Component{
 const mapStateToProps = state => state;
 
 export default  connect(mapStateToProps, {getUserSessionRedux})(ImageInfo);
+
