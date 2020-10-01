@@ -78,18 +78,6 @@ class Dashboard extends Component{
         })
     }
     
-    // toggleShow = () => {
-    //     this.setState({showPassword: !this.state.showPassword})
-    // }
-    
-    // toggleEdit = () => {
-    //     this.setState({editToggle: !this.state.editToggle})
-    // }
-    
-      
-
-    
-
     render(){ 
         const credsMap = this.state.credentials.map((e, i) => {
 
@@ -99,31 +87,6 @@ class Dashboard extends Component{
                     e = {e}
                    getCredentials = {this.getCredentials}
                 />
-
-             
-                // <div key={e.cred_id}>
-                //         <div className="dashboard__item__main">
-                //             <div className='dashboard__item'>
-                //                 <p className="keyChain__item">{e.website_name}</p>
-                //                 <p className="keyChain__item">{e.website_url}</p>
-                //                 <p className="keyChain__item">{e.username}</p>
-                //                 <p  name='password' type={(this.state.showPassword) ? 'text' : 'password'} placeholder='PASSWORD' className="credential__input" />
-                //                 <i className={this.state.showPassword ?  'far fa-eye' : 'fas fa-eye-slash keyChain__password'}
-                //                     onClick={this.toggleShow}>{e.password}</i>
-                //                 <p className="keyChain__date">{Date(e.update_time)}</p>
-                //             </div>
-                //             <div className="edit__dropdown">
-                //                 <img alt='edit__dropdown' className="edit__dropdown__button" src="https://cdn.discordapp.com/attachments/718455188100350035/760075731136020530/Edit_dots.png" onClick={this.toggleEdit}/>
-                //                 {this.state.editToggle ? (
-                //                     <div className="edit__dropdown__menu">
-                //                         <button className="dashboard__edit" onClick={() => this.editKeyChain(e.cred_id)}>EDIT</button>
-                //                         <div className="edit__delete__border"></div>
-                //                         <button className="dashboard__delete" onClick={() => this.deleteKeyChain(e.cred_id)}>DELETE</button>
-                //                     </div>
-                //                 ) : null}
-                //             </div>
-                //         </div>
-                // </div>
             )})
 
       return(

@@ -55,7 +55,7 @@ class Login extends Component {
       .then((res) => {
         this.props.loginUser(res);
         console.log(res.data);
-        if (res.data.faceRec) {this.props.history.push("/faceVerify");} else {this.props.history.push("/dashboard");}
+        if (res.data.faceRec) {this.props.history.push("/faceverify");} else {this.props.history.push("/dashboard");}
       })
       .catch((err) => {
         console.log(err);
@@ -147,12 +147,16 @@ class Login extends Component {
               />
             </div>
             <div id="register__buttons">
-              <button
+              {/* <button
+                type="checkbox"
                 className="two__factor__button"
                 onClick={this.toggleFaceRec}
               >
                 Two factor authentication
-              </button>
+              </button> */}
+              <p>Enable Face Login.</p>
+              <input type='checkbox' checked={this.state.toggleFaceRec} className="two__factor__button" onChange={this.toggleFaceRec}/>
+              
               <div className="register__buttons__main">
                 <button className="register__button" onClick={this.register}>
                   REGISTER
