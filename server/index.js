@@ -79,7 +79,8 @@ massive({
      app.post('/compareFaces' , rekCtrl.compareFaces);
      app.put('/indexFaces', rekCtrl.indexFaces);
      app.post('/upload64S3', rekCtrl.upload64S3); 
-     app.post('/setProfileImage', rekCtrl.setProfileImage); 
+     app.post('/setProfileImage', rekCtrl.setProfileImage);
+     app.get('/detectFaces', rekCtrl.detectFaces);  
 
 
 // -End- Endpoints Frontend to Backend -------------------------------------------------------------------
