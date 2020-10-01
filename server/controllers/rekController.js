@@ -175,7 +175,7 @@ module.exports = {
               },
               Attributes: ['ALL']
             }
-            let resInfo = {};
+            let resInfo = {}; 
             rekognition.detectFaces(params, function(err, response) {
                 
               if (err) {
@@ -228,10 +228,11 @@ module.exports = {
                 // for response.faceDetails
             } 
             
-            console.log("rek detect", response.FaceDetails)// if
+            // console.log("rek detect", response.FaceDetails)// if
             resInfo = response.FaceDetails[0]
-        });
+            console.log( "line 233", response.FaceDetails[0])
             res.status(200).send(resInfo)
+        });
             
         }
 

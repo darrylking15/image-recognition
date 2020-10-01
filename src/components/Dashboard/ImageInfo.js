@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import store from '../../redux/store';
 import { connect } from 'react-redux';
+import { render } from 'node-sass';
 
 
 
@@ -10,48 +11,87 @@ import { connect } from 'react-redux';
 
 
 class ImageInfo extends Component{
-    constructor(){
-        super()
-        const reduxState = store.getState();
-        this.state = {
-            
-            user: reduxState.user,
-            
-
-            userId: reduxState.user.userId,
-           
-
-            
-
+    constructor(props) {
+            super(props);
+    
+            const reduxState = store.getState();
+    
+            this.state = {
+                stepCounter: 0,
+                webcamCapture: '',
+                matchSim: '',
+                imgSrc: '', 
+                imgId: 0,
+                imageInfo: {
+                    ETag: '',
+                    Location: '',
+                    Key: '',
+                    Bucket: ''
+                },
+                user: reduxState.user
+            }
         }
+    
     }
 
     componentDidMount = () => {
         this.getUserSession();
     }
 
-    getUserImages = async () => {
-        console.log("Detect Faces. ");
-        await axios
-            .get(`/api/images/1`)
-            .then( images => {
-                this.setState( { images: images.data } ) 
+    webcamRef = Webcam => {
+		this.Webcam = Webcam;
+	};
+
+	capture = () => {
+        console.log("Capture Called");
+		try {
+            const imageSrc = this.Webcam.getScreenshot( { width: 600, height: 480 } );
+		    this.setState( {webcamCapture: imageSrc, stepCounter: 2} )
+        }
+        catch {
+            alert("Turn on Webcam to capture photo")
+        }
+    };
+
+	sendToS3 = () => {
+        console.log("Send to S3 Called");
+        const userId = this.state.user.userId;
+        const base64Img = this.state.webcamCapture;
+        axios
+            .post('/upload64S3', { 
+            userId: userId,
+            imageBinary: base64Img
             } )
-            .catch( error => console.log(error) )
+            .then( res => {
+                this.setState( {
+                    imgId: res.data.imgId,
+					imageInfo: res.data.imageInfo,
+					stepCounter: 3
+                } );
+                console.log("Send to S3 Return Data: ", res.data);
+            } )
+            .catch( error => console.log(error) );
+	}
+	
+
+    detectFaces = async () => {
+        console.log("Detect Faces. ");
+         axios
+            .post('/detectFaces', {
+                Key: Key
+            })
+            
     }
 
 
     
-    render(){ 
+    render(){
         return(
             <div>
-                <p>Hello</p>
+
             </div>
         )
     }
-        
-
-}
 const mapStateToProps = state => state;
 
 export default  connect(mapStateToProps)(ImageInfo);
