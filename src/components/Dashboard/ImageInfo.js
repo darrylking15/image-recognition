@@ -1,34 +1,97 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+
+import React, { Component } from 'react'
+import axios from 'axios'
+import store from '../../redux/store';
+import { connect } from 'react-redux';
+import { render } from 'node-sass';
 
 
-const ImageInfo = (props) => {
 
-    const [imageInfo, setImageInfo] = useState();
-    const [imageURL, setImageURL] = useState("https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg");
-    //let imageInfo = {};
 
-    useEffect( () => {
-        getImageInfo();
-      }, [])
 
-    const getImageInfo = async () => {
-        const imageId = 36;
-        await axios
-            .get(`/api/image/${imageId}`)
-            .then( incomingInfo => {
-                setImageInfo(incomingInfo.data[0]);
-                setImageURL(incomingInfo.data[0].s3_url);
-            } )
-            .catch( error => console.log(error) )
+
+class ImageInfo extends Component{
+    constructor(props) {
+            super(props);
+    
+            const reduxState = store.getState();
+    
+            this.state = {
+                stepCounter: 0,
+                webcamCapture: '',
+                matchSim: '',
+                imgSrc: '', 
+                imgId: 0,
+                imageInfo: {
+                    ETag: '',
+                    Location: '',
+                    Key: '',
+                    Bucket: ''
+                },
+                user: reduxState.user
+            }
+        }
+    
     }
 
-    return(
-        <div className="imageCard__component">
-            <img src={imageURL} alt="#"/>
-            <p>{JSON.stringify(imageInfo)}</p>
-        </div>
-    )
-}
+    componentDidMount = () => {
+        this.getUserSession();
+    }
 
-export default ImageInfo;
+    webcamRef = Webcam => {
+		this.Webcam = Webcam;
+	};
+
+	capture = () => {
+        console.log("Capture Called");
+		try {
+            const imageSrc = this.Webcam.getScreenshot( { width: 600, height: 480 } );
+		    this.setState( {webcamCapture: imageSrc, stepCounter: 2} )
+        }
+        catch {
+            alert("Turn on Webcam to capture photo")
+        }
+    };
+
+	sendToS3 = () => {
+        console.log("Send to S3 Called");
+        const userId = this.state.user.userId;
+        const base64Img = this.state.webcamCapture;
+        axios
+            .post('/upload64S3', { 
+            userId: userId,
+            imageBinary: base64Img
+            } )
+            .then( res => {
+                this.setState( {
+                    imgId: res.data.imgId,
+					imageInfo: res.data.imageInfo,
+					stepCounter: 3
+                } );
+                console.log("Send to S3 Return Data: ", res.data);
+            } )
+            .catch( error => console.log(error) );
+	}
+	
+
+    detectFaces = async () => {
+        console.log("Detect Faces. ");
+         axios
+            .post('/detectFaces', {
+                Key: Key
+            })
+            
+    }
+
+
+    
+    render(){
+        return(
+            <div>
+
+            </div>
+        )
+    }
+const mapStateToProps = state => state;
+
+export default  connect(mapStateToProps)(ImageInfo);
