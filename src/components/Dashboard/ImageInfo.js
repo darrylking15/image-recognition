@@ -81,7 +81,8 @@ class ImageInfo extends Component{
                 Key: Key
             })
             
-    }
+            
+    
 
 
     
@@ -92,6 +93,7 @@ class ImageInfo extends Component{
             </div>
         )
     }
+
 const mapStateToProps = state => state;
 
 export default  connect(mapStateToProps)(ImageInfo);
