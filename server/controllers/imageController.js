@@ -28,6 +28,14 @@ module.exports = {
             } )
     },
 
+    deleteImage: async (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        await db.delete_image(id).then(item => {
+            res.status(200).send(item)
+        })
+    },
+
     addImage: async (req, res) => {
 
     },
@@ -35,9 +43,7 @@ module.exports = {
 
     replaceImage: async (req, res) => {
 
-    },
-
-    deleteImage: async (req, res) => {
-
     }
+
+    
 }

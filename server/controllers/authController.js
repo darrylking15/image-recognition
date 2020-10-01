@@ -74,6 +74,7 @@ module.exports = {
         console.log("Logout Called");
         req.session.destroy();
         res.status(200).send("Logout Successful");
+        console.log(req.session);
     },
 
     updateUser: async (req, res) => {

@@ -36,7 +36,7 @@ class ImageList extends Component {
     render(){
 
         const imageMap = this.state.images.map( (e, i) => {
-            return <ImageCard key = { i } imageInfo = { e } /> 
+            return <ImageCard key = { i } imageInfo = { e } getUserImages = { this.getUserImages }/> 
         } )
 
         return(

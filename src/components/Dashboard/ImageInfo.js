@@ -25,7 +25,7 @@ const ImageInfo = (props) => {
 
     return(
         <div className="imageCard__component">
-            <img src={imageURL}/>
+            <img src={imageURL} alt="#"/>
             <p>{JSON.stringify(imageInfo)}</p>
         </div>
     )
