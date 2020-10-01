@@ -1,18 +1,23 @@
 
 import React, { Component } from 'react'
 import axios from 'axios'
-import { withRouter } from 'react-router-dom'; 
-import { logoutUser} from '../../redux/reducer'
-// import store from '../../redux/store';
+import { logoutUser } from '../../redux/reducer'
+import store from '../../redux/store';
+import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+
 
 
 class Nav extends Component {
 	constructor() {
 		super()
 
+		const reduxState = store.getState();
+
 		this.state = {
             dropDown: false,
-            hamburger: false
+			hamburger: false,
+			user: reduxState.user
 		}
 	}
 
@@ -31,27 +36,26 @@ class Nav extends Component {
 	
 	logout = () => {
         axios.delete('/auth/logout').then( res => {
-            logoutUser();
-            this.props.history.push('/')
+            this.props.logoutUser();
         } ).catch( err => {
             console.log(err)
         })
 	}
 	
-	handleNewPhotoClick = () => {
-		console.log("New Photo Clicked");
-		this.props.history.push('/Photos');
-	}
+	// handleNewPhotoClick = () => {
+	// 	console.log("New Photo Clicked");
+	// 	//this.props.history.push('/Photos');
+	// }
 	
-	handleNewCredClick = () => {
-		console.log("New Cred Clicked");
-		this.props.history.push('/Credentials')
-	}
+	// handleNewCredClick = () => {
+	// 	console.log("New Cred Clicked");
+	// 	this.props.history.push('/Credentials')
+	// }
 
-	handleImageListClick = () => {
-		console.log("Image List Clicked");
-		this.props.history.push('/ImageList')
-	}
+	// handleImageListClick = () => {
+	// 	console.log("Image List Clicked");
+	// 	this.props.history.push('/ImageList')
+	// }
 
 
 	render() {
@@ -64,35 +68,32 @@ class Nav extends Component {
 					<div className='nav--dropDown'>
 						<div className="nav__icons">
 							<div className="nav__top">
-								<img
+								<Link to="/photos"><img
 									className='nav__faceVerify'
 									href='http://localhost:3000/#/faceverify'
 									alt='nav__faceVerify'
 									src="https://cdn.discordapp.com/attachments/718455188100350035/758979650629402654/add_face_icon.png"
-									onClick={ () => this.handleNewPhotoClick()}
-								/>
-								<img 
+								/></Link>
+								<Link to="/credentials"><img 
 									className='nav__credentials' 
 									alt='nav__credentials'
 									href='http://localhost:3000/#/'
 									src="https://cdn.discordapp.com/attachments/718455188100350035/758979653016485901/add_pass_icon.png"
-									onClick={ () => this.handleNewCredClick()}
-								/>
-								<img 
+								/></Link>
+								<Link to="/imagelist"><img 
 									className='nav__credentials' 
 									alt='nav__credentials'
 									href='http://localhost:3000/#/'
 									src="https://cdn.iconscout.com/icon/free/png-256/grid-285-866290.png"
-									onClick={ () => this.handleImageListClick()}
-								/>
+								/></Link>
 							</div>
-							<img 
+							<Link to="/"><img 
 								className="nav__logout" 
 								alt='nav__logout'
 								href='http://localhost:3000/#/'
 								src="https://cdn.discordapp.com/attachments/718455188100350035/758979655754579968/Logout_Icon.png"
 								onClick={ () => this.logout() }
-							/>
+							/></Link>
 						</div>
 						<div className="nav__border"></div>
 					</div>
@@ -102,4 +103,6 @@ class Nav extends Component {
 	}
 }
 
-export default withRouter(Nav);
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, {logoutUser})(Nav);

@@ -36,6 +36,7 @@ class Dashboard extends Component{
     componentDidUpdate() {
 		if (!this.state.user.userId) {
 			try {
+                console.log("Session User Not Found, trying to get user on session")
                 this.getUserSession();
             } catch {
                 console.log("No User on Session, Pushing to Dashboard")

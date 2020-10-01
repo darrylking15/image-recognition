@@ -158,11 +158,11 @@ class Login extends Component {
               <input type='checkbox' checked={this.state.toggleFaceRec} className="two__factor__button" onChange={this.toggleFaceRec}/>
               
               <div className="register__buttons__main">
+              <button className="register__button" onClick={this.toggleReg}>
+                  BACK TO LOGIN
+                </button>
                 <button className="register__button" onClick={this.register}>
                   REGISTER
-                </button>
-                <button className="register__button" onClick={this.toggleReg}>
-                  BACK TO LOGIN
                 </button>
               </div>
             </div>

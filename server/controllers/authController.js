@@ -66,8 +66,31 @@ module.exports = {
         }
     },
 
-    faceVerify: async (req, res) => {
-
+    getUserInfo: async (req, res) => {
+        console.log("Get User Info Called");
+        const db = req.app.get('db');
+        userId = +req.params.id
+        const user = await db.get_user_info([userId]);
+        if (!user[0]) {
+            return res.status(404).send('User does not exist');
+        } else {
+            req.session.user = {
+                userId:       user[0].user_id,
+                email:        user[0].email,
+                firstName:    user[0].first_name,
+                lastName:     user[0].last_name,
+                faceRec:      user[0].face_rec,
+                isAdmin:      user[0].is_admin,
+                faceId:       user[0].face_id,
+                faceUrl:      user[0].face_url,
+                faceBucket:   user[0].face_bucket,
+                faceKey:      user[0].face_key,
+                faceBase64:   user[0].face_base64,
+                faceMetaData: user[0].face_metadata
+            }
+            console.log(`User Info Updated For: ${user[0].email}`);
+            res.status(200).send(req.session.user)
+            }
     },
 
     logout: async (req, res) => {
