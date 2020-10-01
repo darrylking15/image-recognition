@@ -20,6 +20,7 @@
     background-color: rgba(32, 40, 51, 0.5);
     width: 400px;
     height: 450px;
+    margin-top: 150px;
 
     .login__title{
       // display: flex;
@@ -71,6 +72,31 @@
         mix-blend-mode: overlay;
         // margin-top: 5px;
         // width: 25%;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .About__Component {
+    height: 180px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    mix-blend-mode: overlay;
+    .About__Title {
+      height: 20px;
+      font-size: 20px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: $mint-color;
+    }
+    .About__Icons__List {
+      margin-top: 5px;
+
+      .About__Icons {
+        width: 30px;
+        margin: 4px;
       }
     }
   }

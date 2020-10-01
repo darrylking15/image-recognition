@@ -10,6 +10,7 @@
     background-color: rgba(32, 40, 51, 0.5);
     width: 490px;
     height: 570px;
+    margin-top: 150px;
   
     .register__title {
       // display: flex;
@@ -49,16 +50,31 @@
       height: 22%;
       // margin-bottom: 15px;
       // padding-top: 20px;
-      .two__factor__button {
-        margin-bottom: 15px;
-        height: 40px;
-        width: 160px;
-        background-color: transparent;
-        border-color: $mint-color;
-        color: $light-gray-color;
-        mix-blend-mode: overlay;
+
+      .two__factor__auth {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        .two__factor__title {
+          font-size: 18px;
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+          color: $mint-color;
+          mix-blend-mode: overlay;
+        }
+        .two__factor__button {
+          height: 30px;
+          width: 30px;
+          background-color: transparent;
+          border-color: $mint-color;
+          color: $light-gray-color;
+          mix-blend-mode: overlay;
+          margin-right: 15px;
+          cursor: pointer;
+        }
       }
-  
+
       .register__button {
         // font: $geneva-font-stack;
         margin-right: 15px;
@@ -70,6 +86,7 @@
         mix-blend-mode: overlay;
         // margin-top: 5px;
         // width: 25%;
+        cursor: pointer;
       }
     }
   }

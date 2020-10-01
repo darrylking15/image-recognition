@@ -4,6 +4,11 @@ import axios from 'axios'
 import { withRouter } from 'react-router-dom'; 
 import { logoutUser} from '../../redux/reducer'
 // import store from '../../redux/store';
+import MenuLines from './Nav Icons/menu_lines.png';
+import AddFace from './Nav Icons/add_face_icon.png';
+import AddPass from './Nav Icons/add_pass_icon.png';
+import GridIcon from './Nav Icons/grid_icon.png';
+import LogOut from './Nav Icons/Logout_Icon.png';
 
 
 class Nav extends Component {
@@ -58,7 +63,7 @@ class Nav extends Component {
 		return (
 			<div className="Nav__component">
 				<div className='dropdown' onClick={this.toggleDropDown}>
-					<img onClick={this.toggleHamburger} alt='dropDownMenu' className='menu__lines' src="https://cdn.discordapp.com/attachments/718455188100350035/758979657546072074/menu_lines.png"/>
+					<img onClick={this.toggleHamburger} alt='dropDownMenu' className='menu__lines' src={MenuLines}/>
 				</div>
 				{this.state.dropDown && this.state.hamburger ? (
 					<div className='nav--dropDown'>
@@ -68,21 +73,21 @@ class Nav extends Component {
 									className='nav__faceVerify'
 									href='http://localhost:3000/#/faceverify'
 									alt='nav__faceVerify'
-									src="https://cdn.discordapp.com/attachments/718455188100350035/758979650629402654/add_face_icon.png"
+									src={AddFace}
 									onClick={ () => this.handleNewPhotoClick()}
 								/>
 								<img 
 									className='nav__credentials' 
 									alt='nav__credentials'
 									href='http://localhost:3000/#/'
-									src="https://cdn.discordapp.com/attachments/718455188100350035/758979653016485901/add_pass_icon.png"
+									src={AddPass}
 									onClick={ () => this.handleNewCredClick()}
 								/>
 								<img 
-									className='nav__credentials' 
+									className='nav__credentials__list' 
 									alt='nav__credentials'
 									href='http://localhost:3000/#/'
-									src="https://cdn.iconscout.com/icon/free/png-256/grid-285-866290.png"
+									src={GridIcon}
 									onClick={ () => this.handleImageListClick()}
 								/>
 							</div>
@@ -90,7 +95,7 @@ class Nav extends Component {
 								className="nav__logout" 
 								alt='nav__logout'
 								href='http://localhost:3000/#/'
-								src="https://cdn.discordapp.com/attachments/718455188100350035/758979655754579968/Logout_Icon.png"
+								src={LogOut}
 								onClick={ () => this.logout() }
 							/>
 						</div>

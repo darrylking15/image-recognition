@@ -414,6 +414,7 @@
   background-color: rgba(32, 40, 51, 0.5);
   width: 400px;
   height: 450px;
+  margin-top: 150px;
 }
 
 .auth__component .login--container .login__title {
@@ -457,6 +458,33 @@
   border-color: #66FCF1;
   color: white;
   mix-blend-mode: overlay;
+  cursor: pointer;
+}
+
+.auth__component .About__Component {
+  height: 180px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  mix-blend-mode: overlay;
+}
+
+.auth__component .About__Component .About__Title {
+  height: 20px;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #66FCF1;
+}
+
+.auth__component .About__Component .About__Icons__List {
+  margin-top: 5px;
+}
+
+.auth__component .About__Component .About__Icons__List .About__Icons {
+  width: 30px;
+  margin: 4px;
 }
 
 .Nav__component {
@@ -476,10 +504,11 @@
   width: 65px;
   margin: 15px;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .Nav__component .nav--dropDown {
-  height: 90vh;
+  height: 92vh;
   width: 120px;
   display: flex;
   flex-direction: row;
@@ -502,7 +531,7 @@
 }
 
 .Nav__component .nav--dropDown .nav__icons .nav__top {
-  height: 170px;
+  height: 280px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -513,15 +542,23 @@
 
 .Nav__component .nav--dropDown .nav__icons .nav__top .nav__faceVerify {
   width: 65px;
+  cursor: pointer;
 }
 
 .Nav__component .nav--dropDown .nav__icons .nav__top .nav__credentials {
   width: 65px;
+  cursor: pointer;
+}
+
+.Nav__component .nav--dropDown .nav__icons .nav__top .nav__credentials__list {
+  width: 65px;
+  cursor: pointer;
 }
 
 .Nav__component .nav--dropDown .nav__icons .nav__logout {
   width: 65px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .Nav__component .nav--dropDown .nav__border {
@@ -645,6 +682,7 @@
   background-color: rgba(32, 40, 51, 0.5);
   width: 490px;
   height: 570px;
+  margin-top: 150px;
 }
 
 .register--container .register__title {
@@ -681,14 +719,30 @@
   height: 22%;
 }
 
-.register--container #register__buttons .two__factor__button {
-  margin-bottom: 15px;
-  height: 40px;
-  width: 160px;
+.register--container #register__buttons .two__factor__auth {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.register--container #register__buttons .two__factor__auth .two__factor__title {
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #66FCF1;
+  mix-blend-mode: overlay;
+}
+
+.register--container #register__buttons .two__factor__auth .two__factor__button {
+  height: 30px;
+  width: 30px;
   background-color: transparent;
   border-color: #66FCF1;
   color: #C5C6C7;
   mix-blend-mode: overlay;
+  margin-right: 15px;
+  cursor: pointer;
 }
 
 .register--container #register__buttons .register__button {
@@ -699,14 +753,12 @@
   border-color: #66FCF1;
   color: #C5C6C7;
   mix-blend-mode: overlay;
+  cursor: pointer;
 }
 
 .imageList__component {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .imageCard__component {
@@ -717,12 +769,8 @@
 }
 
 .imageCard__title--container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 
 .imageCard__image {
