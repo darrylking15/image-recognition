@@ -1,34 +1,57 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+
+import React, { Component } from 'react'
+import axios from 'axios'
+import store from '../../redux/store';
+import { connect } from 'react-redux';
 
 
-const ImageInfo = (props) => {
 
-    const [imageInfo, setImageInfo] = useState();
-    const [imageURL, setImageURL] = useState("https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg");
-    //let imageInfo = {};
 
-    useEffect( () => {
-        getImageInfo();
-      }, [])
 
-    const getImageInfo = async () => {
-        const imageId = 36;
+
+class ImageInfo extends Component{
+    constructor(){
+        super()
+        const reduxState = store.getState();
+        this.state = {
+            
+            user: reduxState.user,
+            
+
+            userId: reduxState.user.userId,
+           
+
+            
+
+        }
+    }
+
+    componentDidMount = () => {
+        this.getUserSession();
+    }
+
+    getUserImages = async () => {
+        console.log("Detect Faces. ");
         await axios
-            .get(`/api/image/${imageId}`)
-            .then( incomingInfo => {
-                setImageInfo(incomingInfo.data[0]);
-                setImageURL(incomingInfo.data[0].s3_url);
+            .get(`/api/images/1`)
+            .then( images => {
+                this.setState( { images: images.data } ) 
             } )
             .catch( error => console.log(error) )
     }
 
-    return(
-        <div className="imageCard__component">
-            <img src={imageURL} alt="#"/>
-            <p>{JSON.stringify(imageInfo)}</p>
-        </div>
-    )
-}
 
-export default ImageInfo;
+    
+    render(){ 
+        return(
+            <div>
+                <p>Hello</p>
+            </div>
+        )
+    }
+        
+
+}
+const mapStateToProps = state => state;
+
+export default  connect(mapStateToProps)(ImageInfo);

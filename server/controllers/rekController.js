@@ -175,12 +175,16 @@ module.exports = {
               },
               Attributes: ['ALL']
             }
+            let resInfo = {};
             rekognition.detectFaces(params, function(err, response) {
+                
               if (err) {
                 console.log(err, err.stack); // an error occurred
               } else {
+                
                 console.log(`Detected faces for: ${Key}`)
                 response.FaceDetails.forEach(data => {
+                    
                   let low  = data.AgeRange.Low
                   let high = data.AgeRange.High
                   console.log(`The detected face is between: ${low} and ${high} years old`)
@@ -220,13 +224,18 @@ module.exports = {
                   console.log(`  Confidence:             ${data.Confidence}`)
                   console.log("------------")
                   console.log("")
-                }) // for response.faceDetails
-              } // if
-            });
-         
+                }) 
+                // for response.faceDetails
+            } 
+            
+            console.log("rek detect", response.FaceDetails)// if
+            resInfo = response.FaceDetails[0]
+        });
+            res.status(200).send(resInfo)
+            
         }
 
 
-
+       
     }
        
