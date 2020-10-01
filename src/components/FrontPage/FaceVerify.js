@@ -114,7 +114,7 @@ class FaceVerify extends Component{
 				return(
 					<div className='faceVerify--container'>
 						<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
-						<Webcam height={300} width={400} audio={false} ref={this.webcamRef} screenshotFormat='image/jpeg' className='photo__img' /> 
+						<Webcam height={200} width={300} audio={false} ref={this.webcamRef} screenshotFormat='image/jpeg' className='photo__img' /> 
 						<div className='faceVerify__buttons'>
 							<div className="faceVerify__buttons__top">
 								<button onClick={() => this.capture()} className='faceVerify__button__top'>Capture</button>
@@ -129,7 +129,7 @@ class FaceVerify extends Component{
 				return(
 					<div className='faceVerify--container'>
 						<h3 className="faceVerify__title">FACE VERIFICATION</h3> 
-						<img height={300} width={400}  src={this.state.webcamCapture} alt="capture"/>
+						<img height={200} width={300}  src={this.state.webcamCapture} alt="capture"/>
 						<div className='faceVerify__buttons'>
 							<div className="faceVerify__buttons__top">
 								<button onClick={() => this.setState( { stepCounter: 1 } ) } className='faceVerify__button__top'>Try Again</button>

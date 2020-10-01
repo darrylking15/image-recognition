@@ -13,12 +13,13 @@
             width: 65px;
             margin: 15px;
             margin-top: 20px;
+            cursor: pointer;
         }
 
         
     }
     .nav--dropDown {
-        height: 90vh;
+        height: 92vh;
         width: 120px;
         display: flex;
         flex-direction: row;
@@ -38,7 +39,7 @@
             justify-content: space-between;
             align-items: center;
             .nav__top{
-                height: 170px;
+                height: 280px;
                 margin-top: 20px;
                 display: flex;
                 flex-direction: column;
@@ -47,16 +48,24 @@
                 align-items: center;
                 .nav__faceVerify {
                     width: 65px;
+                    cursor: pointer;
                     // height: 50px;
                 }
         
                 .nav__credentials {
                     width: 65px;
+                    cursor: pointer;
+                }
+
+                .nav__credentials__list {
+                    width: 65px;
+                    cursor: pointer;
                 }
             }
             .nav__logout {
                 width: 65px;
                 margin-bottom: 20px;
+                cursor: pointer;
             }
         }
         .nav__border {

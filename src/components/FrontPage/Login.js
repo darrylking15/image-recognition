@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { loginUser } from "../../redux/reducer";
+import About from './About';
 
 // import './styles/Login.css'
 
@@ -79,6 +80,7 @@ class Login extends Component {
     const { firstName, lastName, email, password } = this.state;
     return (
       <div className="auth__component">
+        
         {!this.state.newUser ? (
           <div className="login--container">
             <h1 className="login__title">WELCOME</h1>
@@ -154,8 +156,10 @@ class Login extends Component {
               >
                 Two factor authentication
               </button> */}
-              <p>Enable Face Login.</p>
-              <input type='checkbox' checked={this.state.toggleFaceRec} className="two__factor__button" onChange={this.toggleFaceRec}/>
+              <div className="two__factor__auth">
+                <input type='checkbox' checked={this.state.toggleFaceRec} className="two__factor__button" onChange={this.toggleFaceRec}/>
+                <p className="two__factor__title">Enable Face Login.</p>
+              </div>
               
               <div className="register__buttons__main">
               <button className="register__button" onClick={this.toggleReg}>
@@ -168,6 +172,8 @@ class Login extends Component {
             </div>
           </div>
         )}
+        
+        <About />
       </div>
     );
   }
