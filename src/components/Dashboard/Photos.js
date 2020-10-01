@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Webcam from 'react-webcam';
 import store from '../../redux/store';
 import { connect } from 'react-redux';
+import { getUserSessionRedux } from '../../redux/reducer';
 import axios from 'axios';
 
 import './Photos.css'
@@ -26,6 +27,45 @@ class Photos extends Component{
             },
             user: reduxState.user
         }
+    }
+
+    componentDidMount = () => {
+        this.getUserSession();
+    }
+
+    // componentDidUpdate() {
+	// 	if (!this.state.user.userId) {
+	// 		try {
+    //             console.log("Session User Not Found, trying to get user on session")
+    //             this.getUserSession();
+    //         } catch {
+    //             console.log("No User on Session, Pushing to Dashboard")
+    //         }
+    //     }
+    // }
+    
+ 
+    getUserSession = async () => {
+        console.log("Get User Session Called")
+        await axios
+            .get('/auth/getsession')
+            .then( res => {
+                console.log("Photos Update User from Session", res.data);
+                this.props.getUserSessionRedux(res)
+                this.setState( { user: store.getState().user } )
+            } )     
+    }
+
+    getUpdatedUserInfo = async () => {
+        console.log("Get Updated User Info Called")
+        const id = this.state.user.userId;
+        await axios
+            .get(`/auth/userinfo/${id}`)
+            .then( res => {
+                console.log("Photos Update User from DB", res.data);
+                this.props.getUserSessionRedux(res)
+                this.setState( { user: store.getState().user } )
+            } )   
     }
 
     toggleCam = () => {
@@ -84,6 +124,7 @@ class Photos extends Component{
             } )
             .then( data => {
                 console.log('Index Faces Return Data', data);
+                this.getUpdatedUserInfo();
             } )
             .catch( error => console.log(error) );
            console.log("Indexing Photo for User: ", userId); 
@@ -163,34 +204,6 @@ class Photos extends Component{
         return(
             <div className='photos'>
                 {stepView()}
-                {/* <div className='add__photos'>
-                    <h1 className='photo__title'>Face Input</h1>
-                    <div className='photo__camera'>
-                    
-                    { this.state.startCam ? this.state.toggleCamToImage ? 
-                        <img alt='photos' height={300} width={400}  src={this.state.webcamCapture} /> 
-                        : 
-                            <Webcam
-                            // height={250}
-                            // width={200}
-                            audio={false}
-                            ref={this.webcamRef}
-                            screenshotFormat='image/jpeg'
-                            className='photo__img'
-                            /> 
-                        : null }
-                        
-                    </div>
-                    <div className='photo__main__buttons'>
-                        <button onClick={() => this.toggleCam()} className='take__photo'>Live Cam</button>
-                        <button onClick={() => this.capture()} className='take__photo'>Capture</button>
-                        <button onClick={() => this.sendToS3()} className='take__photo'>Save Photo</button>
-                    </div>
-                    <div className='photo__finish__buttons'>
-                        <button className='photo__cancel'>Cancel</button>
-                        <button className='photo__submit' onClick={() => this.indexPhoto()} >Submit</button>
-                    </div>
-                </div> */}
             </div>
         )
     }
@@ -198,4 +211,4 @@ class Photos extends Component{
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps)(Photos);
+export default connect(mapStateToProps, { getUserSessionRedux })(Photos);

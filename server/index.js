@@ -56,7 +56,7 @@ massive({
     // Auth Endpoints
     app.post('/auth/register', authCtrl.register); // create a new user in the database
     app.post('/auth/login', authCtrl.login); // logs in a user, and creates a session
-    app.post('/auth/faceverify', authCtrl.faceVerify); // Verifies user by face
+    app.get('/auth/userinfo/:id', authCtrl.getUserInfo); // Verifies user by face
     app.delete('/auth/logout', authCtrl.logout); // logs out a user
     app.put('/auth/user/update/:id', authCtrl.updateUser); // updates user info by ID
     app.get('/auth/getsession', authCtrl.getSession); // returns session user

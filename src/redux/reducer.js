@@ -21,7 +21,7 @@ export function loginUser(user) {
 }
 
 export function logoutUser() {
-    console.log("Reducer Logout");
+    console.log("Action Creator Logout");
     return {
         type: LOGOUT_USER,
         payload: initialState
@@ -46,12 +46,12 @@ export function getUserCredentialsRedux(creds) {
 
 // Reducer Function
 export default function reducer(state = initialState, action) {
-    //console.log('****Reducer', action)
+    console.log('****Reducer Action', action, "initial state: ", initialState)
     switch(action.type) {
         case LOGIN_USER: 
             return { ...state, user: action.payload.data}
         case LOGOUT_USER: 
-            return initialState
+        return { ...state, user: null}
         case GET_SESSION + "_PENDING":
             return state
         case GET_SESSION + "_FULFILLED":
