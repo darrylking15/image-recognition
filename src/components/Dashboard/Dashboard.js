@@ -94,6 +94,13 @@ class Dashboard extends Component{
         <div className='dashboard__component'>
             <DashProfile />
             <div className="dash__profile__border"></div>
+            <div className="display__header">
+                <p className="display__piece">Website Name</p>
+                <p className="display__piece">Website URL</p>
+                <p className="display__piece">Username</p>
+                <p className="display__password">Password (click to reveal)</p>
+                <p className="display__date">Date</p>
+            </div>
             {credsMap}
         </div>
         )
