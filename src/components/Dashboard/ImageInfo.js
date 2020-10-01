@@ -25,7 +25,8 @@ class ImageInfo extends Component{
                     Key: '',
                     Bucket: ''
                 },
-                user: reduxState.user
+                user: reduxState.user,
+                faceInfo: {}
             }
     }
 
@@ -95,13 +96,14 @@ class ImageInfo extends Component{
             } )
             .then( res => {
                 this.setState( {
-					stepCounter: 3
+                    stepCounter: 4,
+                    faceInfo: res.data
                 } );
                 console.log("Face Info: ", res.data);
             } )
             .catch( error => console.log(error) );
     }
-    
+    //
     render(){
 
 
@@ -161,6 +163,24 @@ class ImageInfo extends Component{
                     <div className='photo__finish__buttons'>
                         <button onClick={() => this.handleCancel()} className='photo__cancel'>Cancel</button>
                         <button className='photo__submit' onClick={() => this.getFaceInfo()} >Analyze Photo</button>
+                    </div>
+                </div>)
+            case 4:
+                return(
+                <div className='add__photos'>
+                    <h1 className='photo__title'>Face Info</h1>
+                    <div className='photo__camera'>
+                        <img alt='photos' height={300} width={400}  src={this.state.webcamCapture} /> 
+                    </div>
+                    <div className='photo__main__buttons'>
+                        <button onClick={() => this.toggleCam()} className='take__photo'>Try Again</button>
+                    </div>
+                    <div className='photo__finish__buttons'>
+                        <button onClick={() => this.handleCancel()} className='photo__cancel'>Cancel</button>
+                        <button className='photo__submit' onClick={() => this.getFaceInfo()} >Analyze Photo</button>
+                    </div>
+                    <div className="faceInfo--container">
+                        <p>Info Here</p>
                     </div>
                 </div>)
             default: 
