@@ -3,9 +3,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import store from '../../redux/store';
 import { connect } from 'react-redux';
-import { render } from 'node-sass';
-
-
+//import { render } from 'node-sass';
 
 
 
@@ -30,7 +28,7 @@ class ImageInfo extends Component{
                 },
                 user: reduxState.user
             }
-        }
+        
     
     }
 
@@ -74,14 +72,14 @@ class ImageInfo extends Component{
 	}
 	
 
-    detectFaces = async () => {
-        console.log("Detect Faces. ");
-         axios
-            .post('/detectFaces', {
-                Key: Key
-            })
+    // detectFaces = async () => {
+    //     console.log("Detect Faces. ");
+    //      axios
+    //         .post('/detectFaces', {
+    //             Key: Key
+    //         })
             
-    }
+    // }
 
 
     
@@ -92,6 +90,7 @@ class ImageInfo extends Component{
             </div>
         )
     }
+}
 const mapStateToProps = state => state;
 
 export default  connect(mapStateToProps)(ImageInfo);
