@@ -72,25 +72,27 @@ class ImageInfo extends Component{
 	}
 	
 
-    // detectFaces = async () => {
-    //     console.log("Detect Faces. ");
-    //      axios
-    //         .post('/detectFaces', {
-    //             Key: Key
-    //         })
+    detectFaces = async () => {
+        console.log("Detect Faces. ");
+         axios
+            .post('/detectFaces', {
+                Key: this.state.imageInfo.Key
+            })
             
-    // }
+    }
 
 
     
     render(){
+        console.log(this.props)
         return(
             <div>
-
+                 <p>Hello</p>
             </div>
         )
     }
 }
 const mapStateToProps = state => state;
+
 
 export default  connect(mapStateToProps)(ImageInfo);
