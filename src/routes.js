@@ -20,6 +20,7 @@ export default (
         <Route path='/Credentials' component={Credentials} />
         <Route path='/Photos' component={Photos} />
         <Route path='/ImageList' component={ImageList} />
-        <Route path='/Image/:imageid' component={ImageInfo} />
+        {/* <Route path='/Image/:imageid' component={ImageInfo} /> */}
+        <Route path='/Imageinfo' component={ImageInfo} />
     </Switch>
 )
