@@ -46,7 +46,7 @@ class Dashboard extends Component{
     }
  
     getUserSession = async () => {
-        console.log("---Updating User Session")
+        console.log("Dash Updating User Session")
         await axios
             .get('/auth/getsession')
             .then( res => {

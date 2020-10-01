@@ -133,7 +133,7 @@ module.exports = {
                 }
                 //Save to Database
                 const db = req.app.get('db');
-                const {ETag, Location, Key, Bucket} = data;
+                const {Location, Key, Bucket} = data;
                 const timestamp = Date.now();
                 const imgKey = await db.post_image( [ userId, timestamp, Location, Bucket, Key, timestamp ] )
                 console.log("ImageKey: ", imgKey);
