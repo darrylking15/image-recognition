@@ -12,6 +12,22 @@
   width: 100vw;
 }
 
+@media (max-width: 450px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: center;
+    background-image: url(https://cdn.discordapp.com/attachments/718455188100350035/758060068154507325/group_project_background.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
 .credential__component {
   height: 100vh;
   width: 90vw;
@@ -87,6 +103,77 @@
   mix-blend-mode: overlay;
 }
 
+@media (max-width: 450px) {
+  .credential__component {
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .credential__component .credential__main {
+    height: 500px;
+    width: 330px;
+    background-color: rgba(32, 40, 51, 0.5);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .credential__component .credential__main .credential__title {
+    color: #66FCF1;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .credential__component .credential__main .credential__main__inputs {
+    width: 100%;
+    height: 250px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .credential__component .credential__main .credential__main__inputs .credential__input {
+    height: 60px;
+    width: 230px;
+    padding: 5px;
+    text-align: center;
+    background-color: rgba(11, 12, 16, 0.5);
+    color: white;
+    border-color: transparent;
+  }
+  .credential__component .credential__main .credential__buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    height: 80px;
+    width: 100%;
+  }
+  .credential__component .credential__main .credential__buttons .credential__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 70px;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 15px;
+    border: 4px solid #66FCF1;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    mix-blend-mode: overlay;
+  }
+}
+
 .dashboard__component {
   height: 100vh;
   width: 90vw;
@@ -110,7 +197,33 @@
   margin-bottom: 10px;
 }
 
-.dashboard__component .display__header .display__piece {
+.dashboard__component .display__header .display__name {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+  color: #66FCF1;
+  mix-blend-mode: overlay;
+  border-right: 3px solid #66FCF1;
+}
+
+.dashboard__component .display__header .display__url {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+  color: #66FCF1;
+  mix-blend-mode: overlay;
+  border-right: 3px solid #66FCF1;
+}
+
+.dashboard__component .display__header .display__username {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -170,7 +283,33 @@
   width: 100%;
 }
 
-.dashboard__component .dashboard__item__main .dashboard__item .keyChain__item {
+.dashboard__component .dashboard__item__main .dashboard__item .keyChain__name {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+  border: 2px solid #66FCF1;
+  mix-blend-mode: overlay;
+  color: white;
+}
+
+.dashboard__component .dashboard__item__main .dashboard__item .keyChain__url {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+  border: 2px solid #66FCF1;
+  mix-blend-mode: overlay;
+  color: white;
+}
+
+.dashboard__component .dashboard__item__main .dashboard__item .keyChain__username {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -270,6 +409,193 @@
   mix-blend-mode: overlay;
 }
 
+@media (max-width: 450px) {
+  .dashboard__component {
+    height: 70vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+  }
+  .dashboard__component .display__header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin-left: 45px;
+  }
+  .dashboard__component .display__header .display__name {
+    display: none;
+  }
+  .dashboard__component .display__header .display__url {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50%;
+    color: #66FCF1;
+    mix-blend-mode: overlay;
+    border-right: 3px solid #66FCF1;
+    font-size: 14px;
+  }
+  .dashboard__component .display__header .display__username {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50%;
+    color: #66FCF1;
+    mix-blend-mode: overlay;
+    border-right: 3px solid #66FCF1;
+    font-size: 14px;
+  }
+  .dashboard__component .display__header .display__password {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50%;
+    color: #66FCF1;
+    mix-blend-mode: overlay;
+    text-align: center;
+    border-right: 3px solid #66FCF1;
+    font-size: 14px;
+  }
+  .dashboard__component .display__header .display__date {
+    display: none;
+  }
+  .dashboard__component .dashboard__item__main {
+    height: 100px;
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .dashboard__component .dashboard__item__main .dashboard__item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(32, 40, 51, 0.5);
+    border-color: #66FCF1;
+    height: 50px;
+    width: 97%;
+  }
+  .dashboard__component .dashboard__item__main .dashboard__item .keyChain__name {
+    display: none;
+  }
+  .dashboard__component .dashboard__item__main .dashboard__item .keyChain__url {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 50px;
+    border: 2px solid #66FCF1;
+    mix-blend-mode: overlay;
+    color: white;
+  }
+  .dashboard__component .dashboard__item__main .dashboard__item .keyChain__username {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 50px;
+    border: 2px solid #66FCF1;
+    mix-blend-mode: overlay;
+    color: white;
+  }
+  .dashboard__component .dashboard__item__main .dashboard__item .keyChain__password {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 50px;
+    border: 2px solid #66FCF1;
+    mix-blend-mode: overlay;
+    color: white;
+  }
+  .dashboard__component .dashboard__item__main .dashboard__item .keyChain__password__off {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 50px;
+    border: 2px solid #66FCF1;
+    mix-blend-mode: overlay;
+    color: white;
+    -webkit-text-security: disc;
+  }
+  .dashboard__component .dashboard__item__main .dashboard__item .keyChain__date {
+    display: none;
+  }
+  .dashboard__component .dashboard__item__main .edit__dropdown {
+    width: 40px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+  }
+  .dashboard__component .dashboard__item__main .edit__dropdown .edit__dropdown__button {
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+  }
+  .dashboard__component .dashboard__item__main .edit__dropdown .edit__dropdown__menu {
+    padding-top: 5px;
+  }
+  .dashboard__component .dashboard__item__main .edit__dropdown .edit__dropdown__menu .dashboard__edit {
+    height: 15px;
+    width: 40px;
+    font-size: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #45A29E;
+    background-color: rgba(32, 40, 51, 0.5);
+    border: transparent;
+  }
+  .dashboard__component .dashboard__item__main .edit__dropdown .edit__dropdown__menu .dashboard__delete {
+    height: 15px;
+    width: 40px;
+    font-size: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #45A29E;
+    background-color: rgba(32, 40, 51, 0.5);
+    border: transparent;
+  }
+  .dashboard__component .dashboard__item__main .edit__dropdown .edit__dropdown__menu .edit__delete__border {
+    height: 3px;
+    width: 40px;
+    border-bottom: 3px solid #66FCF1;
+    mix-blend-mode: overlay;
+  }
+}
+
 .dash__profile__component {
   height: 150px;
   width: 90vw;
@@ -315,6 +641,44 @@
   border-top: 4px solid #66FCF1;
   mix-blend-mode: overlay;
   margin-bottom: 20px;
+}
+
+@media (max-width: 450px) {
+  .dash__profile__component {
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .dash__profile__component .dash__profile__main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: stretch;
+  }
+  .dash__profile__component .dash__profile__main .dash__profile__picture {
+    height: 80px;
+    margin-left: 55px;
+    border-radius: 50%;
+  }
+  .dash__profile__component .dash__profile__main .dash__profile__email {
+    color: #C5C6C7;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .dash__profile__component .Logo {
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 40px;
+  }
 }
 
 .FaceVerify {
@@ -399,6 +763,57 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 450px) {
+  .FaceVerify .faceVerify--container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(32, 40, 51, 0.5);
+    width: 300px;
+    height: 500px;
+  }
+  .FaceVerify .faceVerify--container .faceVerify__title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #66FCF1;
+    margin-top: 70px;
+    margin-bottom: 30px;
+  }
+  .FaceVerify .faceVerify--container .faceVerify__buttons {
+    width: 350px;
+  }
+  .FaceVerify .faceVerify--container .faceVerify__buttons .faceVerify__buttons__bottom {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  .FaceVerify .faceVerify--container .faceVerify__buttons .faceVerify__buttons__bottom .faceVerify__button__bottom {
+    height: 75px;
+    width: 90px;
+    margin: 5px;
+    font-size: 18px;
+    background-color: transparent;
+    border: 4px solid #66FCF1;
+    color: white;
+    mix-blend-mode: overlay;
+  }
+  .FaceVerify .faceVerify--container .faceVerify__buttons .faceVerify__match {
+    font-size: 18px;
+    color: #66FCF1;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .auth__component {
@@ -496,6 +911,22 @@
   margin: 4px;
 }
 
+@media (max-width: 450px) {
+  .auth__component .login--container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(32, 40, 51, 0.5);
+    width: 340px;
+    height: 450px;
+    margin-top: 150px;
+  }
+}
+
 .Nav__component {
   width: 120px;
   height: 100vh;
@@ -575,6 +1006,86 @@
   width: 10px;
   border-right: 4px solid #66FCF1;
   mix-blend-mode: overlay;
+}
+
+@media (max-width: 450px) {
+  .Nav__component {
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    mix-blend-mode: overlay;
+  }
+  .Nav__component .dropdown {
+    height: 80px;
+    width: 70px;
+  }
+  .Nav__component .dropdown .menu__lines {
+    width: 40px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .Nav__component .nav--dropDown {
+    height: 100px;
+    width: 78vw;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(32, 40, 51, 0.5);
+  }
+  .Nav__component .nav--dropDown .nav__icons {
+    height: 100px;
+    width: 85vw;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .Nav__component .nav--dropDown .nav__icons .nav__top {
+    width: 200px;
+    height: 80px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .Nav__component .nav--dropDown .nav__icons .nav__top .nav__faceVerify {
+    width: 40px;
+    cursor: pointer;
+  }
+  .Nav__component .nav--dropDown .nav__icons .nav__top .nav__credentials {
+    width: 40px;
+    cursor: pointer;
+  }
+  .Nav__component .nav--dropDown .nav__icons .nav__top .nav__credentials__list {
+    width: 40px;
+    cursor: pointer;
+  }
+  .Nav__component .nav--dropDown .nav__icons .nav__logout {
+    width: 40px;
+    margin-top: 40px;
+    margin-right: 30px;
+    cursor: pointer;
+  }
+  .Nav__component .nav--dropDown .nav__border {
+    height: 7px;
+    width: 65vw;
+    border-bottom: 4px solid #66FCF1;
+    mix-blend-mode: overlay;
+  }
 }
 
 .photos {
@@ -678,6 +1189,102 @@
   mix-blend-mode: overlay;
   margin-right: 20px;
   margin-left: 20px;
+}
+
+@media (max-width: 450px) {
+  .photos {
+    height: 70vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .photos .add__photos {
+    width: 350px;
+    height: 500px;
+    background-color: rgba(32, 40, 51, 0.5);
+  }
+  .photos .add__photos .photo__title {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #66FCF1;
+  }
+  .photos .add__photos .photo__camera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 200px;
+    width: 250px;
+    background-color: gray;
+    margin-top: 25px;
+  }
+  .photos .add__photos .photo__camera .photo__img {
+    height: 180px;
+    width: 250px;
+  }
+  .photos .add__photos .photo__main__buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 15px;
+    width: 100%;
+  }
+  .photos .add__photos .photo__main__buttons .take__photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 70px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    border: 4px solid #66FCF1;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    mix-blend-mode: overlay;
+  }
+  .photos .add__photos .photo__finish__buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 15px;
+    width: 100%;
+  }
+  .photos .add__photos .photo__finish__buttons .photo__cancel {
+    font-size: 20px;
+    width: 140px;
+    height: 70px;
+    color: white;
+    background-color: transparent;
+    border: 4px solid #66FCF1;
+    mix-blend-mode: overlay;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .photos .add__photos .photo__finish__buttons .photo__submit {
+    font-size: 20px;
+    width: 140px;
+    height: 70px;
+    color: white;
+    background-color: transparent;
+    border: 4px solid #66FCF1;
+    mix-blend-mode: overlay;
+    margin-right: 20px;
+    margin-left: 10px;
+  }
 }
 
 .register--container {
@@ -844,6 +1451,79 @@
   margin-bottom: 12px;
 }
 
+@media (max-width: 450px) {
+  .imageList__component {
+    height: 60vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+  }
+  .imageList__component .imageList__main {
+    height: 550px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(32, 40, 51, 0.5);
+  }
+  .imageList__component .imageList__main .imageList__buttons {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .imageList__component .imageList__main .imageList__buttons .imageList__button1 {
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 45px;
+    width: 120px;
+    background-color: transparent;
+    border-color: #66FCF1;
+    color: white;
+    cursor: pointer;
+    margin-left: 50px;
+  }
+  .imageList__component .imageList__main .imageList__buttons .imageList__button2 {
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 45px;
+    width: 120px;
+    background-color: transparent;
+    border-color: #66FCF1;
+    color: white;
+    cursor: pointer;
+    margin-right: 50px;
+  }
+  .imageList__component .imageList__main .imageList__middleBorder {
+    height: 3px;
+    width: 100%;
+    margin-top: 15px;
+    border-bottom: 3px solid #66FCF1;
+    mix-blend-mode: overlay;
+    display: flex;
+    align-items: center;
+  }
+  .imageList__component .imageList__main .imageList__items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .imageList__component .imageList__main .imageList__pageCount {
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #66FCF1;
+  }
+}
+
 .imageCard__component {
   border: 2px solid #66FCF1;
   max-width: 360px;
@@ -873,6 +1553,34 @@
   max-width: 356px;
 }
 
+@media (max-width: 450px) {
+  .imageCard__component {
+    border: 2px solid #66FCF1;
+    max-width: 160px;
+    max-height: 200px;
+    margin: 10px;
+  }
+  .imageCard__component .imageCard--container .imageCard__title--container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #66FCF1;
+    margin: 2px;
+  }
+  .imageCard__component .imageCard--container .imageCard__title--container .imageCard__title__delete {
+    height: 20px;
+    width: 20px;
+    border: 1px solid #66FCF1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .imageCard__component .imageCard--container .imageCard__image {
+    max-width: 156px;
+  }
+}
+
 .imageInfo__component {
   height: 100vh;
   width: 90vw;
@@ -885,7 +1593,7 @@
 
 .imageInfo__component .imageInfo__add__photos {
   width: 600px;
-  height: 800px;
+  height: 830px;
   background-color: rgba(32, 40, 51, 0.5);
 }
 
@@ -898,6 +1606,214 @@
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #66FCF1;
+}
+
+.imageInfo__component .imageInfo__add__photos .imageInfo__photo__camera {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 300px;
+  width: 400px;
+  background-color: gray;
+  margin-top: 25px;
+}
+
+.imageInfo__component .imageInfo__add__photos .imageInfo__photo__camera .imageInfo__photo__img {
+  height: 300px;
+  width: 400px;
+}
+
+.imageInfo__component .imageInfo__add__photos .imageInfo__photo__main__buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.imageInfo__component .imageInfo__add__photos .imageInfo__photo__main__buttons .imageInfo__take__photo {
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+  border: 4px solid #66FCF1;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  mix-blend-mode: overlay;
+}
+
+.imageInfo__component .imageInfo__add__photos .imageInfo__photo__main__buttons .imageInfo__photo__cancel {
+  font-size: 18px;
+  width: 120px;
+  height: 50px;
+  color: white;
+  background-color: transparent;
+  border: 4px solid #66FCF1;
+  mix-blend-mode: overlay;
+}
+
+.imageInfo__component .imageInfo__add__photos .imageInfo__photo__main__buttons .imageInfo__take__extra {
+  font-size: 18px;
+  width: 120px;
+  height: 50px;
+  color: white;
+  background-color: transparent;
+  border: 4px solid #66FCF1;
+  mix-blend-mode: overlay;
+}
+
+.imageInfo__component .imageInfo__add__photos .faceInfo--container {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 80px;
+  margin-top: 20px;
+  color: #66FCF1;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__gender {
+  font-size: 16px;
+}
+
+.imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__age {
+  font-size: 16px;
+}
+
+.imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__eyes {
+  font-size: 16px;
+}
+
+.imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__mouth {
+  font-size: 16px;
+}
+
+.imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__emotions {
+  font-size: 16px;
+}
+
+@media (max-width: 450px) {
+  .imageInfo__component {
+    height: 85vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .imageInfo__component .imageInfo__add__photos {
+    width: 350px;
+    height: 650px;
+    background-color: rgba(32, 40, 51, 0.5);
+  }
+  .imageInfo__component .imageInfo__add__photos .imageInfo__photo__title {
+    height: 60px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #66FCF1;
+  }
+  .imageInfo__component .imageInfo__add__photos .imageInfo__photo__camera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 190px;
+    width: 250px;
+    background-color: gray;
+    margin-top: 5px;
+  }
+  .imageInfo__component .imageInfo__add__photos .imageInfo__photo__camera .imageInfo__photo__img {
+    height: 190px;
+    width: 250px;
+  }
+  .imageInfo__component .imageInfo__add__photos .imageInfo__photo__main__buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+  .imageInfo__component .imageInfo__add__photos .imageInfo__photo__main__buttons .imageInfo__take__photo {
+    width: 100px;
+    height: 70px;
+    font-size: 20px;
+    border: 4px solid #66FCF1;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    mix-blend-mode: overlay;
+  }
+  .imageInfo__component .imageInfo__add__photos .imageInfo__photo__main__buttons .imageInfo__photo__cancel {
+    font-size: 20px;
+    width: 100px;
+    height: 70px;
+    color: white;
+    background-color: transparent;
+    border: 4px solid #66FCF1;
+    mix-blend-mode: overlay;
+  }
+  .imageInfo__component .imageInfo__add__photos .imageInfo__photo__main__buttons .imageInfo__take__extra {
+    font-size: 18px;
+    width: 100px;
+    height: 70px;
+    color: white;
+    background-color: transparent;
+    border: 4px solid #66FCF1;
+    mix-blend-mode: overlay;
+  }
+  .imageInfo__component .imageInfo__add__photos .faceInfo--container {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #66FCF1;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__gender {
+    font-size: 14px;
+  }
+  .imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__age {
+    font-size: 14px;
+  }
+  .imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__eyes {
+    font-size: 14px;
+  }
+  .imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__mouth {
+    font-size: 14px;
+  }
+  .imageInfo__component .imageInfo__add__photos .faceInfo--container .faceInfo__emotions {
+    font-size: 14px;
+  }
 }
 
 * {

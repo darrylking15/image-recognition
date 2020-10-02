@@ -27,9 +27,9 @@ function CredDisplay(props) {
 		<div key={e.cred_id}>
 			<div className='dashboard__item__main'>
 				<div className='dashboard__item'>
-					<p className='keyChain__item'>{e.website_name}</p>
-					<p className='keyChain__item'>{e.website_url}</p>
-					<p className='keyChain__item'>{e.username}</p>
+					<p className='keyChain__name'>{e.website_name}</p>
+					<p className='keyChain__url'>{e.website_url}</p>
+					<p className='keyChain__username'>{e.username}</p>
 					{/* <p
 						name='password'
 						type={togglePassword ? 'text' : 'password'}

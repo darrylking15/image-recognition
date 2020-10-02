@@ -88,6 +88,148 @@
             }  
         }
     }
+    @media (max-width: 450px){
+        .faceVerify--container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            align-content: stretch;
+            // border: 2px solid rgb(87, 131, 228);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(32, 40, 51, 0.5);
+            width: 300px;
+            height: 500px;
+
+            .faceVerify__title{
+                // height: 50px;
+                font-size: 20px;
+                font-weight: bold;
+                color: $mint-color;
+                margin-top: 70px;
+                margin-bottom: 30px;
+            }
+
+            .faceVerify__buttons{
+                width: 350px;
+                
+    
+                // .faceVerify__buttons__top {
+                //     display: flex;
+                //     flex-direction: column;
+                //     flex-wrap: nowrap;
+                //     justify-content: center;
+                //     align-items: center;
+                //     width: 300px;
+                    
+                //     .faceVerify__button__top {
+                //         width: 110px;
+                //         height: 25px;
+                //         margin-top: 12px;
+                //         font-size: 14px;
+                //         background-color: transparent;
+                //         border-color: $mint-color;
+                //         color: $light-gray-color;
+                //         mix-blend-mode: overlay;
+                //     }
+                // }
+                .faceVerify__buttons__bottom {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 25px;
+
+                    .faceVerify__button__bottom {
+                        height: 75px;
+                        width: 90px;
+                        margin: 5px;
+                        font-size: 18px;
+                        background-color: transparent;
+                        border: 4px solid $mint-color;
+                        color: white;
+                        mix-blend-mode: overlay;
+                    }
+                }
+                .faceVerify__match{
+                    font-size: 18px;
+                    color: $mint-color;
+                    margin-bottom: 12px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }                  
+            }
+        }
+    }
+    
+    // @media (max-width: 400px){
+    //     .faceVerify--container {
+    //         display: flex;
+    //         flex-direction: column;
+    //         flex-wrap: nowrap;
+    //         justify-content: space-between;
+    //         align-items: center;
+    //         align-content: stretch;
+    //         // border: 2px solid rgb(87, 131, 228);
+    //         font-family: Verdana, Geneva, Tahoma, sans-serif;
+    //         background-color: rgba(32, 40, 51, 0.5);
+    //         width: 150px;
+    //         height: 200px;
+
+    //         .faceVerify__title{
+    //             font-size: 10px;
+    //             font-weight: bold;
+    //             color: $mint-color;
+    //             margin-top: 10px;
+    //             margin-bottom: 10px;
+    //         }
+
+    //         .faceVerify__buttons{
+    //             width: 200px;
+                
+    
+    //             .faceVerify__buttons__top {
+    //                 display: flex;
+    //                 flex-direction: column;
+    //                 flex-wrap: nowrap;
+    //                 justify-content: center;
+    //                 align-items: center;
+    //                 width: 200px;
+    //             }
+    //             .faceVerify__buttons__bottom {
+    //                 display: flex;
+    //                 flex-direction: row;
+    //                 flex-wrap: nowrap;
+    //                 justify-content: center;
+    //                 align-items: center;
+    //                 margin-bottom: 10px;
+
+    //                 .faceVerify__button__bottom {
+    //                     height: 15px;
+    //                     width: 70px;
+    //                     margin: 8px;
+    //                     font-size: 10px;
+    //                     background-color: transparent;
+    //                     border-color: $mint-color;
+    //                     color: $light-gray-color;
+    //                     mix-blend-mode: overlay;
+    //                 }
+    //             }
+
+    //             .faceVerify__match{
+    //                 font-size: 12px;
+    //                 color: $mint-color;
+    //                 margin-bottom: 8px;
+    //                 display: flex;
+    //                 justify-content: center;
+    //                 align-items: center;
+    //             }   
+    //         }
+    //     }
+    // }
 }
 
 // #faceVerify__button{

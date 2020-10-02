@@ -28,3 +28,35 @@
         }
     }
 }
+@media (max-width: 450px) {
+    .imageCard__component {
+        border: 2px solid $mint-color;
+        max-width: 160px;
+        max-height: 200px;
+        margin: 10px;
+    
+        .imageCard--container {
+    
+            .imageCard__title--container {
+                display: flex;
+                justify-content: space-between;
+                font-size: 20px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                color: $mint-color;
+                margin: 2px;
+                .imageCard__title__delete{
+                    height: 20px;
+                    width: 20px;
+                    border: 1px solid $mint-color;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            
+            .imageCard__image {
+                max-width: 156px;
+            }
+        }
+    }
+}
