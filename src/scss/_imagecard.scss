@@ -1,15 +1,30 @@
 .imageCard__component {
-    border: 1px solid white;
-    max-width: 400px;
+    border: 2px solid $mint-color;
+    max-width: 360px;
     max-height: 400px;
     margin: 10px;
-}
 
-.imageCard__title--container {
-    display: flex;
-    justify-content: space-between;
-}
+    .imageCard--container {
 
-.imageCard__image {
-    max-width: 400px;
+        .imageCard__title--container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: $mint-color;
+            margin: 2px;
+            .imageCard__title__delete{
+                height: 20px;
+                width: 20px;
+                border: 1px solid $mint-color;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        
+        .imageCard__image {
+            max-width: 356px;
+        }
+    }
 }

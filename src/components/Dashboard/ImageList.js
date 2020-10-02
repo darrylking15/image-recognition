@@ -64,15 +64,17 @@ class ImageList extends Component {
                 <div className="dash__profile__border"></div>
                 <div className="imageList__main">
                     <div className="imageList__buttons">
-                        <button onClick={() => this.handleImageNav('back')} >Back</button>
-                        <button onClick={() => this.handleImageNav('next')} >Next</button>
+                        <button onClick={() => this.handleImageNav('back')} className="imageList__button1">Back</button>
+                        <button onClick={() => this.handleImageNav('next')} className="imageList__button2">Next</button>
                     </div>
+                    <div className="imageList__middleBorder"></div>
                     <div className="imageList__items">
                         {imageMap[this.state.imgDisplayIndex]}
                         {imageMap[this.state.imgDisplayIndex+1]}
                         {imageMap[this.state.imgDisplayIndex+2]}
                         {imageMap[this.state.imgDisplayIndex+3]}
                     </div>
+                    <div className="imageList__pageCount"> placeholder Number</div>
                 </div>
             </div>
         )

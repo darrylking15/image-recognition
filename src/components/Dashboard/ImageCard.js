@@ -18,7 +18,7 @@ const ImageCard = (props) => {
             <div className="imageCard--container">
                 <div className="imageCard__title--container">
                     <h3>{dateTime.toLocaleString()}</h3>
-                    <h3 onClick={() => deleteImage(props.imageInfo.img_id)} >X</h3>
+                    <h3 onClick={() => deleteImage(props.imageInfo.img_id)} className="imageCard__title__delete" >X</h3>
                 </div>
                 <div className="imageCard__image--container">
                     <img className="imageCard__image" src={props.imageInfo.s3_url} alt="imageCard"/>
