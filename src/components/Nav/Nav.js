@@ -11,6 +11,7 @@ import MenuLines from './Nav Icons/menu_lines.png';
 import AddFace from './Nav Icons/add_face_icon.png';
 import AddPass from './Nav Icons/add_pass_icon.png';
 import GridIcon from './Nav Icons/grid_icon.png';
+import ImageInfoIcon from './Nav Icons/face_info_icon.png';
 import LogOut from './Nav Icons/Logout_Icon.png';
 
 
@@ -91,6 +92,12 @@ class Nav extends Component {
 									alt='nav__credentials'
 									href='http://localhost:3000/#/'
 									src={GridIcon}
+								/></Link>
+								<Link to="/imageinfo"><img 
+									className='nav__credentials' 
+									alt='nav__credentials'
+									href='http://localhost:3000/#/'
+									src={ImageInfoIcon}
 								/></Link>
 							</div>
 							<Link to="/"><img 
