@@ -14,3 +14,21 @@
 	height: 100vh;
 	width: 100vw;
 }
+@media (max-width: 450px) {
+	.app{
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: stretch;
+		align-content: center;
+		background-image: url(https://cdn.discordapp.com/attachments/718455188100350035/758060068154507325/group_project_background.png);
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		background-position: center;
+		height: 100vh;
+		width: 100vw;
+	}
+}

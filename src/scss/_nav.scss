@@ -78,3 +78,91 @@
 
     
 }
+@media (max-width: 450px){
+    .Nav__component {
+        width: 100vw;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        mix-blend-mode: overlay;
+        
+        .dropdown {
+            height: 80px;
+            width: 70px;
+            
+            .menu__lines {
+                width: 40px;
+                // margin: px;
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+    
+            
+        }
+        .nav--dropDown {
+            height: 100px;
+            width: 78vw;
+            margin-top: 0px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(32, 40, 51, 0.5);
+    
+            .nav__icons{
+                height: 100px;
+                width: 85vw;
+                margin-left: 10px;
+                margin-right: 10px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+                .nav__top{
+                    width: 200px;
+                    height: 80px;
+                    margin-left: 30px;
+                    margin-bottom: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    .nav__faceVerify {
+                        width: 40px;
+                        cursor: pointer;
+                        // height: 50px;
+                    }
+            
+                    .nav__credentials {
+                        width: 40px;
+                        cursor: pointer;
+                    }
+    
+                    .nav__credentials__list {
+                        width: 40px;
+                        cursor: pointer;
+                    }
+                }
+                .nav__logout {
+                    width: 40px;
+                    margin-top: 40px;
+                    margin-right: 30px;
+                    cursor: pointer;
+                }
+            }
+            .nav__border {
+                height: 7px;
+                width: 65vw;
+                border-bottom: 4px solid $mint-color;
+                mix-blend-mode: overlay;
+            }
+        }
+    }
+}

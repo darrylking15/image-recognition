@@ -100,4 +100,20 @@
       }
     }
   }
+  @media (max-width: 450px) {
+    .login--container{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      align-content: stretch;
+      // border: 2px solid rgb(87, 131, 228);
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      background-color: rgba(32, 40, 51, 0.5);
+      width: 340px;
+      height: 450px;
+      margin-top: 150px;
+    }
+  }
 }

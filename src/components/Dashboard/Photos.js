@@ -172,7 +172,7 @@ class Photos extends Component{
                 <div className='add__photos'>
                     <h1 className='photo__title'>Face Input</h1>
                     <div className='photo__camera'>
-                        <img alt='photos' height={300} width={400}  src={this.state.webcamCapture} />  
+                        <img alt='photos' className="photo__img" src={this.state.webcamCapture} />  
                     </div>
                     <div className='photo__main__buttons'>
                         <button onClick={() => this.toggleCam()} className='take__photo'>Try Again</button>
@@ -187,7 +187,7 @@ class Photos extends Component{
                 <div className='add__photos'>
                     <h1 className='photo__title'>Face Input</h1>
                     <div className='photo__camera'>
-                        <img alt='photos' height={300} width={400}  src={this.state.webcamCapture} /> 
+                        <img alt='photos' className="photo__img" src={this.state.webcamCapture} /> 
                     </div>
                     <div className='photo__main__buttons'>
                         <button onClick={() => this.toggleCam()} className='take__photo'>Try Again</button>
