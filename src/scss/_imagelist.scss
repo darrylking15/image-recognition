@@ -3,25 +3,85 @@
     width: 90vw;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    // flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
     align-content: stretch;
 
     .imageList__main {
-        height: 700px;
-        width: 700px;
+        height: 800px;
+        width: 1000px;
         display: flex;
         flex-direction: column;
-        border: 2px solid black;
-
+        justify-content: space-between;
+        // align-items: flex-start;
+        // border: 2px solid $mint-color;
+        background-color: rgba(32, 40, 51, 0.5);
+        
         .imageList__buttons {
-
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            
+            
+            .imageList__button1 {
+                font-size: 20px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                height: 45px;
+                width: 120px;
+                background-color: transparent;
+                border-color: $mint-color;
+                color: white;
+                // mix-blend-mode: overlay;
+                // margin-top: 5px;
+                // width: 25%;
+                cursor: pointer;
+                margin-left: 50px;
+            }
+            .imageList__button2 {
+                font-size: 20px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                height: 45px;
+                width: 120px;
+                background-color: transparent;
+                border-color: $mint-color;
+                color: white;
+                // mix-blend-mode: overlay;
+                // margin-top: 5px;
+                // width: 25%;
+                cursor: pointer;
+                margin-right: 50px;
+            }
         }
 
+        .imageList__middleBorder {
+            height: 3px;
+            width: 100%;
+            margin-top: 15px;
+            border-bottom: 3px solid $mint-color;
+            mix-blend-mode: overlay;
+            display: flex;
+            align-items: center;
+        }
+        
         .imageList__items {
             display: flex;
             flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .imageList__pageCount {
+            display: flex;
+            justify-content: center;
+            font-size: 22px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: $mint-color;
+            margin-bottom: 12px;
         }
     }
 }
