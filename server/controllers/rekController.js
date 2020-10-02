@@ -10,7 +10,6 @@ module.exports = {
     compareFaces: (req,res) => {
         const db = req.app.get('db');
         console.log(" Start Logging Face"); 
-        let rekResponse = {fake: 'fake'};
         
         const config = new AWS.Config({
             accessKeyId: process.env.AWS_ACCESS_KEY_ID,
