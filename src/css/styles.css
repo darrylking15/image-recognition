@@ -392,6 +392,15 @@
   mix-blend-mode: overlay;
 }
 
+.FaceVerify .faceVerify--container .faceVerify__buttons .faceVerify__match {
+  font-size: 28px;
+  color: #66FCF1;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .auth__component {
   height: 100vh;
   width: 100vw;
@@ -757,8 +766,27 @@
 }
 
 .imageList__component {
+  height: 100vh;
+  width: 90vw;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+}
+
+.imageList__component .imageList__main {
+  height: 700px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+}
+
+.imageList__component .imageList__main .imageList__items {
+  display: flex;
+  flex-direction: row;
 }
 
 .imageCard__component {

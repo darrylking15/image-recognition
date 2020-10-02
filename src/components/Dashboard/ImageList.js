@@ -61,13 +61,19 @@ class ImageList extends Component {
                 {/* <div className="imagelist__profilepic__main">
                     <img src={this.state.user.faceUrl} alt="profile pic" />
                 </div> */}
-                <button onClick={() => this.handleImageNav('back')} >Back</button>
-                <button onClick={() => this.handleImageNav('next')} >Next</button>
-
-                {imageMap[this.state.imgDisplayIndex]}
-                {imageMap[this.state.imgDisplayIndex+1]}
-                {imageMap[this.state.imgDisplayIndex+2]}
-                {imageMap[this.state.imgDisplayIndex+3]}
+                <div className="dash__profile__border"></div>
+                <div className="imageList__main">
+                    <div className="imageList__buttons">
+                        <button onClick={() => this.handleImageNav('back')} >Back</button>
+                        <button onClick={() => this.handleImageNav('next')} >Next</button>
+                    </div>
+                    <div className="imageList__items">
+                        {imageMap[this.state.imgDisplayIndex]}
+                        {imageMap[this.state.imgDisplayIndex+1]}
+                        {imageMap[this.state.imgDisplayIndex+2]}
+                        {imageMap[this.state.imgDisplayIndex+3]}
+                    </div>
+                </div>
             </div>
         )
     }

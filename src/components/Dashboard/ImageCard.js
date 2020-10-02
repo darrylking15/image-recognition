@@ -23,9 +23,9 @@ const ImageCard = (props) => {
                 <div className="imageCard__image--container">
                     <img className="imageCard__image" src={props.imageInfo.s3_url} alt="imageCard"/>
                 </div>
-                <div className="imageCard__bottomLabel--container">
+                {/* <div className="imageCard__bottomLabel--container">
                     <h3>99% Matched</h3>
-                </div>
+                </div> */}
             </div>
             
         </div>
