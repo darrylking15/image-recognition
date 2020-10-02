@@ -540,7 +540,7 @@
 }
 
 .Nav__component .nav--dropDown .nav__icons .nav__top {
-  height: 280px;
+  height: 370px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -871,6 +871,33 @@
 
 .imageCard__component .imageCard--container .imageCard__image {
   max-width: 356px;
+}
+
+.imageInfo__component {
+  height: 100vh;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageInfo__component .imageInfo__add__photos {
+  width: 600px;
+  height: 800px;
+  background-color: rgba(32, 40, 51, 0.5);
+}
+
+.imageInfo__component .imageInfo__add__photos .imageInfo__photo__title {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  font-size: 42px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #66FCF1;
 }
 
 * {

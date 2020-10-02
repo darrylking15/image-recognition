@@ -103,7 +103,12 @@ class ImageInfo extends Component{
             } )
             .catch( error => console.log(error) );
     }
-    //
+    
+    handleCancel = () => {
+        console.log("Cancel Photo Called");
+        this.props.history.push('/dashboard');
+    }
+
     render(){
 
         let faceInfo = this.state.faceInfo;
@@ -111,71 +116,71 @@ class ImageInfo extends Component{
         let stepView = () => { switch(this.state.stepCounter){
             case 0:
                 return(
-                <div className='add__photos'>
-                    <h1 className='photo__title'>Image Info</h1>
-                    <div className='photo__camera'>
+                <div className='imageInfo__add__photos'>
+                    <h1 className='imageInfo__photo__title'>Image Info</h1>
+                    <div className='imageInfo__photo__camera'>
                     </div>
-                    <div className='photo__main__buttons'>
-                        <button onClick={() => this.toggleCam()} className='take__photo'>Live Cam</button>
+                    <div className='imageInfo__photo__main__buttons'>
+                        <button onClick={() => this.toggleCam()} className='imageInfo__take__photo'>Live Cam</button>
                     </div>
-                    <div className='photo__finish__buttons'>
-                        <button onClick={() => this.handleCancel()} className='photo__cancel'>Cancel</button>
+                    <div className='imageInfo__photo__finish__buttons'>
+                        <button onClick={() => this.handleCancel()} className='imageInfo__photo__cancel'>Cancel</button>
                     </div>
                 </div>)
             case 1:
                 return(
-                <div className='add__photos'>
-                    <h1 className='photo__title'>Image Info</h1>
-                    <div className='photo__camera'>
+                <div className='imageInfo__add__photos'>
+                    <h1 className='imageInfo__photo__title'>Image Info</h1>
+                    <div className='imageInfo__photo__camera'>
                             <Webcam audio={false} ref={this.webcamRef} screenshotFormat='image/jpeg' className='photo__img' /> 	
                     </div>
-                    <div className='photo__main__buttons'>
-                        <button onClick={() => this.capture()} className='take__photo'>Capture</button>
+                    <div className='imageInfo__photo__main__buttons'>
+                        <button onClick={() => this.capture()} className='imageInfo__take__photo'>Capture</button>
                     </div>
-                    <div className='photo__finish__buttons'>
-                        <button onClick={() => this.handleCancel()} className='photo__cancel'>Cancel</button>
+                    <div className='imageInfo__photo__finish__buttons'>
+                        <button onClick={() => this.handleCancel()} className='imageInfo__photo__cancel'>Cancel</button>
                     </div>
                 </div>)
             case 2:
                 return(
-                <div className='add__photos'>
-                    <h1 className='photo__title'>Image Info</h1>
-                    <div className='photo__camera'>
+                <div className='imageInfo__add__photos'>
+                    <h1 className='imageInfo__photo__title'>Image Info</h1>
+                    <div className='imageInfo__photo__camera'>
                         <img alt='photos' height={300} width={400}  src={this.state.webcamCapture} />  
                     </div>
-                    <div className='photo__main__buttons'>
-                        <button onClick={() => this.toggleCam()} className='take__photo'>Try Again</button>
-                        <button onClick={() => this.sendToS3()} className='take__photo'>Accept Photo</button>
+                    <div className='imageInfo__photo__main__buttons'>
+                        <button onClick={() => this.toggleCam()} className='imageInfo__take__photo'>Try Again</button>
+                        <button onClick={() => this.sendToS3()} className='imageInfo__take__photo'>Accept Photo</button>
                     </div>
-                    <div className='photo__finish__buttons'>
-                        <button  onClick={() => this.handleCancel()} className='photo__cancel'>Cancel</button>
+                    <div className='imageInfo__photo__finish__buttons'>
+                        <button  onClick={() => this.handleCancel()} className='imageInfo__photo__cancel'>Cancel</button>
                     </div>
                 </div>)
             case 3:
                 return(
-                <div className='add__photos'>
-                    <h1 className='photo__title'>Image Info</h1>
-                    <div className='photo__camera'>
+                <div className='imageInfo__add__photos'>
+                    <h1 className='imageInfo__photo__title'>Image Info</h1>
+                    <div className='imageInfo__photo__camera'>
                         <img alt='photos' height={300} width={400}  src={this.state.webcamCapture} /> 
                     </div>
-                    <div className='photo__main__buttons'>
-                        <button onClick={() => this.toggleCam()} className='take__photo'>Try Again</button>
+                    <div className='imageInfo__photo__main__buttons'>
+                        <button onClick={() => this.toggleCam()} className='imageInfo__take__photo'>Try Again</button>
                     </div>
-                    <div className='photo__finish__buttons'>
-                        <button onClick={() => this.handleCancel()} className='photo__cancel'>Cancel</button>
-                        <button className='photo__submit' onClick={() => this.getFaceInfo()} >Analyze Photo</button>
+                    <div className='imageInfo__photo__finish__buttons'>
+                        <button onClick={() => this.handleCancel()} className='imageInfo__photo__cancel'>Cancel</button>
+                        <button className='imageInfo__photo__submit' onClick={() => this.getFaceInfo()} >Analyze Photo</button>
                     </div>
                 </div>)
             case 4:
                 return(
-                <div className='add__photos'>
-                    <h1 className='photo__title'>Face Info</h1>
-                    <div className='photo__camera'>
+                <div className='imageInfo__add__photos'>
+                    <h1 className='imageInfo__photo__title'>Face Info</h1>
+                    <div className='imageInfo__photo__camera'>
                         <img alt='photos' height={300} width={400}  src={this.state.webcamCapture} /> 
                     </div>
-                    <div className='photo__main__buttons'>
-                        <button onClick={() => this.handleCancel()} className='photo__cancel'>Cancel</button>
-                        <button onClick={() => this.toggleCam()} className='take__photo'>Try Again</button>
+                    <div className='imageInfo__photo__main__buttons'>
+                        <button onClick={() => this.handleCancel()} className='imageInfo__photo__cancel'>Cancel</button>
+                        <button onClick={() => this.toggleCam()} className='imageInfo__take__photo'>Try Again</button>
                     </div>
                     <div className="faceInfo--container">
                         <h5>Gender:</h5>
@@ -209,7 +214,7 @@ class ImageInfo extends Component{
 
 
         return(
-            <div className='photos'>
+            <div className='imageInfo__component'>
                 {stepView()}
             </div>
         )
