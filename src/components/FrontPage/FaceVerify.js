@@ -76,17 +76,23 @@ class FaceVerify extends Component{
 			})
 			.then( res => {
 				console.log(res.data)
-				console.log("Similarity: ", res.data.FaceMatches[0].Similarity);
-				const similarity = `Face Match: ${res.data.FaceMatches[0].Similarity.toString().slice(0,4)}%`;
-				this.setState({ matchSim: similarity })
-				if (res.data.FaceMatches[0].Similarity > 95) {
-					setTimeout(() => { this.props.history.push('/dashboard') }, 2000);
-				} else if (res.data.FaceMatches[0].Similarity < 95) {
-					alert("Face Detected, but not enough to login. Try Again.")
+				setTimeout(() => { this.setState({ matchSim: "Face Does Not Match" }) }, 3000);
+				if (res.data.FaceMatches[0]) {
+					console.log("Similarity: ", res.data.FaceMatches[0].Similarity);
+					const similarity = `Face Match: ${res.data.FaceMatches[0].Similarity.toString().slice(0,4)}%`;
+					this.setState({ matchSim: similarity })
+					if (res.data.FaceMatches[0].Similarity > 95) {
+						setTimeout(() => { this.props.history.push('/dashboard') }, 2000);
+					} else if (res.data.FaceMatches[0].Similarity < 95) {
+						alert("Face Detected, but not enough to login. Try Again.")
+					} else if (res.data.UnmatchedFaces[0]) {
+						alert("No similar face detected.")
+					} else {
+						alert("Something Weird Happend")
+					} 
 				} else if (res.data.UnmatchedFaces[0]) {
 					alert("No similar face detected.")
-				} else {
-					alert("Something Weird Happend")
+					this.setState({ matchSim: "Face Does Not Match" })
 				}
 			})
 			.catch(err => console.log(err))
