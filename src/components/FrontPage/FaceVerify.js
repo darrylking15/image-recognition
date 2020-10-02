@@ -153,7 +153,7 @@ class FaceVerify extends Component{
 								<button className='faceVerify__button__bottom' onClick={() => this.props.history.push('/')} >CANCEL</button>
 								<button className='faceVerify__button__bottom' onClick={() => this.compareFaces()} >FACE LOGIN</button>
 							</div>
-							<h3 className="faceVerify__title">{this.state.matchSim}</h3> 
+							<h3 className="faceVerify__match">{this.state.matchSim}</h3> 
 						</div>
 					</div>
 				)

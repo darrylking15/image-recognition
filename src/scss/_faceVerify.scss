@@ -77,6 +77,14 @@
                     color: $light-gray-color;
                     mix-blend-mode: overlay;
                 }
+            }
+            .faceVerify__match{
+                font-size: 28px;
+                color: $mint-color;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }  
         }
     }
