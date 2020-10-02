@@ -106,6 +106,7 @@ class ImageInfo extends Component{
     //
     render(){
 
+        let faceInfo = this.state.faceInfo;
 
         let stepView = () => { switch(this.state.stepCounter){
             case 0:
@@ -173,14 +174,33 @@ class ImageInfo extends Component{
                         <img alt='photos' height={300} width={400}  src={this.state.webcamCapture} /> 
                     </div>
                     <div className='photo__main__buttons'>
+                        <button onClick={() => this.handleCancel()} className='photo__cancel'>Cancel</button>
                         <button onClick={() => this.toggleCam()} className='take__photo'>Try Again</button>
                     </div>
-                    <div className='photo__finish__buttons'>
-                        <button onClick={() => this.handleCancel()} className='photo__cancel'>Cancel</button>
-                        <button className='photo__submit' onClick={() => this.getFaceInfo()} >Analyze Photo</button>
-                    </div>
                     <div className="faceInfo--container">
-                        <p>Info Here</p>
+                        <h5>Gender:</h5>
+                        <p>{`${faceInfo.Gender.Value}: ${Math.trunc(faceInfo.Gender.Confidence)}%`}</p>
+                        <h5>Age:</h5>
+                        <p>{`Low: ${faceInfo.AgeRange.Low} `}</p>
+                        <p>{`High: ${faceInfo.AgeRange.High} `}</p>
+                        <h5>Eyes:</h5>
+                        <p>{`EyesOpen: ${faceInfo.EyesOpen.Value}  ${Math.trunc(faceInfo.EyesOpen.Confidence)}%`}</p>
+                        <p>{`Eyeglasses: ${faceInfo.Eyeglasses.Value}  ${Math.trunc(faceInfo.Eyeglasses.Confidence)}%`}</p>
+                        <p>{`Sunglasses: ${faceInfo.Sunglasses.Value}  ${Math.trunc(faceInfo.Sunglasses.Confidence)}%`}</p>
+                        <h5>Mouth:</h5>
+                        <p>{`Smile: ${faceInfo.Smile.Value}  ${Math.trunc(faceInfo.Smile.Confidence)}%`}</p>
+                        <p>{`MouthOpen: ${faceInfo.MouthOpen.Value}  ${Math.trunc(faceInfo.MouthOpen.Confidence)}%`}</p>
+                        <p>{`Mustache: ${faceInfo.Mustache.Value}  ${Math.trunc(faceInfo.Mustache.Confidence)}%`}</p>
+                        <p>{`Beard: ${faceInfo.Beard.Value}  ${Math.trunc(faceInfo.Beard.Confidence)}%`}</p>
+                        <h5>Emotions:</h5>
+                        <p>{`${faceInfo.Emotions[0].Type}  ${Math.trunc(faceInfo.Emotions[0].Confidence)}%`}</p>
+                        <p>{`${faceInfo.Emotions[1].Type}  ${Math.trunc(faceInfo.Emotions[1].Confidence)}%`}</p>
+                        <p>{`${faceInfo.Emotions[2].Type}  ${Math.trunc(faceInfo.Emotions[2].Confidence)}%`}</p>
+                        <p>{`${faceInfo.Emotions[3].Type}  ${Math.trunc(faceInfo.Emotions[3].Confidence)}%`}</p>
+                        <p>{`${faceInfo.Emotions[4].Type}  ${Math.trunc(faceInfo.Emotions[4].Confidence)}%`}</p>
+                        <p>{`${faceInfo.Emotions[5].Type}  ${Math.trunc(faceInfo.Emotions[5].Confidence)}%`}</p>
+                        <p>{`${faceInfo.Emotions[6].Type}  ${Math.trunc(faceInfo.Emotions[6].Confidence)}%`}</p>
+                        <p>{`${faceInfo.Emotions[7].Type}  ${Math.trunc(faceInfo.Emotions[7].Confidence)}%`}</p>
                     </div>
                 </div>)
             default: 
