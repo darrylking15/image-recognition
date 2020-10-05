@@ -103,6 +103,10 @@ class ImageInfo extends Component{
             } )
             .catch( error => console.log(error) );
     }
+
+    handleCancel = () => {
+        this.props.history.push('/dashboard')
+    }
     //
     render(){
 
@@ -180,7 +184,7 @@ class ImageInfo extends Component{
                         <button className='photo__submit' onClick={() => this.getFaceInfo()} >Analyze Photo</button>
                     </div>
                     <div className="faceInfo--container">
-                        <p>Info Here</p>
+                        <p>The image contains a {this.state.faceInfo.Gender.Value} between the ages of {this.state.faceInfo.AgeRange.Low} and {this.state.faceInfo.AgeRange.High} years old.</p>
                     </div>
                 </div>)
             default: 
